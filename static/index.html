@@ -4,69 +4,262 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Black Chess Capital — Global Investment Management</title>
-  <meta name="description" content="Black Chess Capital combines Softwater Capital's Australian venture expertise with Heqi Investment's quantitative precision — a dual-hemisphere platform for sophisticated global investors.">
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/home.css">
+  <meta name="description" content="Black Chess Capital is a global investment management firm operating across Australian venture capital and Chinese quantitative markets.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:#080807; --dark:#0f0e0d; --dark2:#161513; --dark3:#1e1c1a;
+      --gold:#b8975a; --gold-light:#d4b87a; --gold-dim:rgba(184,151,90,0.12);
+      --gold-border:rgba(184,151,90,0.22); --white:#f0ece4; --off-white:#d4cfc6;
+      --muted:#7a756d; --muted2:#524e48; --green:#5a9e72; --nav-h:72px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--dark);color:var(--white);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold-border);border-radius:2px}
+    ::selection{background:var(--gold);color:var(--black)}
+    a{color:inherit;text-decoration:none} p{color:var(--off-white)}
+    .section{padding:7rem 0;position:relative}
+    .container{max-width:1200px;margin:0 auto;padding:0 5rem}
+    .divider{height:0.5px;background:var(--gold-border)}
+    .display{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.05;letter-spacing:-0.02em}
+    .display em{font-style:italic;color:var(--gold)}
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-family:'Jost',sans-serif;font-weight:400}
+    .eyebrow::before{content:'';display:block;width:28px;height:0.5px;background:var(--gold);flex-shrink:0}
+    .stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);line-height:1}
+    .stat-label{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:0.8rem 2rem;font-family:'Jost',sans-serif;font-size:0.75rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:all 0.28s ease;border:none}
+    .btn-gold{background:var(--gold);color:var(--black)}.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:var(--white);border:0.5px solid rgba(240,236,228,0.3)}.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
+    .btn-arrow::after{content:'→';font-size:1rem;transition:transform 0.2s}.btn-arrow:hover::after{transform:translateX(4px)}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}
+    .reveal-delay-3{transition-delay:0.3s}.reveal-delay-4{transition-delay:0.4s}
+
+    /* NAV */
+    #site-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5rem;background:rgba(8,8,7,0.92);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--gold-border);transition:background 0.3s}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--gold);letter-spacing:0.06em}
+    .nav-logo span{color:var(--white);font-style:italic}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+    .nav-links a{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);transition:color 0.25s;position:relative;padding-bottom:2px}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:0.5px;background:var(--gold);transform:scaleX(0);transition:transform 0.25s}
+    .nav-links a:hover,.nav-links a.active{color:var(--white)}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:0.5rem 1.4rem}.nav-cta:hover{background:var(--gold-light)!important}.nav-cta::after{display:none!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:22px;height:0.5px;background:var(--white);transition:all 0.3s}
+
+    /* HERO */
+    #hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 5rem;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 75% 50%,rgba(184,151,90,0.07) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(184,151,90,0.04) 0%,transparent 60%)}
+    #hero-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.3}
+    .hero-content{position:relative;z-index:2;max-width:720px;padding-top:var(--nav-h)}
+    .hero-title{font-size:clamp(3.2rem,7vw,6.5rem);margin:1.5rem 0 1.75rem}
+    .hero-desc{font-size:1rem;color:var(--off-white);line-height:1.85;max-width:520px;margin-bottom:2.5rem;opacity:0.8}
+    .hero-cta{display:flex;gap:1.25rem;flex-wrap:wrap}
+    .hero-stats{position:relative;z-index:2;display:flex;align-items:center;margin-top:5rem;padding-top:2.5rem;border-top:0.5px solid var(--gold-border);max-width:680px}
+    .hero-stat{flex:1;padding-right:2rem}
+    .hero-stat-div{width:0.5px;height:48px;background:var(--gold-border);margin-right:2rem;flex-shrink:0}
+    .stat-plus{font-size:0.55em;vertical-align:super;color:var(--gold)}
+    .hero-scroll{position:absolute;bottom:2.5rem;right:5rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.6rem}
+    .scroll-line{width:0.5px;height:48px;background:var(--gold-border);animation:scrollPulse 2s ease-in-out infinite}
+    @keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.6)}50%{opacity:1;transform:scaleY(1)}}
+    .hero-scroll span{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl}
+
+    /* MARQUEE */
+    .marquee-wrap{background:var(--dark3);border-top:0.5px solid var(--gold-border);border-bottom:0.5px solid var(--gold-border);overflow:hidden;padding:1rem 0}
+    .marquee-track{display:flex;width:max-content;animation:marquee 36s linear infinite}
+    .marquee-track span{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);padding:0 1.8rem;white-space:nowrap}
+    .marquee-track .sep{color:var(--gold);padding:0;font-size:0.5rem;display:flex;align-items:center}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* WHO WE ARE */
+    #who{background:var(--dark2)}
+    .who-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:6rem;align-items:start}
+    .who-title{font-size:clamp(2.4rem,4.5vw,3.8rem);margin:1.2rem 0 1.75rem}
+    .who-body{font-size:0.9rem;color:var(--muted);line-height:1.9;margin-bottom:1rem}
+    .who-right{display:flex;flex-direction:column;gap:1.5rem}
+    .who-market-card{border:0.5px solid var(--gold-border);padding:2rem 2.25rem;transition:border-color 0.3s}
+    .who-market-card:hover{border-color:rgba(184,151,90,0.5)}
+    .who-market-label{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem}
+    .who-market-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;margin-bottom:0.85rem}
+    .who-market-desc{font-size:0.82rem;color:var(--muted);line-height:1.85;margin-bottom:1.5rem}
+    .who-market-stats{display:flex;gap:2.5rem;padding-top:1.25rem;border-top:0.5px solid var(--gold-border)}
+
+    /* FUNDS */
+    #funds-overview{background:var(--dark)}
+    .section-header{margin-bottom:3.5rem}
+    .section-header .eyebrow{margin-bottom:1rem}
+    .funds-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+    .fund-tile{border:0.5px solid var(--gold-border);border-right:none;padding:2.5rem 2rem;position:relative;display:block;transition:background 0.3s,border-color 0.3s;overflow:hidden}
+    .fund-tile:last-child{border-right:0.5px solid var(--gold-border)}
+    .fund-tile::before{content:'';position:absolute;inset:0;background:var(--gold-dim);opacity:0;transition:opacity 0.3s}
+    .fund-tile:hover::before{opacity:1}
+    .fund-tile:hover{border-color:rgba(184,151,90,0.45)}
+    .fund-tile-num{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:300;color:rgba(184,151,90,0.1);line-height:1;margin-bottom:-0.75rem}
+    .fund-tile-tag{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.85rem}
+    .fund-tile-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:1rem;line-height:1.25;color:var(--white)}
+    .fund-tile-desc{font-size:0.8rem;color:var(--muted);line-height:1.8;margin-bottom:1.75rem}
+    .fund-tile-stats{display:flex;gap:1.5rem;margin-bottom:1.5rem;padding-top:1.25rem;border-top:0.5px solid var(--gold-border)}
+    .fund-tile-stats>div{display:flex;flex-direction:column;gap:0.2rem}
+    .fund-stat-val{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--gold);display:block}
+    .fund-stat-lbl{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block}
+    .fund-tile-arrow{font-size:1.1rem;color:var(--gold);position:absolute;bottom:1.5rem;right:1.5rem;transition:transform 0.2s}
+    .fund-tile:hover .fund-tile-arrow{transform:translate(4px,-2px)}
+    .funds-cta{margin-top:3rem;text-align:center}
+
+    /* PERFORMANCE */
+    #perf-snapshot{background:var(--dark2)}
+    .perf-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:6rem;align-items:start}
+    .perf-right{display:flex;flex-direction:column;gap:1.25rem}
+    .perf-card{border:0.5px solid var(--gold-border);padding:1.75rem 2rem;transition:border-color 0.3s}
+    .perf-card:hover{border-color:rgba(184,151,90,0.5)}
+    .perf-card-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:0.2rem}
+    .perf-card-strategy{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
+    .perf-card-nums{display:flex;gap:2.5rem;margin-bottom:1.25rem}
+    .perf-big-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--green);line-height:1}
+    .perf-bar-wrap{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+    .perf-bar{height:100%;width:var(--w);background:var(--gold);border-radius:2px}
+
+    /* WHY */
+    #why{background:var(--dark)}
+    .why-header{margin-bottom:4rem}.why-header .eyebrow{margin-bottom:1rem}
+    .why-grid{display:grid;grid-template-columns:repeat(4,1fr);border:0.5px solid var(--gold-border)}
+    .why-item{padding:2.5rem 2rem;border-right:0.5px solid var(--gold-border);transition:background 0.3s}
+    .why-item:last-child{border-right:none}.why-item:hover{background:var(--gold-dim)}
+    .why-icon{font-size:1.5rem;color:var(--gold);margin-bottom:1.25rem;display:block}
+    .why-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;margin-bottom:0.85rem;line-height:1.3}
+    .why-desc{font-size:0.82rem;color:var(--muted);line-height:1.85}
+
+    /* CTA BANNER */
+    #cta-banner{background:var(--dark3);border-top:0.5px solid var(--gold-border);padding:6rem 5rem}
+    .cta-banner-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:3rem 5rem;align-items:center}
+    .cta-banner-inner p{font-size:0.9rem;color:var(--muted);max-width:420px;margin-top:0.75rem}
+    .cta-banner-btns{display:flex;flex-direction:column;gap:1rem;align-items:flex-end}
+
+    /* FOOTER */
+    #site-footer{background:var(--black);border-top:0.5px solid var(--gold-border)}
+    .footer-main{display:grid;grid-template-columns:1.6fr 1fr 1.4fr;gap:4rem;padding:5rem;max-width:1200px;margin:0 auto}
+    .footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);margin-bottom:1rem}
+    .footer-brand-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
+    .footer-tags{display:flex;gap:0.6rem;flex-wrap:wrap}
+    .footer-tags span{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);border:0.5px solid var(--muted2);padding:0.2rem 0.6rem}
+    .footer-col-title{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+    .footer-links a{font-size:0.82rem;color:var(--muted);transition:color 0.2s}
+    .footer-links a:hover{color:var(--gold)}
+    .footer-office{margin-bottom:1.5rem}
+    .footer-office-city{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+    .footer-office p{font-size:0.8rem;color:var(--muted);line-height:1.65}
+    .footer-office a{color:var(--gold-light);transition:color 0.2s}.footer-office a:hover{color:var(--gold)}
+    .footer-bottom{border-top:0.5px solid var(--gold-border);padding:1.5rem 5rem;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-copy{font-size:0.72rem;color:var(--muted2)}
+    .footer-legal{display:flex;gap:1.5rem}
+    .footer-legal a{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);transition:color 0.2s}
+    .footer-legal a:hover{color:var(--muted)}
+    .footer-disclaimer{border-top:0.5px solid rgba(80,76,72,0.3);padding:1.5rem 5rem 2.5rem;max-width:1200px;margin:0 auto}
+    .footer-disclaimer p{font-size:0.66rem;color:var(--muted2);line-height:1.8}
+
+    /* RESPONSIVE */
+    @media(max-width:1100px){
+      .who-grid,.perf-layout{grid-template-columns:1fr;gap:3rem}
+      .funds-grid{grid-template-columns:1fr}
+      .fund-tile{border-right:0.5px solid var(--gold-border);border-bottom:none}
+      .fund-tile:last-child{border-bottom:0.5px solid var(--gold-border)}
+      .why-grid{grid-template-columns:1fr 1fr}
+      .why-item:nth-child(2){border-right:none}
+      .why-item:nth-child(3){border-top:0.5px solid var(--gold-border)}
+      .why-item:nth-child(4){border-top:0.5px solid var(--gold-border);border-right:none}
+      .cta-banner-inner{grid-template-columns:1fr}
+      .cta-banner-btns{flex-direction:row;align-items:flex-start}
+      .footer-main{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.5rem}
+      .footer-bottom,.footer-disclaimer{padding-left:1.5rem;padding-right:1.5rem}
+    }
+    @media(max-width:768px){
+      #site-nav{padding:0 1.5rem}
+      .nav-links{display:none;position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;background:var(--black);padding:2rem 1.5rem;gap:1.5rem;border-bottom:0.5px solid var(--gold-border)}
+      .nav-links.open{display:flex}
+      .hamburger{display:flex}
+      #hero{padding:0 1.5rem}
+      .hero-stats{flex-wrap:wrap;gap:1.5rem}
+      .hero-stat-div{display:none}
+      .container{padding:0 1.5rem}
+      .section{padding:4rem 0}
+      .why-grid{grid-template-columns:1fr}
+      .why-item{border-right:none!important;border-bottom:0.5px solid var(--gold-border)}
+      .why-item:last-child{border-bottom:none}
+      #cta-banner{padding:4rem 1.5rem}
+      .hero-scroll{display:none}
+    }
+  </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
-  HERO
-═══════════════════════════════════════════════ -->
+<!-- NAV -->
+<nav id="site-nav">
+  <a class="nav-logo" href="index.html">Black Chess <span>Capital</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="funds.html">Our Funds</a></li>
+    <li><a href="strategy.html">Strategy</a></li>
+    <li><a href="performance.html">Performance</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
   <canvas id="hero-canvas"></canvas>
-
   <div class="hero-content">
-    <div class="eyebrow reveal">Global Investment Management · Est. 2023</div>
-
+    <div class="eyebrow reveal">Global Investment Management</div>
     <h1 class="display hero-title reveal reveal-delay-1">
-      Where Eastern<br>precision meets<br><em>Western vision.</em>
+      Precision capital.<br>Two markets.<br><em>One firm.</em>
     </h1>
-
     <p class="hero-desc reveal reveal-delay-2">
-      Black Chess Capital unites Softwater Capital's Australian venture acumen 
-      with Heqi Investment's AI-driven quantitative strategies — a 
-      dual-hemisphere platform engineered for superior risk-adjusted returns.
+      Black Chess Capital is a global investment management firm with a
+      dual-market presence across Australian venture capital and Chinese
+      quantitative strategies — engineered for sophisticated investors
+      seeking superior risk-adjusted returns.
     </p>
-
     <div class="hero-cta reveal reveal-delay-3">
       <a href="funds.html" class="btn btn-gold btn-arrow">Explore Our Funds</a>
       <a href="about.html" class="btn btn-outline">Our Story</a>
     </div>
   </div>
-
   <div class="hero-stats reveal reveal-delay-4">
     <div class="hero-stat">
       <div class="stat-num">3B<span class="stat-plus">+</span></div>
       <div class="stat-label">AUM · RMB</div>
     </div>
-    <div class="hero-stat-divider"></div>
+    <div class="hero-stat-div"></div>
     <div class="hero-stat">
       <div class="stat-num">40<span class="stat-plus">+</span></div>
       <div class="stat-label">Fund Products</div>
     </div>
-    <div class="hero-stat-divider"></div>
+    <div class="hero-stat-div"></div>
     <div class="hero-stat">
       <div class="stat-num">&gt;20<span class="stat-plus">%</span></div>
       <div class="stat-label">Target Return p.a.</div>
     </div>
-    <div class="hero-stat-divider"></div>
+    <div class="hero-stat-div"></div>
     <div class="hero-stat">
       <div class="stat-num">2</div>
       <div class="stat-label">Continents</div>
     </div>
   </div>
-
   <div class="hero-scroll">
     <div class="scroll-line"></div>
     <span>Scroll</span>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-  INTRO MARQUEE
-═══════════════════════════════════════════════ -->
+<!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span>Venture Capital</span><span class="sep">✦</span>
@@ -90,78 +283,65 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-  TWO PILLARS
-═══════════════════════════════════════════════ -->
-<section class="section" id="pillars">
+<!-- WHO WE ARE -->
+<section class="section" id="who">
   <div class="container">
-    <div class="pillars-header reveal">
-      <div class="eyebrow">The Firm</div>
-      <h2 class="display pillars-title">Two firms.<br><em>One board.</em></h2>
-      <p class="pillars-sub">
-        Like the two sides of a chess match, Softwater Capital and Heqi Investment 
-        bring contrasting strengths that together form a complete, adaptive investment machine.
-      </p>
-    </div>
-
-    <div class="pillars-grid">
-      <!-- Softwater -->
-      <div class="pillar-card reveal reveal-delay-1">
-        <div class="pillar-num">01</div>
-        <div class="pillar-badge">Australia · VCLP Registered</div>
-        <h3 class="pillar-name">Softwater Capital</h3>
-        <p class="pillar-desc">
-          A Sydney-based venture capital manager investing in Australia's most 
-          promising early-stage companies. Targeting disruptive technology, 
-          hospitality &amp; entertainment, and alternative energy — with a 
-          disciplined VCLP-compliant framework and a network spanning the 
-          Sydney Stock Exchange and beyond.
+    <div class="who-grid">
+      <div class="who-left reveal">
+        <div class="eyebrow">Who We Are</div>
+        <h2 class="display who-title">A new kind of<br><em>investment firm.</em></h2>
+        <p class="who-body">
+          Black Chess Capital is built on the conviction that the world's most
+          compelling investment opportunities sit at the intersection of two of
+          its fastest-moving economies — Australia and China.
         </p>
-        <div class="pillar-metrics">
-          <div>
-            <div class="stat-num" style="font-size:1.8rem;">&gt;20%</div>
-            <div class="stat-label">Target Net Return p.a.</div>
-          </div>
-          <div>
-            <div class="stat-num" style="font-size:1.8rem;">$250K–$1M</div>
-            <div class="stat-label">Per Investment</div>
+        <p class="who-body">
+          We operate a dual-market platform: a venture capital arm investing in
+          early-stage Australian companies across disruptive technology, hospitality
+          and entertainment, and alternative energy; and a quantitative division
+          deploying AI-driven strategies across Chinese equity and futures markets.
+        </p>
+        <a href="about.html" class="btn btn-outline btn-arrow" style="margin-top:2rem;">More About Us</a>
+      </div>
+      <div class="who-right reveal reveal-delay-2">
+        <div class="who-market-card">
+          <div class="who-market-label">Australia</div>
+          <h3 class="who-market-title">Venture Capital</h3>
+          <p class="who-market-desc">
+            VCLP-registered. We back early-stage Australian companies from seed
+            through expansion, taking equity positions of 10–40% and working
+            closely with founders to drive exits through M&amp;A and IPO.
+          </p>
+          <div class="who-market-stats">
+            <div>
+              <div class="stat-num" style="font-size:1.9rem;">&gt;20%</div>
+              <div class="stat-label">Target Net Return p.a.</div>
+            </div>
+            <div>
+              <div class="stat-num" style="font-size:1.9rem;">$250K–$1M</div>
+              <div class="stat-label">Per Investment</div>
+            </div>
           </div>
         </div>
-        <a href="about.html#softwater" class="pillar-link">
-          Learn more <span>→</span>
-        </a>
-      </div>
-
-      <!-- Divider chess piece -->
-      <div class="pillars-divider reveal reveal-delay-2">
-        <div class="chess-glyph">♟</div>
-      </div>
-
-      <!-- Heqi -->
-      <div class="pillar-card reveal reveal-delay-3">
-        <div class="pillar-num">02</div>
-        <div class="pillar-badge">China · Registration P1019979</div>
-        <h3 class="pillar-name">Heqi Investment</h3>
-        <p class="pillar-desc">
-          Founded in 2015 in Shanghai, Heqi is an AI and big-data driven 
-          quantitative private fund with over 3 billion RMB under management 
-          across 40+ products. Three flagship strategies — quantitative CTA, 
-          stock alpha, and T+0 — have delivered consistent, high Sharpe ratio 
-          returns across volatile market cycles.
-        </p>
-        <div class="pillar-metrics">
-          <div>
-            <div class="stat-num" style="font-size:1.8rem;">147%</div>
-            <div class="stat-label">Best Cumulative Return</div>
-          </div>
-          <div>
-            <div class="stat-num" style="font-size:1.8rem;">2.55</div>
-            <div class="stat-label">Best Sharpe Ratio</div>
+        <div class="who-market-card">
+          <div class="who-market-label">China</div>
+          <h3 class="who-market-title">Quantitative Strategies</h3>
+          <p class="who-market-desc">
+            AI and big-data driven quantitative funds with over 3 billion RMB
+            under management. Three flagship strategies — stock alpha, CTA futures,
+            and T+0 — delivering high Sharpe ratio returns across market cycles.
+          </p>
+          <div class="who-market-stats">
+            <div>
+              <div class="stat-num" style="font-size:1.9rem;">147%</div>
+              <div class="stat-label">Best Cumulative Return</div>
+            </div>
+            <div>
+              <div class="stat-num" style="font-size:1.9rem;">2.55</div>
+              <div class="stat-label">Best Sharpe Ratio</div>
+            </div>
           </div>
         </div>
-        <a href="about.html#heqi" class="pillar-link">
-          Learn more <span>→</span>
-        </a>
       </div>
     </div>
   </div>
@@ -169,55 +349,45 @@
 
 <div class="divider"></div>
 
-<!-- ═══════════════════════════════════════════════
-  FUNDS OVERVIEW
-═══════════════════════════════════════════════ -->
+<!-- FUNDS OVERVIEW -->
 <section class="section" id="funds-overview">
   <div class="container">
     <div class="section-header reveal">
       <div class="eyebrow">Investment Vehicles</div>
       <h2 class="display" style="font-size:clamp(2.2rem,4vw,3.2rem);">Three funds.<br><em>Every horizon.</em></h2>
+      <p style="font-size:0.9rem;color:var(--muted);max-width:480px;margin-top:1rem;line-height:1.85;">
+        Whether you are seeking early-stage venture exposure, liquid equity market
+        access, or quantitative alpha — Black Chess Capital has a mandate built for you.
+      </p>
     </div>
-
     <div class="funds-grid">
       <a href="funds.html#vc-fund" class="fund-tile reveal reveal-delay-1">
         <div class="fund-tile-num">I</div>
-        <div class="fund-tile-tag">Venture Capital</div>
-        <h3 class="fund-tile-name">Softwater Venture Capital Fund</h3>
-        <p class="fund-tile-desc">
-          VCLP-compliant early-stage equity investments of $250K–$1M per company 
-          across disruptive tech, hospitality, and clean energy in Australia.
-        </p>
+        <div class="fund-tile-tag">Venture Capital · Australia</div>
+        <h3 class="fund-tile-name">Venture Capital Fund</h3>
+        <p class="fund-tile-desc">VCLP-compliant early-stage equity investments across disruptive technology, hospitality and entertainment, and clean energy. Individual commitments of $250K to $1M per company.</p>
         <div class="fund-tile-stats">
           <div><span class="fund-stat-val">&gt;20%</span><span class="fund-stat-lbl">Target p.a.</span></div>
           <div><span class="fund-stat-val">4–5yr</span><span class="fund-stat-lbl">Exit horizon</span></div>
         </div>
         <div class="fund-tile-arrow">→</div>
       </a>
-
       <a href="funds.html#trust" class="fund-tile reveal reveal-delay-2">
         <div class="fund-tile-num">II</div>
-        <div class="fund-tile-tag">Investment Trust</div>
-        <h3 class="fund-tile-name">Softwater Investment Trust</h3>
-        <p class="fund-tile-desc">
-          A liquid vehicle focused on Australian IPOs, equity placements, 
-          and short-term fixed income. Managed by CFA Chris Li.
-        </p>
+        <div class="fund-tile-tag">Investment Trust · Australia</div>
+        <h3 class="fund-tile-name">Investment Trust</h3>
+        <p class="fund-tile-desc">A liquid vehicle investing in Australian IPOs, equity placements, and short-term fixed income instruments. Quarterly unit pricing with semi-annual distributions.</p>
         <div class="fund-tile-stats">
           <div><span class="fund-stat-val">8%</span><span class="fund-stat-lbl">Benchmark p.a.</span></div>
           <div><span class="fund-stat-val">$200K</span><span class="fund-stat-lbl">Min. investment</span></div>
         </div>
         <div class="fund-tile-arrow">→</div>
       </a>
-
-      <a href="funds.html#heqi" class="fund-tile reveal reveal-delay-3">
+      <a href="funds.html#quant" class="fund-tile reveal reveal-delay-3">
         <div class="fund-tile-num">III</div>
-        <div class="fund-tile-tag">Quantitative Fund</div>
-        <h3 class="fund-tile-name">Heqi Quantitative Fund Series</h3>
-        <p class="fund-tile-desc">
-          AI-driven high-frequency stock strategies and CTA futures 
-          with 40+ products ranging from low-volatility to high-growth.
-        </p>
+        <div class="fund-tile-tag">Quantitative Funds · China</div>
+        <h3 class="fund-tile-name">Quantitative Fund Series</h3>
+        <p class="fund-tile-desc">AI-driven high-frequency stock strategies and CTA futures with 40+ products ranging from low-volatility income to high-conviction growth mandates.</p>
         <div class="fund-tile-stats">
           <div><span class="fund-stat-val">3B+</span><span class="fund-stat-lbl">AUM (RMB)</span></div>
           <div><span class="fund-stat-val">2.55</span><span class="fund-stat-lbl">Best Sharpe</span></div>
@@ -225,7 +395,6 @@
         <div class="fund-tile-arrow">→</div>
       </a>
     </div>
-
     <div class="funds-cta reveal">
       <a href="funds.html" class="btn btn-outline btn-arrow">View All Funds</a>
     </div>
@@ -234,84 +403,50 @@
 
 <div class="divider"></div>
 
-<!-- ═══════════════════════════════════════════════
-  PERFORMANCE SNAPSHOT
-═══════════════════════════════════════════════ -->
+<!-- PERFORMANCE SNAPSHOT -->
 <section class="section" id="perf-snapshot">
   <div class="container">
     <div class="perf-layout">
       <div class="perf-left reveal">
         <div class="eyebrow">Track Record</div>
-        <h2 class="display" style="font-size:clamp(2rem,3.5vw,3rem);">
-          Numbers that<br><em>speak for themselves.</em>
-        </h2>
-        <p style="font-size:0.88rem; color:var(--muted); margin-top:1.5rem; line-height:1.9; max-width:380px;">
-          Heqi's flagship quantitative products have delivered consistent, 
-          high-conviction returns since 2023 — with Sharpe ratios above 2 
-          across all major strategies.
+        <h2 class="display" style="font-size:clamp(2rem,3.5vw,3rem);">Numbers that<br><em>speak for themselves.</em></h2>
+        <p style="font-size:0.88rem;color:var(--muted);margin-top:1.5rem;line-height:1.9;max-width:380px;">
+          Our quantitative fund series has delivered consistent, high-conviction
+          returns since inception — with Sharpe ratios above 2.0 across all major strategies.
         </p>
-        <a href="performance.html" class="btn btn-gold btn-arrow" style="margin-top:2rem;">
-          Full Performance Data
-        </a>
-        <p style="font-size:0.65rem; color:var(--muted2); margin-top:1rem; max-width:320px; line-height:1.7;">
-          Data from custodian-reported NAV. Period: May 2023 – March 2026. 
+        <a href="performance.html" class="btn btn-gold btn-arrow" style="margin-top:2rem;">Full Performance Data</a>
+        <p style="font-size:0.65rem;color:var(--muted2);margin-top:1rem;max-width:320px;line-height:1.7;">
+          Data from custodian-reported NAV. Period: May 2023 – March 2026.
           Past performance does not guarantee future results.
         </p>
       </div>
-
       <div class="perf-right">
         <div class="perf-card reveal reveal-delay-1">
-          <div class="perf-card-name">尊享 7号</div>
+          <div class="perf-card-name">Quantitative Fund Series No. 7</div>
           <div class="perf-card-strategy">Low Volatility · High Frequency Stock</div>
           <div class="perf-card-nums">
-            <div>
-              <div class="perf-big-num">82.41%</div>
-              <div class="stat-label">Cumulative Return</div>
-            </div>
-            <div>
-              <div class="perf-big-num">2.20</div>
-              <div class="stat-label">Sharpe Ratio</div>
-            </div>
+            <div><div class="perf-big-num">82.41%</div><div class="stat-label">Cumulative Return</div></div>
+            <div><div class="perf-big-num">2.20</div><div class="stat-label">Sharpe Ratio</div></div>
           </div>
-          <div class="perf-bar-wrap">
-            <div class="perf-bar" style="--w:56%"></div>
-          </div>
+          <div class="perf-bar-wrap"><div class="perf-bar" style="--w:56%"></div></div>
         </div>
-
         <div class="perf-card reveal reveal-delay-2">
-          <div class="perf-card-name">尊享 9号</div>
+          <div class="perf-card-name">Quantitative Fund Series No. 9</div>
           <div class="perf-card-strategy">Mid Volatility · High Frequency Stock</div>
           <div class="perf-card-nums">
-            <div>
-              <div class="perf-big-num">147.22%</div>
-              <div class="stat-label">Cumulative Return</div>
-            </div>
-            <div>
-              <div class="perf-big-num">2.55</div>
-              <div class="stat-label">Sharpe Ratio</div>
-            </div>
+            <div><div class="perf-big-num">147.22%</div><div class="stat-label">Cumulative Return</div></div>
+            <div><div class="perf-big-num">2.55</div><div class="stat-label">Sharpe Ratio</div></div>
           </div>
-          <div class="perf-bar-wrap">
-            <div class="perf-bar" style="--w:100%"></div>
-          </div>
+          <div class="perf-bar-wrap"><div class="perf-bar" style="--w:100%"></div></div>
         </div>
-
         <div class="perf-card reveal reveal-delay-3">
-          <div class="perf-card-name">尊享 8号</div>
+          <div class="perf-card-name">Quantitative Fund Series No. 8</div>
           <div class="perf-card-strategy">High Volatility · Self-Built Position</div>
           <div class="perf-card-nums">
-            <div>
-              <div class="perf-big-num">124.06%</div>
-              <div class="stat-label">Cumulative Return</div>
-            </div>
-            <div>
-              <div class="perf-big-num">1.67</div>
-              <div class="stat-label">Sharpe Ratio</div>
-            </div>
+            <div><div class="perf-big-num">124.06%</div><div class="stat-label">Cumulative Return</div></div>
+            <div><div class="perf-big-num">1.67</div><div class="stat-label">Sharpe Ratio</div></div>
           </div>
-          <div class="perf-bar-wrap">
-            <div class="perf-bar" style="--w:84%"></div>
-          </div>
+          <div class="perf-bar-wrap"><div class="perf-bar" style="--w:84%"></div></div>
         </div>
       </div>
     </div>
@@ -320,71 +455,45 @@
 
 <div class="divider"></div>
 
-<!-- ═══════════════════════════════════════════════
-  WHY BLACK CHESS
-═══════════════════════════════════════════════ -->
+<!-- WHY BLACK CHESS -->
 <section class="section" id="why">
   <div class="container">
     <div class="why-header reveal">
-      <div class="eyebrow">Why Black Chess</div>
-      <h2 class="display" style="font-size:clamp(2rem,3.5vw,3rem);">
-        The edge of <em>dual expertise.</em>
-      </h2>
+      <div class="eyebrow">Why Black Chess Capital</div>
+      <h2 class="display" style="font-size:clamp(2rem,3.5vw,3rem);">The edge of<br><em>dual-market expertise.</em></h2>
     </div>
-
     <div class="why-grid">
       <div class="why-item reveal reveal-delay-1">
         <div class="why-icon">◈</div>
         <h3 class="why-title">Cross-Market Access</h3>
-        <p class="why-desc">
-          Operate simultaneously in Australia's venture capital ecosystem and 
-          China's quantitative markets — two of the world's most dynamic 
-          investment environments.
-        </p>
+        <p class="why-desc">Operate simultaneously across Australia's venture capital ecosystem and China's quantitative markets — two of the world's most dynamic investment environments.</p>
       </div>
       <div class="why-item reveal reveal-delay-2">
         <div class="why-icon">◈</div>
         <h3 class="why-title">Rigorous Process</h3>
-        <p class="why-desc">
-          Every investment passes a strict Investment Committee review. 
-          Heqi's AI-driven screening and Softwater's VCLP compliance 
-          framework eliminate guesswork.
-        </p>
+        <p class="why-desc">Every investment passes a strict Investment Committee review. AI-driven screening and VCLP compliance frameworks eliminate guesswork at every stage.</p>
       </div>
       <div class="why-item reveal reveal-delay-3">
         <div class="why-icon">◈</div>
-        <h3 class="why-title">Active Portfolio Management</h3>
-        <p class="why-desc">
-          Board observer rights, full information rights, and veto powers on 
-          major decisions — we stay close to every investment from first 
-          cheque to exit.
-        </p>
+        <h3 class="why-title">Active Management</h3>
+        <p class="why-desc">Board observer rights, full information rights, and strategic input on major decisions — we stay close to every investment from first cheque to exit.</p>
       </div>
       <div class="why-item reveal reveal-delay-4">
         <div class="why-icon">◈</div>
         <h3 class="why-title">Proven Exit Network</h3>
-        <p class="why-desc">
-          Access to M&amp;A advisors, the Sydney Stock Exchange, APP Securities, 
-          and Heqi's deep network of Chinese institutional investors for 
-          optimal exit execution.
-        </p>
+        <p class="why-desc">Access to M&amp;A advisors, the Sydney Stock Exchange, and a deep network of institutional investors across both markets for optimal exit execution.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-  CTA BANNER
-═══════════════════════════════════════════════ -->
+<!-- CTA BANNER -->
 <section id="cta-banner">
   <div class="cta-banner-inner reveal">
-    <h2 class="display" style="font-size:clamp(2rem,4vw,3.2rem);">
-      Ready to invest with<br><em>Black Chess Capital?</em>
-    </h2>
-    <p>
-      Speak with our team in Sydney or Shanghai to explore 
-      which fund best suits your investment objectives.
-    </p>
+    <div>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3.2rem);">Ready to invest with<br><em>Black Chess Capital?</em></h2>
+      <p>Speak with our team in Sydney or Shanghai to explore which fund best suits your investment objectives.</p>
+    </div>
     <div class="cta-banner-btns">
       <a href="contact.html" class="btn btn-gold btn-arrow">Get In Touch</a>
       <a href="funds.html" class="btn btn-outline">View Our Funds</a>
@@ -392,7 +501,131 @@
   </div>
 </section>
 
-<script src="js/components.js"></script>
-<script src="js/home.js"></script>
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-name">Black Chess Capital</div>
+      <p class="footer-brand-desc">A global investment management firm with a dual-market presence across Australian venture capital and Chinese quantitative strategies — built for sophisticated investors seeking superior returns.</p>
+      <div class="footer-tags">
+        <span>ABN 40 664 455 501</span>
+        <span>AFSL Representative</span>
+        <span>VCLP Registered</span>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="funds.html">Our Funds</a></li>
+        <li><a href="strategy.html">Strategy</a></li>
+        <li><a href="performance.html">Performance</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Our Offices</div>
+      <div class="footer-office">
+        <div class="footer-office-city">Sydney, Australia</div>
+        <p>Chris Li<br><a href="mailto:Chris.Li@softwatercap.com.au">Chris.Li@softwatercap.com.au</a><br>+61 430 988 999</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Perth, Australia</div>
+        <p>Jake Zhou<br><a href="mailto:jakezhou88@outlook.com">jakezhou88@outlook.com</a><br>+61 452 188 526</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Shanghai, China</div>
+        <p>Registration No. P1019979<br>Shanghai Hedge Fund Park</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Black Chess Capital. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Disclaimer</a>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    <p>This website is for informational purposes only and does not constitute financial advice or an offer to invest. Past performance is not indicative of future results. Black Chess Capital and its associated entities are not responsible for investment decisions made based on the content of this website. Investment in venture capital and quantitative funds involves significant risk, including possible loss of capital. For qualified and sophisticated investors only. Always seek independent financial advice before investing.</p>
+  </div>
+</footer>
+
+<script>
+  /* NAV */
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('site-nav').style.background =
+      window.scrollY > 60 ? 'rgba(8,8,7,0.98)' : 'rgba(8,8,7,0.92)';
+  });
+
+  /* SCROLL REVEAL */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* Hero fires immediately */
+  document.querySelectorAll('#hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 150 + i * 160);
+  });
+
+  /* ANIMATED CANVAS GRID */
+  (function () {
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, t = 0, dots = [];
+    const COLS = 20, ROWS = 12;
+
+    function resize() {
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+      dots = [];
+      for (let r = 0; r <= ROWS; r++) {
+        for (let c = 0; c <= COLS; c++) {
+          dots.push({
+            bx: c * W / COLS, by: r * H / ROWS,
+            ph: Math.random() * Math.PI * 2,
+            sp: 0.3 + Math.random() * 0.4,
+            amp: 3 + Math.random() * 6,
+            sz: Math.random() > 0.85 ? 1.5 : 0.5
+          });
+        }
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      t += 0.007;
+      const gx = W / COLS, gy = H / ROWS;
+      ctx.strokeStyle = 'rgba(184,151,90,0.055)';
+      ctx.lineWidth = 0.5;
+      for (let c = 0; c <= COLS; c++) {
+        ctx.beginPath(); ctx.moveTo(c * gx, 0); ctx.lineTo(c * gx, H); ctx.stroke();
+      }
+      for (let r = 0; r <= ROWS; r++) {
+        ctx.beginPath(); ctx.moveTo(0, r * gy); ctx.lineTo(W, r * gy); ctx.stroke();
+      }
+      dots.forEach(d => {
+        const x = d.bx + Math.sin(t * d.sp + d.ph) * d.amp * 0.4;
+        const y = d.by + Math.cos(t * d.sp + d.ph * 1.3) * d.amp * 0.4;
+        const a = 0.15 + 0.45 * Math.abs(Math.sin(t * d.sp + d.ph));
+        ctx.beginPath(); ctx.arc(x, y, d.sz, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(184,151,90,${a})`; ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize);
+    resize(); draw();
+  })();
+</script>
 </body>
 </html>
