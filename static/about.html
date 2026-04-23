@@ -3,25 +3,916 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Black Chess Capital</title>
-  <link rel="stylesheet" href="css/global.css">
+  <title>About — Black Chess Capital</title>
+  <meta name="description" content="Learn about Black Chess Capital — a global investment management firm operating across Australian venture capital and Chinese quantitative markets.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    .coming-soon { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:calc(var(--nav-h) + 2rem) 2rem 4rem; }
-    .coming-soon h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,6vw,5rem); font-weight:300; margin:1.5rem 0 1rem; }
-    .coming-soon h1 em { font-style:italic; color:var(--gold); }
-    .coming-soon p { color:var(--muted); font-size:0.9rem; margin-bottom:2.5rem; }
+    /* ── TOKENS ── */
+    :root {
+      --black:#080807; --dark:#0f0e0d; --dark2:#161513; --dark3:#1e1c1a;
+      --gold:#b8975a; --gold-light:#d4b87a; --gold-dim:rgba(184,151,90,0.12);
+      --gold-border:rgba(184,151,90,0.22); --white:#f0ece4; --off-white:#d4cfc6;
+      --muted:#7a756d; --muted2:#524e48; --nav-h:72px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--dark);color:var(--white);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold-border);border-radius:2px}
+    ::selection{background:var(--gold);color:var(--black)}
+    a{color:inherit;text-decoration:none} p{color:var(--off-white)}
+    .section{padding:7rem 0;position:relative}
+    .container{max-width:1200px;margin:0 auto;padding:0 5rem}
+    .divider{height:0.5px;background:var(--gold-border)}
+    .display{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.05;letter-spacing:-0.02em}
+    .display em{font-style:italic;color:var(--gold)}
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-family:'Jost',sans-serif;font-weight:400}
+    .eyebrow::before{content:'';display:block;width:28px;height:0.5px;background:var(--gold);flex-shrink:0}
+    .stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);line-height:1}
+    .stat-label{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:0.8rem 2rem;font-family:'Jost',sans-serif;font-size:0.75rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:all 0.28s ease;border:none}
+    .btn-gold{background:var(--gold);color:var(--black)}.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:var(--white);border:0.5px solid rgba(240,236,228,0.3)}.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
+    .btn-arrow::after{content:'→';font-size:1rem;transition:transform 0.2s}.btn-arrow:hover::after{transform:translateX(4px)}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}
+    .reveal-delay-3{transition-delay:0.3s}.reveal-delay-4{transition-delay:0.4s}
+
+    /* ── NAV ── */
+    #site-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5rem;background:rgba(8,8,7,0.92);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--gold-border);transition:background 0.3s}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--gold);letter-spacing:0.06em}
+    .nav-logo span{color:var(--white);font-style:italic}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+    .nav-links a{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);transition:color 0.25s;position:relative;padding-bottom:2px}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:0.5px;background:var(--gold);transform:scaleX(0);transition:transform 0.25s}
+    .nav-links a:hover,.nav-links a.active{color:var(--white)}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:0.5rem 1.4rem}.nav-cta:hover{background:var(--gold-light)!important}.nav-cta::after{display:none!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:22px;height:0.5px;background:var(--white)}
+
+    /* ── PAGE HERO ── */
+    .page-hero{
+      padding: calc(var(--nav-h) + 6rem) 5rem 6rem;
+      background: var(--dark2);
+      border-bottom: 0.5px solid var(--gold-border);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before{
+      content:'';
+      position:absolute;
+      top:-100px; right:-100px;
+      width:600px; height:600px;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(184,151,90,0.06) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .page-hero-inner{
+      max-width:1200px; margin:0 auto;
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:5rem; align-items:end;
+    }
+    .page-hero-title{
+      font-size:clamp(3rem,6vw,5.5rem);
+      margin:1.25rem 0 0;
+    }
+    .page-hero-right{
+      padding-bottom:0.5rem;
+    }
+    .page-hero-desc{
+      font-size:1rem; color:var(--muted);
+      line-height:1.9; margin-bottom:2rem;
+    }
+    .page-hero-tags{
+      display:flex; flex-wrap:wrap; gap:0.6rem;
+    }
+    .tag{
+      font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--muted); border:0.5px solid var(--gold-border);
+      padding:0.3rem 0.85rem;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar{
+      background:var(--dark3);
+      border-bottom:0.5px solid var(--gold-border);
+    }
+    .stats-bar-inner{
+      max-width:1200px; margin:0 auto;
+      padding:3rem 5rem;
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:0;
+    }
+    .stats-bar-item{
+      padding:0 2.5rem;
+      border-right:0.5px solid var(--gold-border);
+      text-align:center;
+    }
+    .stats-bar-item:first-child{padding-left:0; text-align:left;}
+    .stats-bar-item:last-child{border-right:none; text-align:right;}
+
+    /* ── MISSION ── */
+    #mission{ background:var(--dark); }
+    .mission-grid{
+      display:grid; grid-template-columns:1fr 1.2fr;
+      gap:7rem; align-items:start;
+    }
+    .mission-left{}
+    .mission-title{ font-size:clamp(2.2rem,4vw,3.5rem); margin:1.25rem 0 2rem; }
+    .mission-body{
+      font-size:0.9rem; color:var(--muted);
+      line-height:1.95; margin-bottom:1.25rem;
+    }
+    .mission-quote{
+      margin-top:3rem;
+      padding:2rem 2.5rem;
+      border-left:1.5px solid var(--gold);
+      background:var(--gold-dim);
+    }
+    .mission-quote p{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.3rem; font-style:italic;
+      line-height:1.65; color:var(--white);
+    }
+    .mission-right{}
+    .value-list{ display:flex; flex-direction:column; gap:0; }
+    .value-item{
+      padding:1.75rem 0;
+      border-bottom:0.5px solid var(--gold-border);
+      display:grid; grid-template-columns:auto 1fr;
+      gap:1.5rem; align-items:start;
+    }
+    .value-item:first-child{ border-top:0.5px solid var(--gold-border); }
+    .value-num{
+      font-family:'Cormorant Garamond',serif;
+      font-size:0.9rem; color:var(--gold);
+      padding-top:0.15rem; min-width:22px;
+    }
+    .value-content h3{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.2rem; font-weight:400;
+      margin-bottom:0.4rem;
+    }
+    .value-content p{
+      font-size:0.82rem; color:var(--muted); line-height:1.75;
+    }
+
+    /* ── TWO MARKETS ── */
+    #markets{ background:var(--dark2); }
+    .markets-header{ margin-bottom:4rem; }
+    .markets-header .eyebrow{ margin-bottom:1rem; }
+    .markets-title{ font-size:clamp(2.2rem,4vw,3.5rem); }
+    .markets-grid{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:0;
+    }
+    .market-panel{
+      padding:3.5rem;
+      border:0.5px solid var(--gold-border);
+      position:relative; overflow:hidden;
+      transition:border-color 0.3s;
+    }
+    .market-panel:first-child{ border-right:none; }
+    .market-panel:hover{ border-color:rgba(184,151,90,0.5); }
+    .market-panel::before{
+      content:'';
+      position:absolute; top:0; left:0; right:0;
+      height:2px; background:var(--gold);
+      transform:scaleX(0); transform-origin:left;
+      transition:transform 0.4s ease;
+    }
+    .market-panel:hover::before{ transform:scaleX(1); }
+    .market-flag{
+      font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:0.75rem; display:block;
+    }
+    .market-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.5rem; font-weight:300;
+      margin-bottom:0.3rem; line-height:1.1;
+    }
+    .market-sub{
+      font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase;
+      color:var(--muted); margin-bottom:2rem;
+    }
+    .market-body{
+      font-size:0.88rem; color:var(--muted);
+      line-height:1.9; margin-bottom:2rem;
+    }
+    .market-details{ display:flex; flex-direction:column; gap:0; }
+    .market-detail{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:0.85rem 0;
+      border-top:0.5px solid var(--gold-border);
+      font-size:0.82rem;
+    }
+    .market-detail:last-child{ border-bottom:0.5px solid var(--gold-border); }
+    .market-detail-label{ color:var(--muted); }
+    .market-detail-val{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1rem; color:var(--gold);
+    }
+    .market-bg-num{
+      position:absolute; bottom:-1rem; right:1.5rem;
+      font-family:'Cormorant Garamond',serif;
+      font-size:9rem; font-weight:300;
+      color:rgba(184,151,90,0.04); line-height:1;
+      pointer-events:none; user-select:none;
+    }
+
+    /* ── APPROACH ── */
+    #approach{ background:var(--dark); }
+    .approach-header{ margin-bottom:4rem; }
+    .approach-header .eyebrow{ margin-bottom:1rem; }
+    .approach-title{ font-size:clamp(2.2rem,4vw,3.5rem); }
+    .approach-steps{
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:0;
+      border:0.5px solid var(--gold-border);
+    }
+    .approach-step{
+      padding:2.5rem 2.25rem;
+      border-right:0.5px solid var(--gold-border);
+      position:relative; overflow:hidden;
+      transition:background 0.3s;
+    }
+    .approach-step:last-child{ border-right:none; }
+    .approach-step:hover{ background:var(--gold-dim); }
+    .approach-step-num{
+      font-family:'Cormorant Garamond',serif;
+      font-size:4rem; font-weight:300;
+      color:rgba(184,151,90,0.15); line-height:1;
+      margin-bottom:0.5rem;
+    }
+    .approach-step-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.3rem; font-weight:400;
+      margin-bottom:0.85rem; line-height:1.3;
+    }
+    .approach-step-body{
+      font-size:0.82rem; color:var(--muted); line-height:1.85;
+    }
+    .approach-step-tag{
+      display:inline-block; margin-top:1.25rem;
+      font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--gold); border:0.5px solid var(--gold-border);
+      padding:0.25rem 0.7rem;
+    }
+
+    /* ── COMPLIANCE ── */
+    #compliance{ background:var(--dark2); }
+    .compliance-grid{
+      display:grid; grid-template-columns:1.2fr 1fr;
+      gap:6rem; align-items:start;
+    }
+    .compliance-title{ font-size:clamp(2rem,3.5vw,3rem); margin:1.25rem 0 2rem; }
+    .compliance-body{ font-size:0.88rem; color:var(--muted); line-height:1.9; margin-bottom:1.25rem; }
+    .compliance-badges{
+      display:flex; flex-wrap:wrap; gap:0.75rem; margin-top:2rem;
+    }
+    .compliance-badge{
+      padding:0.75rem 1.5rem;
+      border:0.5px solid var(--gold-border);
+      font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--off-white);
+      transition:border-color 0.3s, color 0.3s;
+    }
+    .compliance-badge:hover{ border-color:var(--gold); color:var(--gold); }
+    .compliance-right{ padding-top:0.5rem; }
+    .compliance-item{
+      padding:1.5rem 0;
+      border-bottom:0.5px solid var(--gold-border);
+      display:grid; grid-template-columns:auto 1fr;
+      gap:1.25rem; align-items:start;
+    }
+    .compliance-item:first-child{ border-top:0.5px solid var(--gold-border); }
+    .compliance-check{
+      width:20px; height:20px; border:0.5px solid var(--gold);
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; margin-top:0.1rem;
+      font-size:0.7rem; color:var(--gold);
+    }
+    .compliance-item-title{
+      font-size:0.88rem; font-weight:400; margin-bottom:0.3rem;
+    }
+    .compliance-item-body{
+      font-size:0.78rem; color:var(--muted); line-height:1.7;
+    }
+
+    /* ── CTA BANNER ── */
+    #cta-banner{
+      background:var(--dark3);
+      border-top:0.5px solid var(--gold-border);
+      padding:6rem 5rem;
+    }
+    .cta-banner-inner{
+      max-width:1200px; margin:0 auto;
+      display:grid; grid-template-columns:1fr auto;
+      gap:3rem 5rem; align-items:center;
+    }
+    .cta-banner-inner p{ font-size:0.9rem; color:var(--muted); max-width:420px; margin-top:0.75rem; }
+    .cta-banner-btns{ display:flex; flex-direction:column; gap:1rem; align-items:flex-end; }
+
+    /* ── FOOTER ── */
+    #site-footer{background:var(--black);border-top:0.5px solid var(--gold-border)}
+    .footer-main{display:grid;grid-template-columns:1.6fr 1fr 1.4fr;gap:4rem;padding:5rem;max-width:1200px;margin:0 auto}
+    .footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);margin-bottom:1rem}
+    .footer-brand-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
+    .footer-tags{display:flex;gap:0.6rem;flex-wrap:wrap}
+    .footer-tags span{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);border:0.5px solid var(--muted2);padding:0.2rem 0.6rem}
+    .footer-col-title{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+    .footer-links a{font-size:0.82rem;color:var(--muted);transition:color 0.2s}
+    .footer-links a:hover{color:var(--gold)}
+    .footer-office{margin-bottom:1.5rem}
+    .footer-office-city{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+    .footer-office p{font-size:0.8rem;color:var(--muted);line-height:1.65}
+    .footer-office a{color:var(--gold-light);transition:color 0.2s}.footer-office a:hover{color:var(--gold)}
+    .footer-bottom{border-top:0.5px solid var(--gold-border);padding:1.5rem 5rem;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-copy{font-size:0.72rem;color:var(--muted2)}
+    .footer-legal{display:flex;gap:1.5rem}
+    .footer-legal a{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);transition:color 0.2s}
+    .footer-legal a:hover{color:var(--muted)}
+    .footer-disclaimer{border-top:0.5px solid rgba(80,76,72,0.3);padding:1.5rem 5rem 2.5rem;max-width:1200px;margin:0 auto}
+    .footer-disclaimer p{font-size:0.66rem;color:var(--muted2);line-height:1.8}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){
+      .page-hero-inner,.mission-grid,.markets-grid,.compliance-grid{grid-template-columns:1fr;gap:3rem}
+      .market-panel:first-child{border-right:0.5px solid var(--gold-border);border-bottom:none}
+      .approach-steps{grid-template-columns:1fr}
+      .approach-step{border-right:none;border-bottom:0.5px solid var(--gold-border)}
+      .approach-step:last-child{border-bottom:none}
+      .stats-bar-inner{grid-template-columns:1fr 1fr;gap:2rem}
+      .stats-bar-item{border-right:none;text-align:left;padding:0}
+      .cta-banner-inner{grid-template-columns:1fr}
+      .cta-banner-btns{flex-direction:row;align-items:flex-start}
+      .footer-main{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.5rem}
+      .footer-bottom,.footer-disclaimer{padding-left:1.5rem;padding-right:1.5rem}
+    }
+    @media(max-width:768px){
+      #site-nav{padding:0 1.5rem}
+      .nav-links{display:none;position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;background:var(--black);padding:2rem 1.5rem;gap:1.5rem;border-bottom:0.5px solid var(--gold-border)}
+      .nav-links.open{display:flex}
+      .hamburger{display:flex}
+      .page-hero{padding:calc(var(--nav-h) + 4rem) 1.5rem 4rem}
+      .container{padding:0 1.5rem}
+      .section{padding:4rem 0}
+      .stats-bar-inner{grid-template-columns:1fr 1fr;padding:2rem 1.5rem}
+      #cta-banner{padding:4rem 1.5rem}
+    }
   </style>
 </head>
 <body>
-  <div class="coming-soon">
-    <div class="eyebrow" style="display:inline-flex; align-items:center; gap:12px; font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold);">
-      <span style="width:28px;height:0.5px;background:var(--gold);display:block;"></span>
-      Black Chess Capital
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a class="nav-logo" href="index.html">Black Chess <span>Capital</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="funds.html">Our Funds</a></li>
+    <li><a href="strategy.html">Strategy</a></li>
+    <li><a href="performance.html">Performance</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="eyebrow reveal">About Us</div>
+      <h1 class="display page-hero-title reveal reveal-delay-1">
+        Investing at the<br>edge of two<br><em>economies.</em>
+      </h1>
     </div>
-    <h1>Page <em>coming soon.</em></h1>
-    <p>This page is currently being built. More content coming shortly.</p>
-    <a href="index.html" class="btn btn-gold" style="display:inline-flex;align-items:center;gap:10px;padding:0.8rem 2rem;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--gold);color:var(--black);text-decoration:none;">← Back to Home</a>
+    <div class="page-hero-right reveal reveal-delay-2">
+      <p class="page-hero-desc">
+        Black Chess Capital is a global investment management firm built around 
+        a single conviction: that the most compelling opportunities of the next 
+        decade sit at the intersection of Australia and China — two economies 
+        moving fast in complementary directions.
+      </p>
+      <p class="page-hero-desc">
+        We back that conviction with two distinct investment platforms — 
+        a venture capital arm operating in Australia's most dynamic early-stage 
+        sectors, and a quantitative division deploying AI-driven strategies 
+        across Chinese equity and futures markets.
+      </p>
+      <div class="page-hero-tags">
+        <span class="tag">VCLP Registered</span>
+        <span class="tag">AFSL Representative</span>
+        <span class="tag">ABN 40 664 455 501</span>
+        <span class="tag">Est. 2023</span>
+      </div>
+    </div>
   </div>
-  <script src="js/components.js"></script>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stats-bar-item reveal">
+      <div class="stat-num">3B<span style="font-size:0.55em;vertical-align:super;">+</span></div>
+      <div class="stat-label">AUM · RMB</div>
+    </div>
+    <div class="stats-bar-item reveal reveal-delay-1">
+      <div class="stat-num">40<span style="font-size:0.55em;vertical-align:super;">+</span></div>
+      <div class="stat-label">Fund Products</div>
+    </div>
+    <div class="stats-bar-item reveal reveal-delay-2">
+      <div class="stat-num">&gt;20<span style="font-size:0.55em;vertical-align:super;">%</span></div>
+      <div class="stat-label">Target Return p.a.</div>
+    </div>
+    <div class="stats-bar-item reveal reveal-delay-3">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Continents</div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION & VALUES -->
+<section class="section" id="mission">
+  <div class="container">
+    <div class="mission-grid">
+
+      <div class="mission-left reveal">
+        <div class="eyebrow">Our Mission</div>
+        <h2 class="display mission-title">
+          Disciplined capital.<br><em>Exceptional returns.</em>
+        </h2>
+        <p class="mission-body">
+          Our mission is straightforward: to identify, back, and grow the most 
+          promising investment opportunities across two of the world's most 
+          dynamic markets — and to deliver exceptional, risk-adjusted returns 
+          to our investors in doing so.
+        </p>
+        <p class="mission-body">
+          We achieve this through a high-conviction, process-driven approach. 
+          Every investment decision — whether a seed-stage venture bet in Sydney 
+          or a quantitative trade in Shanghai — is governed by the same 
+          principles: rigorous analysis, disciplined risk management, and 
+          an unwavering focus on the exit.
+        </p>
+        <p class="mission-body">
+          We are long-term partners to the companies we back and the investors 
+          who trust us with their capital. That means staying close, staying 
+          honest, and staying committed — through the full cycle of each investment.
+        </p>
+        <div class="mission-quote">
+          <p>
+            "In chess, the player who sees furthest ahead does not just react — 
+            they shape the game. That is how we approach every investment."
+          </p>
+        </div>
+      </div>
+
+      <div class="mission-right reveal reveal-delay-2">
+        <div class="value-list">
+          <div class="value-item">
+            <div class="value-num">01</div>
+            <div class="value-content">
+              <h3>Conviction over consensus</h3>
+              <p>We invest where we have genuine edge — where our knowledge of the market, the sector, or the team gives us an advantage that the consensus misses. We do not follow trends. We identify them early.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">02</div>
+            <div class="value-content">
+              <h3>Process as protection</h3>
+              <p>Every investment passes through a strict multi-stage review — from initial screening and sector assessment through due diligence and Investment Committee approval. Process is not bureaucracy; it is how we protect our investors.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">03</div>
+            <div class="value-content">
+              <h3>Active over passive</h3>
+              <p>We take board observer rights, secure full information access, and stay actively involved with every portfolio company. We are not passive capital — we are partners who show up.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">04</div>
+            <div class="value-content">
+              <h3>Transparency with investors</h3>
+              <p>We believe investors deserve clear, honest communication — about performance, risk, and the outlook for each position. We distribute capital as soon as assets are realised. No unnecessary lock-ups, no opaque structures.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">05</div>
+            <div class="value-content">
+              <h3>Technology as foundation</h3>
+              <p>Whether it is AI-driven quantitative models in China or data-informed deal sourcing in Australia, technology sits at the core of how we find, evaluate, and manage investments. We build systems, not hunches.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TWO MARKETS -->
+<section class="section" id="markets">
+  <div class="container">
+    <div class="markets-header reveal">
+      <div class="eyebrow">Our Markets</div>
+      <h2 class="display markets-title">
+        Two platforms.<br><em>One strategy.</em>
+      </h2>
+      <p style="font-size:0.9rem;color:var(--muted);max-width:520px;margin-top:1rem;line-height:1.85;">
+        Black Chess Capital operates two distinct but complementary investment 
+        platforms — one anchored in Australia's venture capital ecosystem, 
+        the other in China's quantitative markets.
+      </p>
+    </div>
+
+    <div class="markets-grid">
+      <!-- Australia -->
+      <div class="market-panel reveal reveal-delay-1">
+        <div class="market-bg-num">AU</div>
+        <span class="market-flag">Australia · Venture Capital</span>
+        <h3 class="market-name">Australian<br>Markets</h3>
+        <div class="market-sub">VCLP-Registered · AFSL Representative</div>
+        <p class="market-body">
+          Our Australian platform operates as a VCLP-registered venture capital 
+          fund, investing in early-stage companies across four sectors: disruptive 
+          technology, hospitality and entertainment, alternative energy, and other 
+          VCLP-compliant opportunities.
+        </p>
+        <p class="market-body">
+          We take meaningful equity positions of 10–40% per investee company, 
+          working actively with founders and management teams through the full 
+          investment lifecycle — from initial deal sourcing through to M&amp;A 
+          exit or IPO on the Sydney Stock Exchange.
+        </p>
+        <p class="market-body">
+          Our investment horizon is four to five years, with capital returned 
+          to investors via distributions as assets are realised. Individual 
+          commitments range from $250,000 to $2,000,000 per company.
+        </p>
+        <div class="market-details">
+          <div class="market-detail">
+            <span class="market-detail-label">Target net return p.a.</span>
+            <span class="market-detail-val">&gt;20%</span>
+          </div>
+          <div class="market-detail">
+            <span class="market-detail-label">Investment per company</span>
+            <span class="market-detail-val">$250K – $2M</span>
+          </div>
+          <div class="market-detail">
+            <span class="market-detail-label">Target equity holding</span>
+            <span class="market-detail-val">10% – 40%</span>
+          </div>
+          <div class="market-detail">
+            <span class="market-detail-label">Investment horizon</span>
+            <span class="market-detail-val">4 – 5 Years</span>
+          </div>
+          <div class="market-detail">
+            <span class="market-detail-label">Investment stages</span>
+            <span class="market-detail-val">Seed → Exit</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- China -->
+      <div class="market-panel reveal reveal-delay-2">
+        <div class="market-bg-num">CN</div>
+        <span class="market-flag">China · Quantitative Strategies</span>
+        <h3 class="market-name">Chinese<br>Markets</h3>
+        <div class="market-sub">Registration P1019979 · Shanghai</div>
+        <p class="market-body">
+          Our Chinese platform is an AI and big-data driven quantitative 
+          investment operation, managing over 3 billion RMB across 40+ 
+          fund products. Based in Shanghai's Hedge Fund Park, the team 
+          has been operating since 2015.
+        </p>
+        <p class="market-body">
+          We run three core quantitative strategy lines: high-frequency 
+          stock alpha (both low and mid-volatility variants), quantitative 
+          CTA futures strategies, and stock T+0 intraday strategies. 
+          Products span a range of risk-return profiles — from capital 
+          preservation-oriented low-volatility funds to high-conviction 
+          growth mandates.
+        </p>
+        <p class="market-body">
+          Our investment and research team draws from top-tier institutions 
+          including Tsinghua, Peking University, Fudan, Purdue, and 
+          Carnegie Mellon, with prior experience at Microsoft, Google, 
+          Bloomberg, and Bank of America.
+        </p>
+        <div class="market-details">
+          <div class="market-detail">
+            <span class="market-detail-label">Assets under management</span>
+            <span class="market-detail-val">3B+ RMB</span>
+          </div>
+          <div class="market-detail">
+            <span class="market-detail-label">Fund products</span>
+            <span class="market-detail-val">40+</span>
+          </div>
+          <div class="market-detail">
+            <span class="market-detail-label">Best cumulative return</span>
+            <span class="market-detail-val">147.22%</span>
+          </div>
+          <div class="market-detail">
+            <span class="market-detail-label">Best Sharpe ratio</span>
+            <span class="market-detail-val">2.55</span>
+          </div>
+          <div class="market-detail">
+            <span class="market-detail-label">Operating since</span>
+            <span class="market-detail-val">2015</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OUR APPROACH -->
+<section class="section" id="approach">
+  <div class="container">
+    <div class="approach-header reveal">
+      <div class="eyebrow">Our Approach</div>
+      <h2 class="display approach-title">
+        How we find,<br><em>back, and exit.</em>
+      </h2>
+      <p style="font-size:0.9rem;color:var(--muted);max-width:520px;margin-top:1rem;line-height:1.85;">
+        A consistent, repeatable process is the foundation of every return we deliver. 
+        Here is how we operate across both platforms.
+      </p>
+    </div>
+
+    <div class="approach-steps">
+      <div class="approach-step reveal reveal-delay-1">
+        <div class="approach-step-num">01</div>
+        <h3 class="approach-step-title">Deal Origination</h3>
+        <p class="approach-step-body">
+          We source opportunities through multiple targeted channels — startup 
+          hubs and co-working spaces across Asia Pacific, developer community 
+          partnerships, university entrepreneurship programs, and our global 
+          network of angel investors and venture firms. For quantitative 
+          strategies, AI-driven signals and proprietary data pipelines drive 
+          continuous opportunity generation.
+        </p>
+        <span class="approach-step-tag">Sourcing</span>
+      </div>
+
+      <div class="approach-step reveal reveal-delay-2">
+        <div class="approach-step-num">02</div>
+        <h3 class="approach-step-title">Due Diligence &amp; Screening</h3>
+        <p class="approach-step-body">
+          All proposed venture investments complete a structured application 
+          process, followed by automated and manual filtering, sector-specific 
+          assessment, and a pitch session with the investment team. A full 
+          compliance check against VCLP eligibility criteria is performed 
+          at each stage. Quantitative models undergo out-of-sample testing, 
+          volatility targeting, and correlation testing before deployment.
+        </p>
+        <span class="approach-step-tag">Assessment</span>
+      </div>
+
+      <div class="approach-step reveal reveal-delay-3">
+        <div class="approach-step-num">03</div>
+        <h3 class="approach-step-title">Investment Committee</h3>
+        <p class="approach-step-body">
+          Every investment requires final approval from our Investment Committee, 
+          which must decide within 10 business days of submission. The Committee 
+          may only approve investments that meet all Threshold Criteria — 
+          including VCLP compliance, consistency with the investment plan, 
+          and adequate due diligence. Standardised term sheets ensure 
+          consistency and protect investor interests.
+        </p>
+        <span class="approach-step-tag">Governance</span>
+      </div>
+
+      <div class="approach-step reveal reveal-delay-1">
+        <div class="approach-step-num">04</div>
+        <h3 class="approach-step-title">Active Portfolio Management</h3>
+        <p class="approach-step-body">
+          Post-investment, we secure board observer rights and full information 
+          rights across all venture holdings. We provide strategic assistance, 
+          monitor performance against key metrics, and reserve veto rights on 
+          major decisions. For quantitative funds, real-time rule-checker 
+          systems monitor strategy performance, risk exposure, and system 
+          health continuously.
+        </p>
+        <span class="approach-step-tag">Management</span>
+      </div>
+
+      <div class="approach-step reveal reveal-delay-2">
+        <div class="approach-step-num">05</div>
+        <h3 class="approach-step-title">Value Creation</h3>
+        <p class="approach-step-body">
+          We actively support portfolio companies with offshore market 
+          expansion, introductions to strategic investors, and assistance 
+          with future fundraising rounds. Our global network of corporate 
+          contacts, co-investment partners, and institutional relationships 
+          provides portfolio companies with access that goes well beyond 
+          the initial capital commitment.
+        </p>
+        <span class="approach-step-tag">Growth</span>
+      </div>
+
+      <div class="approach-step reveal reveal-delay-3">
+        <div class="approach-step-num">06</div>
+        <h3 class="approach-step-title">Exit &amp; Distribution</h3>
+        <p class="approach-step-body">
+          Return of capital to investors is a core priority. We engineer 
+          exits through M&amp;A activity — particularly acquisition by larger 
+          strategic companies — and IPO listings including fast-tracked 
+          listings on regulated exchanges. For pre-seed companies with limited 
+          potential, we pursue acqui-hire arrangements or founder share 
+          buy-backs. Distributions are made as soon as assets are realised.
+        </p>
+        <span class="approach-step-tag">Exit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMPLIANCE & GOVERNANCE -->
+<section class="section" id="compliance">
+  <div class="container">
+    <div class="compliance-grid">
+
+      <div class="compliance-left reveal">
+        <div class="eyebrow">Compliance &amp; Governance</div>
+        <h2 class="display compliance-title">
+          Built on a<br><em>solid foundation.</em>
+        </h2>
+        <p class="compliance-body">
+          Black Chess Capital operates within a robust regulatory and 
+          governance framework across both markets. Our Australian venture 
+          operations are structured as a Venture Capital Limited Partnership 
+          (VCLP) in full compliance with the Venture Capital Act 2002 and 
+          the Income Tax Assessment Act 1997.
+        </p>
+        <p class="compliance-body">
+          Our Chinese quantitative operations are registered with China's 
+          Asset Management Association (AMAC) and subject to ongoing 
+          regulatory oversight. Both platforms maintain independent custodian 
+          arrangements, with all NAV data verified and reported by 
+          third-party custodians.
+        </p>
+        <p class="compliance-body">
+          Our Investment Committee provides independent governance over all 
+          investment decisions, ensuring every commitment is consistent with 
+          our investment plan, compliant with applicable regulations, and 
+          in the best interests of our investors.
+        </p>
+        <div class="compliance-badges">
+          <div class="compliance-badge">VCLP Registered</div>
+          <div class="compliance-badge">AFSL Representative</div>
+          <div class="compliance-badge">AMAC Registered</div>
+          <div class="compliance-badge">Third-Party Custodian</div>
+          <div class="compliance-badge">ABN 40 664 455 501</div>
+          <div class="compliance-badge">P1019979</div>
+        </div>
+      </div>
+
+      <div class="compliance-right reveal reveal-delay-2">
+        <div class="compliance-item">
+          <div class="compliance-check">✓</div>
+          <div>
+            <div class="compliance-item-title">Venture Capital Act 2002 (Cth)</div>
+            <p class="compliance-item-body">All Australian venture investments are structured to comply with Section 9-1(1)(e) of the Act and relevant ITAA 1997 provisions.</p>
+          </div>
+        </div>
+        <div class="compliance-item">
+          <div class="compliance-check">✓</div>
+          <div>
+            <div class="compliance-item-title">Investment Committee Oversight</div>
+            <p class="compliance-item-body">An independent Investment Committee reviews and approves all proposed investments, with a mandatory 10 business day decision window.</p>
+          </div>
+        </div>
+        <div class="compliance-item">
+          <div class="compliance-check">✓</div>
+          <div>
+            <div class="compliance-item-title">Third-Party Custodian Reporting</div>
+            <p class="compliance-item-body">All fund NAV data is calculated and reported by independent custodians. Investors receive verified, unbiased performance figures.</p>
+          </div>
+        </div>
+        <div class="compliance-item">
+          <div class="compliance-check">✓</div>
+          <div>
+            <div class="compliance-item-title">Disaster Recovery &amp; System Resilience</div>
+            <p class="compliance-item-body">Multi-broker trading infrastructure, multi-site server deployment with dual power, and real-time rule-checker systems ensure continuous operational integrity.</p>
+          </div>
+        </div>
+        <div class="compliance-item">
+          <div class="compliance-check">✓</div>
+          <div>
+            <div class="compliance-item-title">Fair Trading Policy</div>
+            <p class="compliance-item-body">Randomised account order execution, consistent strategy application across like products, and regular performance attribution reviews ensure all investors are treated equitably.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta-banner">
+  <div class="cta-banner-inner reveal">
+    <div>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3.2rem);">
+        Want to know more<br><em>about our funds?</em>
+      </h2>
+      <p>Explore our three investment mandates or speak with our team directly.</p>
+    </div>
+    <div class="cta-banner-btns">
+      <a href="funds.html" class="btn btn-gold btn-arrow">View Our Funds</a>
+      <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-name">Black Chess Capital</div>
+      <p class="footer-brand-desc">A global investment management firm with a dual-market presence across Australian venture capital and Chinese quantitative strategies — built for sophisticated investors seeking superior returns.</p>
+      <div class="footer-tags">
+        <span>ABN 40 664 455 501</span>
+        <span>AFSL Representative</span>
+        <span>VCLP Registered</span>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="funds.html">Our Funds</a></li>
+        <li><a href="strategy.html">Strategy</a></li>
+        <li><a href="performance.html">Performance</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Our Offices</div>
+      <div class="footer-office">
+        <div class="footer-office-city">Sydney, Australia</div>
+        <p>Chris Li<br><a href="mailto:Chris.Li@softwatercap.com.au">Chris.Li@softwatercap.com.au</a><br>+61 430 988 999</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Perth, Australia</div>
+        <p>Jake Zhou<br><a href="mailto:jakezhou88@outlook.com">jakezhou88@outlook.com</a><br>+61 452 188 526</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Shanghai, China</div>
+        <p>Registration No. P1019979<br>Shanghai Hedge Fund Park</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Black Chess Capital. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Disclaimer</a>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    <p>This website is for informational purposes only and does not constitute financial advice or an offer to invest. Past performance is not indicative of future results. Black Chess Capital and its associated entities are not responsible for investment decisions made based on the content of this website. Investment in venture capital and quantitative funds involves significant risk, including possible loss of capital. For qualified and sophisticated investors only. Always seek independent financial advice before investing.</p>
+  </div>
+</footer>
+
+<script>
+  /* NAV */
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('site-nav').style.background =
+      window.scrollY > 60 ? 'rgba(8,8,7,0.98)' : 'rgba(8,8,7,0.92)';
+  });
+
+  /* SCROLL REVEAL */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* Page hero fires on load */
+  document.querySelectorAll('.page-hero .reveal, .stats-bar .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 150 + i * 150);
+  });
+</script>
 </body>
 </html>
