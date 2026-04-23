@@ -3,25 +3,1075 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Black Chess Capital</title>
-  <link rel="stylesheet" href="css/global.css">
+  <title>Our Funds — Black Chess Capital</title>
+  <meta name="description" content="Explore Black Chess Capital's three investment mandates — Venture Capital Fund, Investment Trust, and Quantitative Fund Series.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    .coming-soon { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:calc(var(--nav-h) + 2rem) 2rem 4rem; }
-    .coming-soon h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,6vw,5rem); font-weight:300; margin:1.5rem 0 1rem; }
-    .coming-soon h1 em { font-style:italic; color:var(--gold); }
-    .coming-soon p { color:var(--muted); font-size:0.9rem; margin-bottom:2.5rem; }
+    :root {
+      --black:#080807; --dark:#0f0e0d; --dark2:#161513; --dark3:#1e1c1a;
+      --gold:#b8975a; --gold-light:#d4b87a; --gold-dim:rgba(184,151,90,0.12);
+      --gold-border:rgba(184,151,90,0.22); --white:#f0ece4; --off-white:#d4cfc6;
+      --muted:#7a756d; --muted2:#524e48; --green:#5a9e72; --nav-h:72px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--dark);color:var(--white);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold-border);border-radius:2px}
+    ::selection{background:var(--gold);color:var(--black)}
+    a{color:inherit;text-decoration:none} p{color:var(--off-white)}
+    .section{padding:7rem 0;position:relative}
+    .container{max-width:1200px;margin:0 auto;padding:0 5rem}
+    .divider{height:0.5px;background:var(--gold-border)}
+    .display{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.05;letter-spacing:-0.02em}
+    .display em{font-style:italic;color:var(--gold)}
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-family:'Jost',sans-serif;font-weight:400}
+    .eyebrow::before{content:'';display:block;width:28px;height:0.5px;background:var(--gold);flex-shrink:0}
+    .stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);line-height:1}
+    .stat-label{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:0.8rem 2rem;font-family:'Jost',sans-serif;font-size:0.75rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:all 0.28s ease;border:none}
+    .btn-gold{background:var(--gold);color:var(--black)}.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:var(--white);border:0.5px solid rgba(240,236,228,0.3)}.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
+    .btn-arrow::after{content:'→';font-size:1rem;transition:transform 0.2s}.btn-arrow:hover::after{transform:translateX(4px)}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}
+    .reveal-delay-3{transition-delay:0.3s}.reveal-delay-4{transition-delay:0.4s}
+
+    /* ── NAV ── */
+    #site-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5rem;background:rgba(8,8,7,0.92);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--gold-border);transition:background 0.3s}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--gold);letter-spacing:0.06em}
+    .nav-logo span{color:var(--white);font-style:italic}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+    .nav-links a{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);transition:color 0.25s;position:relative;padding-bottom:2px}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:0.5px;background:var(--gold);transform:scaleX(0);transition:transform 0.25s}
+    .nav-links a:hover,.nav-links a.active{color:var(--white)}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:0.5rem 1.4rem}.nav-cta:hover{background:var(--gold-light)!important}.nav-cta::after{display:none!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:22px;height:0.5px;background:var(--white)}
+
+    /* ── PAGE HERO ── */
+    .page-hero{
+      padding:calc(var(--nav-h) + 6rem) 5rem 6rem;
+      background:var(--dark2);
+      border-bottom:0.5px solid var(--gold-border);
+      position:relative; overflow:hidden;
+    }
+    .page-hero::before{
+      content:''; position:absolute; top:-80px; right:-80px;
+      width:550px; height:550px; border-radius:50%;
+      background:radial-gradient(circle,rgba(184,151,90,0.06) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .page-hero-inner{
+      max-width:1200px; margin:0 auto;
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:5rem; align-items:end;
+    }
+    .page-hero-title{ font-size:clamp(3rem,6vw,5.5rem); margin:1.25rem 0 0; }
+    .page-hero-desc{ font-size:1rem; color:var(--muted); line-height:1.9; margin-bottom:1.75rem; }
+
+    /* ── FUND NAV TABS ── */
+    .fund-tabs{
+      background:var(--dark3);
+      border-bottom:0.5px solid var(--gold-border);
+      position:sticky; top:var(--nav-h); z-index:50;
+    }
+    .fund-tabs-inner{
+      max-width:1200px; margin:0 auto;
+      padding:0 5rem;
+      display:flex; gap:0;
+    }
+    .fund-tab{
+      padding:1.25rem 2rem;
+      font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--muted); cursor:pointer;
+      border-bottom:1.5px solid transparent;
+      transition:color 0.25s, border-color 0.25s;
+      white-space:nowrap;
+    }
+    .fund-tab:hover{ color:var(--off-white); }
+    .fund-tab.active{ color:var(--gold); border-bottom-color:var(--gold); }
+
+    /* ── FUND SECTION SHARED ── */
+    .fund-section{
+      padding:7rem 0;
+      scroll-margin-top:calc(var(--nav-h) + 52px);
+    }
+    .fund-header{
+      display:grid; grid-template-columns:auto 1fr;
+      gap:1.5rem 3rem; align-items:start;
+      margin-bottom:5rem;
+    }
+    .fund-roman{
+      font-family:'Cormorant Garamond',serif;
+      font-size:6rem; font-weight:300;
+      color:rgba(184,151,90,0.15); line-height:0.85;
+      grid-row: span 3;
+      padding-top:0.5rem;
+    }
+    .fund-badge{
+      display:inline-block;
+      font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase;
+      color:var(--gold); border:0.5px solid var(--gold-border);
+      padding:0.3rem 0.9rem; margin-bottom:0.75rem;
+    }
+    .fund-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2rem,4vw,3.2rem); font-weight:300;
+      line-height:1.1; margin-bottom:0.5rem;
+    }
+    .fund-subtitle{
+      font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* ── FUND BODY LAYOUT ── */
+    .fund-body{
+      display:grid; grid-template-columns:1.1fr 0.9fr;
+      gap:5rem; align-items:start;
+    }
+    .fund-desc{ font-size:0.9rem; color:var(--muted); line-height:1.95; margin-bottom:1.25rem; }
+
+    /* ── TERMS TABLE ── */
+    .terms-table{ width:100%; border-collapse:collapse; margin-top:0.5rem; }
+    .terms-table tr{ border-bottom:0.5px solid var(--gold-border); }
+    .terms-table tr:first-child{ border-top:0.5px solid var(--gold-border); }
+    .terms-table td{ padding:1rem 0; font-size:0.83rem; vertical-align:top; }
+    .terms-table td:first-child{ color:var(--muted); width:45%; padding-right:1rem; }
+    .terms-table td:last-child{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1rem; color:var(--white);
+    }
+
+    /* ── FUND METRICS GRID ── */
+    .fund-metrics{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:0; margin-bottom:2.5rem;
+      border:0.5px solid var(--gold-border);
+    }
+    .fund-metric{
+      padding:1.5rem;
+      border-right:0.5px solid var(--gold-border);
+      border-bottom:0.5px solid var(--gold-border);
+    }
+    .fund-metric:nth-child(2n){ border-right:none; }
+    .fund-metric:nth-last-child(-n+2){ border-bottom:none; }
+    .fund-metric-val{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.9rem; font-weight:300; color:var(--gold);
+      line-height:1; margin-bottom:0.3rem;
+    }
+    .fund-metric-label{
+      font-size:0.68rem; letter-spacing:0.13em; text-transform:uppercase; color:var(--muted);
+    }
+
+    /* ── SECTOR ALLOCATION ── */
+    .allocation-bars{ display:flex; flex-direction:column; gap:1rem; margin-top:2rem; }
+    .alloc-row{ display:flex; flex-direction:column; gap:0.4rem; }
+    .alloc-row-header{ display:flex; justify-content:space-between; align-items:baseline; }
+    .alloc-name{ font-size:0.78rem; color:var(--off-white); }
+    .alloc-pct{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.1rem; color:var(--gold);
+    }
+    .alloc-track{
+      height:3px; background:rgba(255,255,255,0.07); border-radius:2px; overflow:hidden;
+    }
+    .alloc-fill{
+      height:100%; background:var(--gold); border-radius:2px;
+      width:var(--w); transition:width 1.2s ease;
+    }
+
+    /* ── INVESTMENT PHASES ── */
+    .phases-list{ display:flex; flex-direction:column; gap:0; margin-top:2rem; }
+    .phase-item{
+      display:grid; grid-template-columns:auto 1fr;
+      gap:1.25rem; padding:1.25rem 0;
+      border-bottom:0.5px solid var(--gold-border);
+      align-items:start;
+    }
+    .phase-item:first-child{ border-top:0.5px solid var(--gold-border); }
+    .phase-dot{
+      width:8px; height:8px; border-radius:50%;
+      background:var(--gold); margin-top:0.45rem; flex-shrink:0;
+    }
+    .phase-name{
+      font-size:0.85rem; font-weight:400; margin-bottom:0.3rem;
+      color:var(--white);
+    }
+    .phase-desc{ font-size:0.78rem; color:var(--muted); line-height:1.7; }
+
+    /* ── QUANT STRATEGY CARDS ── */
+    .quant-strategies{
+      display:grid; grid-template-columns:1fr;
+      gap:1.25rem; margin-top:0;
+    }
+    .quant-card{
+      border:0.5px solid var(--gold-border);
+      padding:1.75rem 2rem;
+      position:relative; overflow:hidden;
+      transition:border-color 0.3s;
+    }
+    .quant-card:hover{ border-color:rgba(184,151,90,0.5); }
+    .quant-card::before{
+      content:''; position:absolute; top:0; left:0; bottom:0;
+      width:2px; background:var(--gold);
+      transform:scaleY(0); transform-origin:top;
+      transition:transform 0.35s ease;
+    }
+    .quant-card:hover::before{ transform:scaleY(1); }
+    .quant-card-tag{
+      font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:0.5rem; display:block;
+    }
+    .quant-card-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.35rem; font-weight:400; margin-bottom:0.75rem;
+    }
+    .quant-card-desc{ font-size:0.8rem; color:var(--muted); line-height:1.8; margin-bottom:1.25rem; }
+    .quant-card-stats{ display:flex; gap:2rem; padding-top:1rem; border-top:0.5px solid var(--gold-border); }
+    .quant-stat-val{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.5rem; font-weight:300; color:var(--green);
+      display:block; line-height:1;
+    }
+    .quant-stat-label{
+      font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--muted); margin-top:0.25rem; display:block;
+    }
+
+    /* ── ELIGIBILITY NOTE ── */
+    .eligibility-note{
+      margin-top:2.5rem; padding:1.5rem 2rem;
+      border:0.5px solid var(--gold-border);
+      background:rgba(184,151,90,0.04);
+      display:flex; gap:1.25rem; align-items:flex-start;
+    }
+    .eligibility-note-icon{
+      font-size:1rem; color:var(--gold); flex-shrink:0; margin-top:0.1rem;
+    }
+    .eligibility-note p{ font-size:0.78rem; color:var(--muted); line-height:1.75; }
+
+    /* ── CTA BANNER ── */
+    #cta-banner{ background:var(--dark3); border-top:0.5px solid var(--gold-border); padding:6rem 5rem; }
+    .cta-banner-inner{ max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:3rem 5rem; align-items:center; }
+    .cta-banner-inner p{ font-size:0.9rem; color:var(--muted); max-width:420px; margin-top:0.75rem; }
+    .cta-banner-btns{ display:flex; flex-direction:column; gap:1rem; align-items:flex-end; }
+
+    /* ── FOOTER ── */
+    #site-footer{background:var(--black);border-top:0.5px solid var(--gold-border)}
+    .footer-main{display:grid;grid-template-columns:1.6fr 1fr 1.4fr;gap:4rem;padding:5rem;max-width:1200px;margin:0 auto}
+    .footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);margin-bottom:1rem}
+    .footer-brand-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
+    .footer-tags{display:flex;gap:0.6rem;flex-wrap:wrap}
+    .footer-tags span{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);border:0.5px solid var(--muted2);padding:0.2rem 0.6rem}
+    .footer-col-title{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+    .footer-links a{font-size:0.82rem;color:var(--muted);transition:color 0.2s}
+    .footer-links a:hover{color:var(--gold)}
+    .footer-office{margin-bottom:1.5rem}
+    .footer-office-city{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+    .footer-office p{font-size:0.8rem;color:var(--muted);line-height:1.65}
+    .footer-office a{color:var(--gold-light);transition:color 0.2s}.footer-office a:hover{color:var(--gold)}
+    .footer-bottom{border-top:0.5px solid var(--gold-border);padding:1.5rem 5rem;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-copy{font-size:0.72rem;color:var(--muted2)}
+    .footer-legal{display:flex;gap:1.5rem}
+    .footer-legal a{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);transition:color 0.2s}
+    .footer-legal a:hover{color:var(--muted)}
+    .footer-disclaimer{border-top:0.5px solid rgba(80,76,72,0.3);padding:1.5rem 5rem 2.5rem;max-width:1200px;margin:0 auto}
+    .footer-disclaimer p{font-size:0.66rem;color:var(--muted2);line-height:1.8}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){
+      .page-hero-inner,.fund-body{grid-template-columns:1fr;gap:3rem}
+      .fund-header{grid-template-columns:1fr}
+      .fund-roman{font-size:4rem;grid-row:auto}
+      .footer-main{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.5rem}
+      .footer-bottom,.footer-disclaimer{padding-left:1.5rem;padding-right:1.5rem}
+      .cta-banner-inner{grid-template-columns:1fr}
+      .cta-banner-btns{flex-direction:row;align-items:flex-start}
+    }
+    @media(max-width:768px){
+      #site-nav{padding:0 1.5rem}
+      .nav-links{display:none;position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;background:var(--black);padding:2rem 1.5rem;gap:1.5rem;border-bottom:0.5px solid var(--gold-border)}
+      .nav-links.open{display:flex}
+      .hamburger{display:flex}
+      .page-hero{padding:calc(var(--nav-h) + 4rem) 1.5rem 4rem}
+      .container{padding:0 1.5rem}
+      .section,.fund-section{padding:4rem 0}
+      .fund-tabs-inner{padding:0 1.5rem;overflow-x:auto}
+      .fund-metrics{grid-template-columns:1fr 1fr}
+      #cta-banner{padding:4rem 1.5rem}
+    }
   </style>
 </head>
 <body>
-  <div class="coming-soon">
-    <div class="eyebrow" style="display:inline-flex; align-items:center; gap:12px; font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold);">
-      <span style="width:28px;height:0.5px;background:var(--gold);display:block;"></span>
-      Black Chess Capital
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a class="nav-logo" href="index.html">Black Chess <span>Capital</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="funds.html" class="active">Our Funds</a></li>
+    <li><a href="strategy.html">Strategy</a></li>
+    <li><a href="performance.html">Performance</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="eyebrow reveal">Our Funds</div>
+      <h1 class="display page-hero-title reveal reveal-delay-1">
+        Three mandates.<br><em>Every horizon.</em>
+      </h1>
     </div>
-    <h1>Page <em>coming soon.</em></h1>
-    <p>This page is currently being built. More content coming shortly.</p>
-    <a href="index.html" class="btn btn-gold" style="display:inline-flex;align-items:center;gap:10px;padding:0.8rem 2rem;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--gold);color:var(--black);text-decoration:none;">← Back to Home</a>
+    <div class="reveal reveal-delay-2">
+      <p class="page-hero-desc">
+        Black Chess Capital offers three distinct investment vehicles — 
+        each designed for a different market, risk profile, and investment 
+        horizon. Together they cover the full spectrum from early-stage 
+        venture through liquid equity to quantitative alpha.
+      </p>
+      <p class="page-hero-desc">
+        All funds are managed by experienced teams with deep sector expertise, 
+        governed by independent Investment Committees, and structured to 
+        prioritise the return of capital to investors.
+      </p>
+    </div>
   </div>
-  <script src="js/components.js"></script>
+</div>
+
+<!-- STICKY FUND TABS -->
+<div class="fund-tabs">
+  <div class="fund-tabs-inner">
+    <div class="fund-tab active" data-target="vc-fund">I — Venture Capital Fund</div>
+    <div class="fund-tab" data-target="trust">II — Investment Trust</div>
+    <div class="fund-tab" data-target="quant">III — Quantitative Fund Series</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+  FUND I — VENTURE CAPITAL FUND
+═══════════════════════════════════════ -->
+<section class="fund-section" id="vc-fund" style="background:var(--dark);">
+  <div class="container">
+
+    <div class="fund-header reveal">
+      <div class="fund-roman">I</div>
+      <div>
+        <div class="fund-badge">Venture Capital · Australia</div>
+        <h2 class="fund-title">Venture Capital Fund</h2>
+        <div class="fund-subtitle">VCLP-Registered · ABN 40 664 455 501</div>
+      </div>
+    </div>
+
+    <div class="fund-body">
+      <!-- LEFT — description + terms -->
+      <div>
+        <p class="fund-desc reveal">
+          Our Venture Capital Fund is a VCLP-registered fund that invests in 
+          Australia's most promising early-stage companies. We take meaningful 
+          equity positions in businesses spanning disruptive technology, 
+          hospitality and entertainment, alternative energy, and other 
+          VCLP-compliant sectors.
+        </p>
+        <p class="fund-desc reveal">
+          Our strategy is high-volume and industrialised — building a large, 
+          diversified portfolio of investee companies spanning the pre-seed 
+          through early expansion stages. We do not take a passive approach. 
+          We secure board observer rights, full information access, and 
+          strategic veto powers, staying close to every investment from 
+          first cheque to exit.
+        </p>
+        <p class="fund-desc reveal">
+          Exits are engineered through M&amp;A activity — particularly strategic 
+          acquisitions by larger companies — and IPO listings, including 
+          fast-tracked listings on regulated exchanges. Distributions are 
+          made to investors as soon as assets are realised.
+        </p>
+
+        <div class="reveal" style="margin-top:2.5rem;">
+          <div class="eyebrow" style="margin-bottom:1.5rem;">Fund Terms</div>
+          <table class="terms-table">
+            <tr>
+              <td>Fund Structure</td>
+              <td>Venture Capital Limited Partnership (VCLP)</td>
+            </tr>
+            <tr>
+              <td>Fund Manager</td>
+              <td>Black Chess Capital Pty Ltd</td>
+            </tr>
+            <tr>
+              <td>Target Net Return</td>
+              <td>&gt;20% per annum (net of fees)</td>
+            </tr>
+            <tr>
+              <td>Investment per Company</td>
+              <td>$50,000 – $2,000,000</td>
+            </tr>
+            <tr>
+              <td>Typical Commitment</td>
+              <td>$250,000 – $1,000,000</td>
+            </tr>
+            <tr>
+              <td>Target Equity Stake</td>
+              <td>10% – 40% per investee</td>
+            </tr>
+            <tr>
+              <td>Investment Horizon</td>
+              <td>5 – 10 years</td>
+            </tr>
+            <tr>
+              <td>Target Exit Horizon</td>
+              <td>4 – 5 years</td>
+            </tr>
+            <tr>
+              <td>Eligible Instruments</td>
+              <td>Shares, convertible notes, units, options</td>
+            </tr>
+            <tr>
+              <td>Max Investee Asset Size</td>
+              <td>$250 million</td>
+            </tr>
+            <tr>
+              <td>Distributions</td>
+              <td>Following asset realisations — priority for investors</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="eligibility-note reveal" style="margin-top:2rem;">
+          <div class="eligibility-note-icon">ⓘ</div>
+          <p>This fund is open to eligible investors under the Venture Capital Act 2002 (Cth). All investments are structured to comply with VCLP requirements under Section 9-1(1)(e) of the Act and Sections 118-425 and 118-427 of the ITAA 1997. Speak with our team for eligibility requirements.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT — metrics + allocation + phases -->
+      <div>
+        <div class="fund-metrics reveal">
+          <div class="fund-metric">
+            <div class="fund-metric-val">&gt;20%</div>
+            <div class="fund-metric-label">Target Return p.a.</div>
+          </div>
+          <div class="fund-metric">
+            <div class="fund-metric-val">$250K–$1M</div>
+            <div class="fund-metric-label">Per Investment</div>
+          </div>
+          <div class="fund-metric">
+            <div class="fund-metric-val">10–40%</div>
+            <div class="fund-metric-label">Target Equity Stake</div>
+          </div>
+          <div class="fund-metric">
+            <div class="fund-metric-val">4–5yr</div>
+            <div class="fund-metric-label">Exit Horizon</div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="eyebrow" style="margin-bottom:1.25rem;">Sector Allocation</div>
+          <div class="allocation-bars">
+            <div class="alloc-row">
+              <div class="alloc-row-header">
+                <span class="alloc-name">Disruptive Technology</span>
+                <span class="alloc-pct">30%</span>
+              </div>
+              <div class="alloc-track"><div class="alloc-fill" style="--w:30%"></div></div>
+            </div>
+            <div class="alloc-row">
+              <div class="alloc-row-header">
+                <span class="alloc-name">Hospitality &amp; Entertainment</span>
+                <span class="alloc-pct">30%</span>
+              </div>
+              <div class="alloc-track"><div class="alloc-fill" style="--w:30%"></div></div>
+            </div>
+            <div class="alloc-row">
+              <div class="alloc-row-header">
+                <span class="alloc-name">Alternative Energy</span>
+                <span class="alloc-pct">20%</span>
+              </div>
+              <div class="alloc-track"><div class="alloc-fill" style="--w:20%"></div></div>
+            </div>
+            <div class="alloc-row">
+              <div class="alloc-row-header">
+                <span class="alloc-name">Other Complying Investments</span>
+                <span class="alloc-pct">20%</span>
+              </div>
+              <div class="alloc-track"><div class="alloc-fill" style="--w:20%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal" style="margin-top:2.5rem;">
+          <div class="eyebrow" style="margin-bottom:1.25rem;">Investment Stages</div>
+          <div class="phases-list">
+            <div class="phase-item">
+              <div class="phase-dot"></div>
+              <div>
+                <div class="phase-name">Seed</div>
+                <p class="phase-desc">Minimum viable product developed. Early product launch or commercialisation stage. Validated business model with first revenues secured.</p>
+              </div>
+            </div>
+            <div class="phase-item">
+              <div class="phase-dot"></div>
+              <div>
+                <div class="phase-name">Series A</div>
+                <p class="phase-desc">Proven technology, early commercialisation. Capital required to scale a known business model. Revenue generating with lower risk than seed stage.</p>
+              </div>
+            </div>
+            <div class="phase-item">
+              <div class="phase-dot"></div>
+              <div>
+                <div class="phase-name">Series B</div>
+                <p class="phase-desc">Commercialised and selling products. Not yet profitable due to cash flow or growth-related costs. Scaling capital required.</p>
+              </div>
+            </div>
+            <div class="phase-item">
+              <div class="phase-dot"></div>
+              <div>
+                <div class="phase-name">Expansion</div>
+                <p class="phase-desc">Newly profitable company requiring further capital to sustain growth. May include equity and/or mezzanine debt structures.</p>
+              </div>
+            </div>
+            <div class="phase-item">
+              <div class="phase-dot"></div>
+              <div>
+                <div class="phase-name">Exit</div>
+                <p class="phase-desc">Companies seeking to exit via M&amp;A or IPO. Leveraging the firm's extensive networks and transaction advisory capabilities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════
+  FUND II — INVESTMENT TRUST
+═══════════════════════════════════════ -->
+<section class="fund-section" id="trust" style="background:var(--dark2);">
+  <div class="container">
+
+    <div class="fund-header reveal">
+      <div class="fund-roman">II</div>
+      <div>
+        <div class="fund-badge">Investment Trust · Australia</div>
+        <h2 class="fund-title">Investment Trust</h2>
+        <div class="fund-subtitle">Trustee: Black Chess Capital Pty Ltd · ABN 40 664 455 501</div>
+      </div>
+    </div>
+
+    <div class="fund-body">
+      <!-- LEFT -->
+      <div>
+        <p class="fund-desc reveal">
+          The Black Chess Investment Trust is a liquid investment vehicle 
+          focused on Australian and international equity markets. Unlike 
+          the Venture Capital Fund, this trust offers a more accessible 
+          entry point with a shorter lockup period and regular distributions — 
+          designed for investors seeking market exposure with active management.
+        </p>
+        <p class="fund-desc reveal">
+          The Trust employs two primary strategies: subscription in IPO and 
+          placement opportunities, targeting companies with robust fundamentals, 
+          strong growth potential, and identifiable event catalysts; and cash 
+          management through short-term deposits and government bond ETFs to 
+          generate yield while capital is deployed.
+        </p>
+        <p class="fund-desc reveal">
+          Our investment process for the Trust combines in-depth financial 
+          and credit analysis, market cycle assessment, roadshow feedback, 
+          and comparative valuation — ensuring each IPO or placement 
+          commitment is made on a fully informed basis. The Trust adopts a 
+          geographical and sectoral diversification strategy to manage risk 
+          across its portfolio.
+        </p>
+
+        <div class="reveal" style="margin-top:2.5rem;">
+          <div class="eyebrow" style="margin-bottom:1.5rem;">Fund Terms</div>
+          <table class="terms-table">
+            <tr>
+              <td>Fund Structure</td>
+              <td>Managed Investment Trust</td>
+            </tr>
+            <tr>
+              <td>Trustee</td>
+              <td>Black Chess Capital Pty Ltd (ABN 40 664 455 501)</td>
+            </tr>
+            <tr>
+              <td>Minimum Investment</td>
+              <td>$200,000 with $50,000 increments thereafter</td>
+            </tr>
+            <tr>
+              <td>Lockup Period</td>
+              <td>24 months from date of unit issue</td>
+            </tr>
+            <tr>
+              <td>Unit Pricing</td>
+              <td>Quarterly</td>
+            </tr>
+            <tr>
+              <td>Distributions</td>
+              <td>Semi-annual — paid to nominated bank account</td>
+            </tr>
+            <tr>
+              <td>Management Fee</td>
+              <td>0.5% per annum of Gross Asset Value (GAV)</td>
+            </tr>
+            <tr>
+              <td>Performance Fee</td>
+              <td>25% of returns exceeding the Performance Benchmark</td>
+            </tr>
+            <tr>
+              <td>Performance Benchmark</td>
+              <td>8% per annum</td>
+            </tr>
+            <tr>
+              <td>Withdrawal</td>
+              <td>Available following the Lockup Period, per Trust Deed</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="eligibility-note reveal" style="margin-top:2rem;">
+          <div class="eligibility-note-icon">ⓘ</div>
+          <p>Participation in IPO and placement opportunities is subject to scale-back provisions — the Trust may receive fewer shares than applied for, or none at all. Past performance is not indicative of future results. This is not financial advice. Please consult an independent advisor before investing.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div>
+        <div class="fund-metrics reveal">
+          <div class="fund-metric">
+            <div class="fund-metric-val">$200K</div>
+            <div class="fund-metric-label">Minimum Investment</div>
+          </div>
+          <div class="fund-metric">
+            <div class="fund-metric-val">8%</div>
+            <div class="fund-metric-label">Performance Benchmark p.a.</div>
+          </div>
+          <div class="fund-metric">
+            <div class="fund-metric-val">0.5%</div>
+            <div class="fund-metric-label">Management Fee p.a.</div>
+          </div>
+          <div class="fund-metric">
+            <div class="fund-metric-val">25%</div>
+            <div class="fund-metric-label">Performance Fee (above benchmark)</div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="eyebrow" style="margin-bottom:1.5rem;">Investment Strategies</div>
+
+          <div style="border:0.5px solid var(--gold-border); padding:2rem; margin-bottom:1.25rem;">
+            <div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Strategy 1</div>
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.85rem;">IPO &amp; Placement Subscriptions</h4>
+            <p style="font-size:0.82rem;color:var(--muted);line-height:1.8;">
+              Targeting companies with robust fundamentals, significant financial 
+              growth potential, and strong event catalysts. The Trust secures 
+              investments before their public trading debut to generate superior 
+              primary market returns and obtain placement discounts.
+            </p>
+          </div>
+
+          <div style="border:0.5px solid var(--gold-border); padding:2rem;">
+            <div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Strategy 2</div>
+            <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.85rem;">Cash Management</h4>
+            <p style="font-size:0.82rem;color:var(--muted);line-height:1.8;">
+              Capital not deployed in IPO or placement opportunities is 
+              managed through high-liquidity instruments including bank 
+              deposits and short-term government bond ETFs — earning 
+              current market interest rates while maintaining flexibility 
+              to act on new opportunities quickly.
+            </p>
+          </div>
+        </div>
+
+        <div class="reveal" style="margin-top:2rem;">
+          <div class="eyebrow" style="margin-bottom:1.25rem;">Risk Management</div>
+          <div class="phases-list">
+            <div class="phase-item">
+              <div class="phase-dot"></div>
+              <div>
+                <div class="phase-name">Enhanced Diversification</div>
+                <p class="phase-desc">Sectoral and geographic spread to mitigate risk from specific industries or regional economic fluctuations.</p>
+              </div>
+            </div>
+            <div class="phase-item">
+              <div class="phase-dot"></div>
+              <div>
+                <div class="phase-name">Robust Due Diligence</div>
+                <p class="phase-desc">Multi-faceted analysis including financial, valuation, growth strategy, and market cycle assessments using both quantitative metrics and qualitative evaluation.</p>
+              </div>
+            </div>
+            <div class="phase-item">
+              <div class="phase-dot"></div>
+              <div>
+                <div class="phase-name">Continuous Risk Monitoring</div>
+                <p class="phase-desc">Integrated risk management system to continuously monitor and report on portfolio risk. Regular performance reviews ensure alignment with fund objectives.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════
+  FUND III — QUANTITATIVE FUND SERIES
+═══════════════════════════════════════ -->
+<section class="fund-section" id="quant" style="background:var(--dark);">
+  <div class="container">
+
+    <div class="fund-header reveal">
+      <div class="fund-roman">III</div>
+      <div>
+        <div class="fund-badge">Quantitative Funds · China</div>
+        <h2 class="fund-title">Quantitative Fund Series</h2>
+        <div class="fund-subtitle">Registration P1019979 · Shanghai Hedge Fund Park</div>
+      </div>
+    </div>
+
+    <div class="fund-body">
+      <!-- LEFT -->
+      <div>
+        <p class="fund-desc reveal">
+          Our Quantitative Fund Series is an AI and big-data driven private 
+          fund operation based in Shanghai, with over 3 billion RMB under 
+          management across 40+ products. Operating since 2015, we have 
+          built three distinct quantitative strategy lines — each with its 
+          own risk profile, volatility target, and return characteristics.
+        </p>
+        <p class="fund-desc reveal">
+          The investment and research team brings together quantitative 
+          specialists with backgrounds from Tsinghua, Peking University, 
+          Fudan, Purdue, and Carnegie Mellon universities, and prior 
+          professional experience at Microsoft, Google, Bloomberg, Bank 
+          of America, and leading Chinese securities firms.
+        </p>
+        <p class="fund-desc reveal">
+          All strategies undergo rigorous out-of-sample testing, volatility 
+          targeting, maximum drawdown tolerance setting, and correlation 
+          testing before live deployment. Ongoing strategy validation, 
+          factor effectiveness monitoring, and model adjustment processes 
+          ensure each strategy remains effective across evolving market conditions.
+        </p>
+
+        <div class="reveal" style="margin-top:2.5rem;">
+          <div class="eyebrow" style="margin-bottom:1.5rem;">Platform Overview</div>
+          <table class="terms-table">
+            <tr>
+              <td>Founded</td>
+              <td>2015</td>
+            </tr>
+            <tr>
+              <td>Location</td>
+              <td>Shanghai Hedge Fund Park</td>
+            </tr>
+            <tr>
+              <td>Registration</td>
+              <td>P1019979 (AMAC Registered)</td>
+            </tr>
+            <tr>
+              <td>Total AUM</td>
+              <td>Over 3 billion RMB</td>
+            </tr>
+            <tr>
+              <td>Number of Products</td>
+              <td>40+</td>
+            </tr>
+            <tr>
+              <td>Core Strategy Lines</td>
+              <td>Quantitative CTA, Stock Alpha, Stock T+0</td>
+            </tr>
+            <tr>
+              <td>Execution</td>
+              <td>Fully algorithmic — no manual trading risk</td>
+            </tr>
+            <tr>
+              <td>Infrastructure</td>
+              <td>Multi-broker, multi-site servers, dual power</td>
+            </tr>
+            <tr>
+              <td>Custodian</td>
+              <td>Third-party independent custodian reporting</td>
+            </tr>
+            <tr>
+              <td>Qualified Investor Threshold</td>
+              <td>RMB 1,000,000 minimum per product</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="eligibility-note reveal" style="margin-top:2rem;">
+          <div class="eligibility-note-icon">ⓘ</div>
+          <p>Access to the Quantitative Fund Series is restricted to qualified investors as defined under China's private fund regulations — including institutional investors and individuals meeting net asset or income thresholds. Please contact our Shanghai team for eligibility and onboarding details.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT — strategy cards -->
+      <div>
+        <div class="fund-metrics reveal">
+          <div class="fund-metric">
+            <div class="fund-metric-val">3B+</div>
+            <div class="fund-metric-label">AUM (RMB)</div>
+          </div>
+          <div class="fund-metric">
+            <div class="fund-metric-val">40+</div>
+            <div class="fund-metric-label">Fund Products</div>
+          </div>
+          <div class="fund-metric">
+            <div class="fund-metric-val">147%</div>
+            <div class="fund-metric-label">Best Cumulative Return</div>
+          </div>
+          <div class="fund-metric">
+            <div class="fund-metric-val">2.55</div>
+            <div class="fund-metric-label">Best Sharpe Ratio</div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="eyebrow" style="margin-bottom:1.5rem;">Flagship Strategy Products</div>
+          <div class="quant-strategies">
+
+            <div class="quant-card">
+              <span class="quant-card-tag">Low Volatility · High Frequency</span>
+              <div class="quant-card-name">Quantitative Fund Series No. 7</div>
+              <p class="quant-card-desc">
+                Representative product of the high-frequency low-volatility stock strategy. 
+                Designed for investors seeking strong risk-adjusted returns with minimal drawdown. 
+                Fully algorithmic execution with real-time risk monitoring.
+              </p>
+              <div class="quant-card-stats">
+                <div>
+                  <span class="quant-stat-val">82.41%</span>
+                  <span class="quant-stat-label">Cumulative Return</span>
+                </div>
+                <div>
+                  <span class="quant-stat-val">23.87%</span>
+                  <span class="quant-stat-label">Annualised Return</span>
+                </div>
+                <div>
+                  <span class="quant-stat-val">2.20</span>
+                  <span class="quant-stat-label">Sharpe Ratio</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="quant-card">
+              <span class="quant-card-tag">Mid Volatility · High Frequency</span>
+              <div class="quant-card-name">Quantitative Fund Series No. 9</div>
+              <p class="quant-card-desc">
+                Representative product of the high-frequency mid-volatility stock strategy. 
+                Higher return potential with moderate volatility tolerance. 
+                Best overall track record across the fund series since inception.
+              </p>
+              <div class="quant-card-stats">
+                <div>
+                  <span class="quant-stat-val">147.22%</span>
+                  <span class="quant-stat-label">Cumulative Return</span>
+                </div>
+                <div>
+                  <span class="quant-stat-val">55.46%</span>
+                  <span class="quant-stat-label">Annualised Return</span>
+                </div>
+                <div>
+                  <span class="quant-stat-val">2.55</span>
+                  <span class="quant-stat-label">Sharpe Ratio</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="quant-card">
+              <span class="quant-card-tag">Mid Volatility · High Frequency</span>
+              <div class="quant-card-name">Quantitative Fund Series No. 5</div>
+              <p class="quant-card-desc">
+                Mid-volatility stock strategy with a shorter operating history. 
+                Strong recent performance with annualised returns of 45.65% 
+                and a maximum drawdown of only 7.23%.
+              </p>
+              <div class="quant-card-stats">
+                <div>
+                  <span class="quant-stat-val">87.34%</span>
+                  <span class="quant-stat-label">Cumulative Return</span>
+                </div>
+                <div>
+                  <span class="quant-stat-val">45.65%</span>
+                  <span class="quant-stat-label">Annualised Return</span>
+                </div>
+                <div>
+                  <span class="quant-stat-val">2.24</span>
+                  <span class="quant-stat-label">Sharpe Ratio</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="quant-card">
+              <span class="quant-card-tag">High Volatility · Self-Built Position</span>
+              <div class="quant-card-name">Quantitative Fund Series No. 8</div>
+              <p class="quant-card-desc">
+                Self-built position high-volatility strategy for investors with 
+                higher risk appetite. Greater return potential with correspondingly 
+                higher drawdown tolerance. Fully algorithmic with multi-broker execution.
+              </p>
+              <div class="quant-card-stats">
+                <div>
+                  <span class="quant-stat-val">124.06%</span>
+                  <span class="quant-stat-label">Cumulative Return</span>
+                </div>
+                <div>
+                  <span class="quant-stat-val">45.03%</span>
+                  <span class="quant-stat-label">Annualised Return</span>
+                </div>
+                <div>
+                  <span class="quant-stat-val">1.67</span>
+                  <span class="quant-stat-label">Sharpe Ratio</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <p style="font-size:0.65rem;color:var(--muted2);margin-top:1.25rem;line-height:1.7;">
+            Data from custodian-reported NAV. Periods: May 2023 – March 2026 (Series No. 7, 8, 9); Oct 2024 – March 2026 (Series No. 5). Past performance does not guarantee future results. For qualified investors only.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta-banner">
+  <div class="cta-banner-inner reveal">
+    <div>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3.2rem);">
+        Interested in investing<br><em>with us?</em>
+      </h2>
+      <p>Contact our team in Sydney or Shanghai to discuss which fund aligns with your investment goals and eligibility.</p>
+    </div>
+    <div class="cta-banner-btns">
+      <a href="contact.html" class="btn btn-gold btn-arrow">Get In Touch</a>
+      <a href="performance.html" class="btn btn-outline">View Performance</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-name">Black Chess Capital</div>
+      <p class="footer-brand-desc">A global investment management firm with a dual-market presence across Australian venture capital and Chinese quantitative strategies — built for sophisticated investors seeking superior returns.</p>
+      <div class="footer-tags">
+        <span>ABN 40 664 455 501</span>
+        <span>AFSL Representative</span>
+        <span>VCLP Registered</span>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="funds.html">Our Funds</a></li>
+        <li><a href="strategy.html">Strategy</a></li>
+        <li><a href="performance.html">Performance</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Our Offices</div>
+      <div class="footer-office">
+        <div class="footer-office-city">Sydney, Australia</div>
+        <p>Chris Li<br><a href="mailto:Chris.Li@softwatercap.com.au">Chris.Li@softwatercap.com.au</a><br>+61 430 988 999</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Perth, Australia</div>
+        <p>Jake Zhou<br><a href="mailto:jakezhou88@outlook.com">jakezhou88@outlook.com</a><br>+61 452 188 526</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Shanghai, China</div>
+        <p>Registration No. P1019979<br>Shanghai Hedge Fund Park</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Black Chess Capital. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Disclaimer</a>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    <p>This website is for informational purposes only and does not constitute financial advice or an offer to invest. Past performance is not indicative of future results. Black Chess Capital and its associated entities are not responsible for investment decisions made based on the content of this website. Investment in venture capital and quantitative funds involves significant risk, including possible loss of capital. For qualified and sophisticated investors only. Always seek independent financial advice before investing.</p>
+  </div>
+</footer>
+
+<script>
+  /* NAV */
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('site-nav').style.background =
+      window.scrollY > 60 ? 'rgba(8,8,7,0.98)' : 'rgba(8,8,7,0.92)';
+  });
+
+  /* SCROLL REVEAL */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* Hero fires on load */
+  document.querySelectorAll('.page-hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 150 + i * 150);
+  });
+
+  /* STICKY FUND TABS — highlight active on scroll */
+  const sections = ['vc-fund','trust','quant'];
+  const tabs = document.querySelectorAll('.fund-tab');
+
+  const tabObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        tabs.forEach(t => t.classList.remove('active'));
+        const active = document.querySelector(`.fund-tab[data-target="${id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) tabObs.observe(el);
+  });
+
+  /* Tab click — smooth scroll */
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = document.getElementById(tab.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
 </body>
 </html>
