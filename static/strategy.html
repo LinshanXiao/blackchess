@@ -3,25 +3,1235 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Black Chess Capital</title>
-  <link rel="stylesheet" href="css/global.css">
+  <title>Strategy — Black Chess Capital</title>
+  <meta name="description" content="Black Chess Capital's investment strategy — sector focus, investment phases, deal sourcing, due diligence process, and investment committee governance.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    .coming-soon { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:calc(var(--nav-h) + 2rem) 2rem 4rem; }
-    .coming-soon h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,6vw,5rem); font-weight:300; margin:1.5rem 0 1rem; }
-    .coming-soon h1 em { font-style:italic; color:var(--gold); }
-    .coming-soon p { color:var(--muted); font-size:0.9rem; margin-bottom:2.5rem; }
+    :root {
+      --black:#080807; --dark:#0f0e0d; --dark2:#161513; --dark3:#1e1c1a;
+      --gold:#b8975a; --gold-light:#d4b87a; --gold-dim:rgba(184,151,90,0.12);
+      --gold-border:rgba(184,151,90,0.22); --white:#f0ece4; --off-white:#d4cfc6;
+      --muted:#7a756d; --muted2:#524e48; --nav-h:72px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--dark);color:var(--white);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold-border);border-radius:2px}
+    ::selection{background:var(--gold);color:var(--black)}
+    a{color:inherit;text-decoration:none} p{color:var(--off-white)}
+    .section{padding:7rem 0;position:relative}
+    .container{max-width:1200px;margin:0 auto;padding:0 5rem}
+    .divider{height:0.5px;background:var(--gold-border)}
+    .display{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.05;letter-spacing:-0.02em}
+    .display em{font-style:italic;color:var(--gold)}
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-family:'Jost',sans-serif;font-weight:400}
+    .eyebrow::before{content:'';display:block;width:28px;height:0.5px;background:var(--gold);flex-shrink:0}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:0.8rem 2rem;font-family:'Jost',sans-serif;font-size:0.75rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:all 0.28s ease;border:none}
+    .btn-gold{background:var(--gold);color:var(--black)}.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:var(--white);border:0.5px solid rgba(240,236,228,0.3)}.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
+    .btn-arrow::after{content:'→';font-size:1rem;transition:transform 0.2s}.btn-arrow:hover::after{transform:translateX(4px)}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}
+    .reveal-delay-3{transition-delay:0.3s}.reveal-delay-4{transition-delay:0.4s}
+
+    /* ── NAV ── */
+    #site-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5rem;background:rgba(8,8,7,0.92);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--gold-border);transition:background 0.3s}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--gold);letter-spacing:0.06em}
+    .nav-logo span{color:var(--white);font-style:italic}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+    .nav-links a{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);transition:color 0.25s;position:relative;padding-bottom:2px}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:0.5px;background:var(--gold);transform:scaleX(0);transition:transform 0.25s}
+    .nav-links a:hover,.nav-links a.active{color:var(--white)}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:0.5rem 1.4rem}.nav-cta:hover{background:var(--gold-light)!important}.nav-cta::after{display:none!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:22px;height:0.5px;background:var(--white)}
+
+    /* ── PAGE HERO ── */
+    .page-hero{
+      padding:calc(var(--nav-h) + 6rem) 5rem 6rem;
+      background:var(--dark2); border-bottom:0.5px solid var(--gold-border);
+      position:relative; overflow:hidden;
+    }
+    .page-hero::before{
+      content:''; position:absolute; top:-80px; right:-80px;
+      width:550px; height:550px; border-radius:50%;
+      background:radial-gradient(circle,rgba(184,151,90,0.06) 0%,transparent 70%);
+      pointer-events:none;
+    }
+    .page-hero-inner{
+      max-width:1200px; margin:0 auto;
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:5rem; align-items:end;
+    }
+    .page-hero-title{font-size:clamp(3rem,6vw,5.5rem);margin:1.25rem 0 0;}
+    .page-hero-desc{font-size:1rem;color:var(--muted);line-height:1.9;margin-bottom:1.25rem;}
+
+    /* ── SECTOR OVERVIEW ── */
+    #sectors{ background:var(--dark); }
+    .sectors-header{ margin-bottom:4rem; }
+    .sectors-header .eyebrow{ margin-bottom:1rem; }
+    .sectors-title{ font-size:clamp(2.2rem,4vw,3.5rem); }
+    .sectors-grid{
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:0; border:0.5px solid var(--gold-border);
+    }
+    .sector-card{
+      padding:2.5rem 2rem; border-right:0.5px solid var(--gold-border);
+      position:relative; overflow:hidden;
+      transition:background 0.3s;
+    }
+    .sector-card:last-child{ border-right:none; }
+    .sector-card:hover{ background:var(--gold-dim); }
+    .sector-card::before{
+      content:''; position:absolute; top:0; left:0; right:0;
+      height:2px; background:var(--gold);
+      transform:scaleX(0); transform-origin:left;
+      transition:transform 0.35s ease;
+    }
+    .sector-card:hover::before{ transform:scaleX(1); }
+    .sector-num{
+      font-family:'Cormorant Garamond',serif;
+      font-size:4rem; font-weight:300;
+      color:rgba(184,151,90,0.12); line-height:1;
+      margin-bottom:0.5rem;
+    }
+    .sector-alloc{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.8rem; font-weight:300; color:var(--gold);
+      line-height:1; margin-bottom:0.75rem;
+    }
+    .sector-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.2rem; font-weight:400;
+      margin-bottom:0.85rem; line-height:1.3;
+    }
+    .sector-desc{
+      font-size:0.78rem; color:var(--muted); line-height:1.8;
+      margin-bottom:1.5rem;
+    }
+    .sector-examples{
+      display:flex; flex-direction:column; gap:0.3rem;
+    }
+    .sector-example{
+      font-size:0.7rem; letter-spacing:0.1em;
+      color:var(--muted2); display:flex; align-items:center; gap:0.5rem;
+    }
+    .sector-example::before{
+      content:''; width:4px; height:4px; border-radius:50%;
+      background:var(--gold); flex-shrink:0; opacity:0.6;
+    }
+    .sector-risk{
+      margin-top:1.5rem; padding-top:1.25rem;
+      border-top:0.5px solid var(--gold-border);
+      font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--gold);
+    }
+
+    /* ── ALLOCATION TABLE ── */
+    #allocation{ background:var(--dark2); }
+    .alloc-layout{
+      display:grid; grid-template-columns:1fr 1.1fr;
+      gap:6rem; align-items:start;
+    }
+    .alloc-title{ font-size:clamp(2rem,3.5vw,3rem); margin:1.25rem 0 2rem; }
+    .alloc-body{ font-size:0.88rem; color:var(--muted); line-height:1.9; margin-bottom:1.25rem; }
+    .alloc-table{ width:100%; border-collapse:collapse; }
+    .alloc-table th{
+      font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase;
+      color:var(--muted); padding:0.85rem 1rem; text-align:left;
+      border-bottom:0.5px solid var(--gold-border);
+    }
+    .alloc-table th:first-child{ padding-left:0; }
+    .alloc-table td{
+      padding:1.1rem 1rem; font-size:0.83rem;
+      border-bottom:0.5px solid rgba(184,151,90,0.1);
+      vertical-align:middle;
+    }
+    .alloc-table td:first-child{ padding-left:0; color:var(--off-white); font-weight:400; }
+    .alloc-table tr:last-child td{ border-bottom:none; }
+    .alloc-table .gold-text{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1rem; color:var(--gold);
+    }
+    .alloc-bars{ display:flex; flex-direction:column; gap:1.5rem; margin-top:0.5rem; }
+    .alloc-row{ display:flex; flex-direction:column; gap:0.5rem; }
+    .alloc-row-hdr{ display:flex; justify-content:space-between; align-items:baseline; }
+    .alloc-name{ font-size:0.82rem; color:var(--off-white); }
+    .alloc-pct{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.2rem; color:var(--gold);
+    }
+    .alloc-track{ height:3px; background:rgba(255,255,255,0.07); border-radius:2px; overflow:hidden; }
+    .alloc-fill{ height:100%; background:var(--gold); border-radius:2px; width:var(--w); }
+
+    /* ── INVESTMENT PROCESS ── */
+    #process{ background:var(--dark); }
+    .process-header{ margin-bottom:4rem; }
+    .process-header .eyebrow{ margin-bottom:1rem; }
+    .process-title{ font-size:clamp(2.2rem,4vw,3.5rem); }
+    .process-timeline{
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:0; position:relative;
+    }
+    .process-timeline::before{
+      content:''; position:absolute;
+      top:28px; left:0; right:0; height:0.5px;
+      background:var(--gold-border); z-index:0;
+    }
+    .process-step{
+      padding:0 2rem 0 0; position:relative; z-index:1;
+    }
+    .process-step:last-child{ padding-right:0; }
+    .process-dot-wrap{
+      display:flex; align-items:center; gap:0; margin-bottom:2rem;
+    }
+    .process-dot{
+      width:56px; height:56px; border:0.5px solid var(--gold-border);
+      background:var(--dark); display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; transition:border-color 0.3s, background 0.3s;
+    }
+    .process-step:hover .process-dot{
+      border-color:var(--gold); background:var(--gold-dim);
+    }
+    .process-dot-num{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.1rem; color:var(--gold);
+    }
+    .process-step-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.2rem; font-weight:400;
+      margin-bottom:0.75rem; line-height:1.3;
+    }
+    .process-step-body{
+      font-size:0.78rem; color:var(--muted); line-height:1.8;
+    }
+    .process-steps-bottom{
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:0; margin-top:4rem; border:0.5px solid var(--gold-border);
+    }
+    .process-step-bottom{
+      padding:2rem 1.75rem; border-right:0.5px solid var(--gold-border);
+      transition:background 0.3s;
+    }
+    .process-step-bottom:last-child{ border-right:none; }
+    .process-step-bottom:hover{ background:var(--gold-dim); }
+    .process-step-tag{
+      font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase;
+      color:var(--gold); display:block; margin-bottom:0.75rem;
+    }
+    .process-step-bottom-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.1rem; font-weight:400; margin-bottom:0.6rem;
+    }
+    .process-step-bottom-body{
+      font-size:0.75rem; color:var(--muted); line-height:1.75;
+    }
+
+    /* ── THRESHOLD CRITERIA ── */
+    #threshold{ background:var(--dark2); }
+    .threshold-layout{
+      display:grid; grid-template-columns:1fr 1.2fr;
+      gap:6rem; align-items:start;
+    }
+    .threshold-title{ font-size:clamp(2rem,3.5vw,3rem); margin:1.25rem 0 2rem; }
+    .threshold-body{ font-size:0.88rem; color:var(--muted); line-height:1.9; margin-bottom:1.25rem; }
+    .criteria-list{ display:flex; flex-direction:column; gap:0; }
+    .criteria-item{
+      display:grid; grid-template-columns:auto 1fr;
+      gap:1.5rem; padding:1.5rem 0;
+      border-bottom:0.5px solid var(--gold-border);
+      align-items:start;
+    }
+    .criteria-item:first-child{ border-top:0.5px solid var(--gold-border); }
+    .criteria-num{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.5rem; font-weight:300;
+      color:rgba(184,151,90,0.2); line-height:1;
+    }
+    .criteria-title{
+      font-size:0.88rem; font-weight:400; margin-bottom:0.35rem; color:var(--white);
+    }
+    .criteria-body{ font-size:0.78rem; color:var(--muted); line-height:1.75; }
+
+    /* ── SOURCING CHANNELS ── */
+    #sourcing{ background:var(--dark); }
+    .sourcing-header{ margin-bottom:4rem; }
+    .sourcing-header .eyebrow{ margin-bottom:1rem; }
+    .sourcing-title{ font-size:clamp(2.2rem,4vw,3.5rem); }
+    .sourcing-grid{
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1.5rem;
+    }
+    .source-card{
+      border:0.5px solid var(--gold-border);
+      padding:2.25rem 2rem; transition:border-color 0.3s;
+      position:relative; overflow:hidden;
+    }
+    .source-card:hover{ border-color:rgba(184,151,90,0.5); }
+    .source-card::after{
+      content:''; position:absolute; bottom:0; left:0; right:0;
+      height:1.5px; background:var(--gold);
+      transform:scaleX(0); transform-origin:left;
+      transition:transform 0.35s ease;
+    }
+    .source-card:hover::after{ transform:scaleX(1); }
+    .source-icon{
+      font-size:1.4rem; color:var(--gold);
+      margin-bottom:1rem; display:block;
+    }
+    .source-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.2rem; font-weight:400; margin-bottom:0.75rem;
+    }
+    .source-body{ font-size:0.8rem; color:var(--muted); line-height:1.8; }
+
+    /* ── INVESTMENT COMMITTEE ── */
+    #committee{ background:var(--dark2); }
+    .committee-layout{
+      display:grid; grid-template-columns:1.1fr 1fr;
+      gap:6rem; align-items:start;
+    }
+    .committee-title{ font-size:clamp(2rem,3.5vw,3rem); margin:1.25rem 0 2rem; }
+    .committee-body{ font-size:0.88rem; color:var(--muted); line-height:1.9; margin-bottom:1.25rem; }
+    .committee-rules{
+      display:flex; flex-direction:column; gap:0;
+    }
+    .committee-rule{
+      display:grid; grid-template-columns:auto 1fr;
+      gap:1.25rem; padding:1.35rem 0;
+      border-bottom:0.5px solid var(--gold-border);
+      align-items:start;
+    }
+    .committee-rule:first-child{ border-top:0.5px solid var(--gold-border); }
+    .rule-icon{
+      width:20px; height:20px; border:0.5px solid var(--gold);
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.7rem; color:var(--gold); flex-shrink:0; margin-top:0.1rem;
+    }
+    .rule-title{ font-size:0.85rem; font-weight:400; margin-bottom:0.3rem; color:var(--white); }
+    .rule-body{ font-size:0.78rem; color:var(--muted); line-height:1.7; }
+    .committee-highlight{
+      background:var(--dark3); border:0.5px solid var(--gold-border);
+      padding:2.5rem; margin-top:0;
+    }
+    .committee-highlight-label{
+      font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:1.5rem; display:block;
+    }
+    .highlight-stats{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:1.5rem;
+    }
+    .highlight-stat-val{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.2rem; font-weight:300; color:var(--gold);
+      line-height:1; margin-bottom:0.3rem;
+    }
+    .highlight-stat-label{
+      font-size:0.68rem; letter-spacing:0.13em; text-transform:uppercase; color:var(--muted);
+    }
+
+    /* ── QUANT STRATEGY ── */
+    #quant-strategy{ background:var(--dark); }
+    .quant-header{ margin-bottom:4rem; }
+    .quant-header .eyebrow{ margin-bottom:1rem; }
+    .quant-title{ font-size:clamp(2.2rem,4vw,3.5rem); }
+    .quant-layout{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:6rem; align-items:start;
+    }
+    .quant-body{ font-size:0.88rem; color:var(--muted); line-height:1.9; margin-bottom:1.25rem; }
+    .quant-strategy-list{ display:flex; flex-direction:column; gap:1.25rem; }
+    .quant-strat-item{
+      border:0.5px solid var(--gold-border); padding:1.75rem 2rem;
+      transition:border-color 0.3s; position:relative; overflow:hidden;
+    }
+    .quant-strat-item:hover{ border-color:rgba(184,151,90,0.5); }
+    .quant-strat-item::before{
+      content:''; position:absolute; left:0; top:0; bottom:0;
+      width:2px; background:var(--gold);
+      transform:scaleY(0); transform-origin:top;
+      transition:transform 0.3s ease;
+    }
+    .quant-strat-item:hover::before{ transform:scaleY(1); }
+    .quant-strat-tag{
+      font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:0.5rem; display:block;
+    }
+    .quant-strat-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.25rem; font-weight:400; margin-bottom:0.7rem;
+    }
+    .quant-strat-body{ font-size:0.8rem; color:var(--muted); line-height:1.8; }
+    .quant-risk-stages{
+      display:flex; flex-direction:column; gap:0;
+    }
+    .risk-stage{
+      display:grid; grid-template-columns:auto 1fr;
+      gap:1.25rem; padding:1.35rem 0;
+      border-bottom:0.5px solid var(--gold-border); align-items:start;
+    }
+    .risk-stage:first-child{ border-top:0.5px solid var(--gold-border); }
+    .risk-stage-num{
+      font-family:'Cormorant Garamond',serif;
+      font-size:0.85rem; color:var(--gold); padding-top:0.1rem;
+    }
+    .risk-stage-title{ font-size:0.85rem; font-weight:400; margin-bottom:0.3rem; color:var(--white); }
+    .risk-stage-body{ font-size:0.78rem; color:var(--muted); line-height:1.7; }
+
+    /* ── CTA BANNER ── */
+    #cta-banner{ background:var(--dark3); border-top:0.5px solid var(--gold-border); padding:6rem 5rem; }
+    .cta-banner-inner{ max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:3rem 5rem; align-items:center; }
+    .cta-banner-inner p{ font-size:0.9rem; color:var(--muted); max-width:420px; margin-top:0.75rem; }
+    .cta-banner-btns{ display:flex; flex-direction:column; gap:1rem; align-items:flex-end; }
+
+    /* ── FOOTER ── */
+    #site-footer{background:var(--black);border-top:0.5px solid var(--gold-border)}
+    .footer-main{display:grid;grid-template-columns:1.6fr 1fr 1.4fr;gap:4rem;padding:5rem;max-width:1200px;margin:0 auto}
+    .footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);margin-bottom:1rem}
+    .footer-brand-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
+    .footer-tags{display:flex;gap:0.6rem;flex-wrap:wrap}
+    .footer-tags span{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);border:0.5px solid var(--muted2);padding:0.2rem 0.6rem}
+    .footer-col-title{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+    .footer-links a{font-size:0.82rem;color:var(--muted);transition:color 0.2s}.footer-links a:hover{color:var(--gold)}
+    .footer-office{margin-bottom:1.5rem}
+    .footer-office-city{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+    .footer-office p{font-size:0.8rem;color:var(--muted);line-height:1.65}
+    .footer-office a{color:var(--gold-light);transition:color 0.2s}.footer-office a:hover{color:var(--gold)}
+    .footer-bottom{border-top:0.5px solid var(--gold-border);padding:1.5rem 5rem;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-copy{font-size:0.72rem;color:var(--muted2)}
+    .footer-legal{display:flex;gap:1.5rem}
+    .footer-legal a{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);transition:color 0.2s}.footer-legal a:hover{color:var(--muted)}
+    .footer-disclaimer{border-top:0.5px solid rgba(80,76,72,0.3);padding:1.5rem 5rem 2.5rem;max-width:1200px;margin:0 auto}
+    .footer-disclaimer p{font-size:0.66rem;color:var(--muted2);line-height:1.8}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){
+      .page-hero-inner,.alloc-layout,.threshold-layout,.committee-layout,.quant-layout{grid-template-columns:1fr;gap:3rem}
+      .sectors-grid,.process-timeline,.process-steps-bottom{grid-template-columns:1fr 1fr}
+      .sector-card:nth-child(2){border-right:none}
+      .sector-card:nth-child(3){border-top:0.5px solid var(--gold-border)}
+      .sector-card:nth-child(4){border-right:none;border-top:0.5px solid var(--gold-border)}
+      .process-timeline::before{display:none}
+      .sourcing-grid{grid-template-columns:1fr 1fr}
+      .cta-banner-inner{grid-template-columns:1fr}
+      .cta-banner-btns{flex-direction:row;align-items:flex-start}
+      .footer-main{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.5rem}
+      .footer-bottom,.footer-disclaimer{padding-left:1.5rem;padding-right:1.5rem}
+    }
+    @media(max-width:768px){
+      #site-nav{padding:0 1.5rem}
+      .nav-links{display:none;position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;background:var(--black);padding:2rem 1.5rem;gap:1.5rem;border-bottom:0.5px solid var(--gold-border)}
+      .nav-links.open{display:flex}
+      .hamburger{display:flex}
+      .page-hero{padding:calc(var(--nav-h) + 4rem) 1.5rem 4rem}
+      .container{padding:0 1.5rem}
+      .section{padding:4rem 0}
+      .sectors-grid,.process-timeline,.process-steps-bottom,.sourcing-grid{grid-template-columns:1fr}
+      .sector-card,.process-step-bottom,.source-card{border-right:none!important;border-top:none;border-bottom:0.5px solid var(--gold-border)}
+      .sector-card:last-child,.process-step-bottom:last-child,.source-card:last-child{border-bottom:none}
+      .sector-card:nth-child(n){border-top:none}
+      #cta-banner{padding:4rem 1.5rem}
+    }
   </style>
 </head>
 <body>
-  <div class="coming-soon">
-    <div class="eyebrow" style="display:inline-flex; align-items:center; gap:12px; font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold);">
-      <span style="width:28px;height:0.5px;background:var(--gold);display:block;"></span>
-      Black Chess Capital
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a class="nav-logo" href="index.html">Black Chess <span>Capital</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="funds.html">Our Funds</a></li>
+    <li><a href="strategy.html" class="active">Strategy</a></li>
+    <li><a href="performance.html">Performance</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="eyebrow reveal">Investment Strategy</div>
+      <h1 class="display page-hero-title reveal reveal-delay-1">
+        How we think<br>about <em>investing.</em>
+      </h1>
     </div>
-    <h1>Page <em>coming soon.</em></h1>
-    <p>This page is currently being built. More content coming shortly.</p>
-    <a href="index.html" class="btn btn-gold" style="display:inline-flex;align-items:center;gap:10px;padding:0.8rem 2rem;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--gold);color:var(--black);text-decoration:none;">← Back to Home</a>
+    <div class="reveal reveal-delay-2">
+      <p class="page-hero-desc">
+        Our investment strategy is built around a simple idea: that 
+        disciplined process, deep sector knowledge, and genuine 
+        portfolio involvement produce better outcomes than passive 
+        capital allocation.
+      </p>
+      <p class="page-hero-desc">
+        Across both our Australian venture capital platform and 
+        our Chinese quantitative division, we apply the same 
+        core principles — rigorous screening, active management, 
+        and relentless focus on delivering returns to our investors.
+      </p>
+    </div>
   </div>
-  <script src="js/components.js"></script>
+</div>
+
+<!-- ═══ SECTOR FOCUS ═══ -->
+<section class="section" id="sectors">
+  <div class="container">
+    <div class="sectors-header reveal">
+      <div class="eyebrow">Sector Focus</div>
+      <h2 class="display sectors-title">
+        Where we <em>invest.</em>
+      </h2>
+      <p style="font-size:0.9rem;color:var(--muted);max-width:540px;margin-top:1rem;line-height:1.85;">
+        Our venture capital platform targets four sectors where our team has 
+        genuine expertise and where Australia offers compelling early-stage 
+        opportunities. Each sector carries a mid-to-high risk and return profile.
+      </p>
+    </div>
+
+    <div class="sectors-grid">
+      <div class="sector-card reveal reveal-delay-1">
+        <div class="sector-num">I</div>
+        <div class="sector-alloc">30%</div>
+        <h3 class="sector-name">Disruptive Technology</h3>
+        <p class="sector-desc">
+          We back companies commercialising transformative technologies — 
+          businesses where technology is the core product, not just a tool. 
+          We focus on companies with strong IP, international expansion 
+          potential, and a clear path to scalable revenue.
+        </p>
+        <div class="sector-examples">
+          <span class="sector-example">Fintech &amp; financial software</span>
+          <span class="sector-example">Artificial intelligence &amp; ML</span>
+          <span class="sector-example">Enterprise &amp; SaaS software</span>
+          <span class="sector-example">Internet marketplaces</span>
+          <span class="sector-example">Life sciences &amp; medtech</span>
+          <span class="sector-example">Social media platforms</span>
+        </div>
+        <div class="sector-risk">Risk profile: Mid – High</div>
+      </div>
+
+      <div class="sector-card reveal reveal-delay-2">
+        <div class="sector-num">II</div>
+        <div class="sector-alloc">30%</div>
+        <h3 class="sector-name">Hospitality &amp; Entertainment</h3>
+        <p class="sector-desc">
+          We look for businesses that can centralise operations and scale 
+          modularly — without franchising. The ideal investment has a 
+          proven concept, clear unit economics, and a realistic roadmap 
+          to regional or national expansion.
+        </p>
+        <div class="sector-examples">
+          <span class="sector-example">Food &amp; beverage concepts</span>
+          <span class="sector-example">Eco-tourism &amp; resorts</span>
+          <span class="sector-example">Film &amp; digital entertainment</span>
+          <span class="sector-example">Experience-based hospitality</span>
+          <span class="sector-example">Event technology platforms</span>
+        </div>
+        <div class="sector-risk">Risk profile: Mid – High</div>
+      </div>
+
+      <div class="sector-card reveal reveal-delay-3">
+        <div class="sector-num">III</div>
+        <div class="sector-alloc">20%</div>
+        <h3 class="sector-name">Alternative Energy</h3>
+        <p class="sector-desc">
+          We invest in companies at the forefront of Australia's energy 
+          transition — prioritising businesses with commercial-stage 
+          technology, identifiable demand, and clear paths to expansion 
+          beyond domestic markets.
+        </p>
+        <div class="sector-examples">
+          <span class="sector-example">Energy usage tracking &amp; analytics</span>
+          <span class="sector-example">Demand management technology</span>
+          <span class="sector-example">Hydrogen &amp; fuel cells</span>
+          <span class="sector-example">Small-scale solar solutions</span>
+          <span class="sector-example">Small-scale geothermal</span>
+        </div>
+        <div class="sector-risk">Risk profile: Mid – High</div>
+      </div>
+
+      <div class="sector-card reveal reveal-delay-4">
+        <div class="sector-num">IV</div>
+        <div class="sector-alloc">20%</div>
+        <h3 class="sector-name">Other Complying Investments</h3>
+        <p class="sector-desc">
+          A flexible allocation for compelling VCLP-compliant opportunities 
+          outside our core sectors. These investments diversify portfolio 
+          risk and allow us to adapt to evolving Australian and global 
+          market conditions without being constrained by sector mandates.
+        </p>
+        <div class="sector-examples">
+          <span class="sector-example">Any VCLP-eligible sector</span>
+          <span class="sector-example">Emerging technology verticals</span>
+          <span class="sector-example">Cross-sector opportunities</span>
+          <span class="sector-example">Portfolio diversification plays</span>
+        </div>
+        <div class="sector-risk">Risk profile: Mid</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ ALLOCATION DETAIL ═══ -->
+<section class="section" id="allocation">
+  <div class="container">
+    <div class="alloc-layout">
+      <div class="alloc-left reveal">
+        <div class="eyebrow">Portfolio Construction</div>
+        <h2 class="display alloc-title">
+          Built for<br><em>diversification.</em>
+        </h2>
+        <p class="alloc-body">
+          Our venture fund is deliberately designed as a high-volume, 
+          diversified portfolio — rather than concentrating capital 
+          in a small number of large bets. This approach reduces the 
+          impact of any single investment failure while preserving 
+          meaningful upside from the portfolio's best performers.
+        </p>
+        <p class="alloc-body">
+          Individual commitments range from $50,000 to $2,000,000 
+          per company, with typical investments of $250,000 to 
+          $1,000,000. We target equity positions of 10–40% per 
+          investee, large enough to be meaningful but leaving room 
+          for follow-on rounds.
+        </p>
+        <p class="alloc-body">
+          All investments must qualify as eligible investments 
+          under the Venture Capital Act 2002 and be consistent 
+          with the approved investment plan. Investee companies 
+          must have total assets of no more than $250 million 
+          at the time of investment.
+        </p>
+
+        <div style="margin-top:2.5rem;">
+          <table class="alloc-table">
+            <thead>
+              <tr>
+                <th>Criterion</th>
+                <th>Requirement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Investment range</td>
+                <td class="gold-text">$50K – $2M</td>
+              </tr>
+              <tr>
+                <td>Typical commitment</td>
+                <td class="gold-text">$250K – $1M</td>
+              </tr>
+              <tr>
+                <td>Equity stake target</td>
+                <td class="gold-text">10% – 40%</td>
+              </tr>
+              <tr>
+                <td>Max investee asset size</td>
+                <td class="gold-text">$250M</td>
+              </tr>
+              <tr>
+                <td>Eligible instruments</td>
+                <td class="gold-text">Shares, notes, units, options</td>
+              </tr>
+              <tr>
+                <td>IP to total assets ratio</td>
+                <td class="gold-text">10% – 95% (post-investment)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="alloc-right reveal reveal-delay-2">
+        <div class="eyebrow" style="margin-bottom:1.5rem;">Indicative Fund Allocation</div>
+        <div class="alloc-bars">
+          <div class="alloc-row">
+            <div class="alloc-row-hdr">
+              <span class="alloc-name">Disruptive Technology</span>
+              <span class="alloc-pct">30%</span>
+            </div>
+            <div class="alloc-track"><div class="alloc-fill" style="--w:30%"></div></div>
+          </div>
+          <div class="alloc-row">
+            <div class="alloc-row-hdr">
+              <span class="alloc-name">Hospitality &amp; Entertainment</span>
+              <span class="alloc-pct">30%</span>
+            </div>
+            <div class="alloc-track"><div class="alloc-fill" style="--w:30%"></div></div>
+          </div>
+          <div class="alloc-row">
+            <div class="alloc-row-hdr">
+              <span class="alloc-name">Alternative Energy</span>
+              <span class="alloc-pct">20%</span>
+            </div>
+            <div class="alloc-track"><div class="alloc-fill" style="--w:20%"></div></div>
+          </div>
+          <div class="alloc-row">
+            <div class="alloc-row-hdr">
+              <span class="alloc-name">Other Complying Investments</span>
+              <span class="alloc-pct">20%</span>
+            </div>
+            <div class="alloc-track"><div class="alloc-fill" style="--w:20%"></div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:3rem;">
+          <div class="eyebrow" style="margin-bottom:1.5rem;">Allocation by Investment Phase</div>
+          <div class="alloc-bars">
+            <div class="alloc-row">
+              <div class="alloc-row-hdr">
+                <span class="alloc-name">Seed</span>
+                <span class="alloc-pct">10%</span>
+              </div>
+              <div class="alloc-track"><div class="alloc-fill" style="--w:10%"></div></div>
+            </div>
+            <div class="alloc-row">
+              <div class="alloc-row-hdr">
+                <span class="alloc-name">Series A</span>
+                <span class="alloc-pct">20%</span>
+              </div>
+              <div class="alloc-track"><div class="alloc-fill" style="--w:20%"></div></div>
+            </div>
+            <div class="alloc-row">
+              <div class="alloc-row-hdr">
+                <span class="alloc-name">Series B</span>
+                <span class="alloc-pct">30%</span>
+              </div>
+              <div class="alloc-track"><div class="alloc-fill" style="--w:30%"></div></div>
+            </div>
+            <div class="alloc-row">
+              <div class="alloc-row-hdr">
+                <span class="alloc-name">Expansion</span>
+                <span class="alloc-pct">25%</span>
+              </div>
+              <div class="alloc-track"><div class="alloc-fill" style="--w:25%"></div></div>
+            </div>
+            <div class="alloc-row">
+              <div class="alloc-row-hdr">
+                <span class="alloc-name">Exit-ready</span>
+                <span class="alloc-pct">15%</span>
+              </div>
+              <div class="alloc-track"><div class="alloc-fill" style="--w:15%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ INVESTMENT PROCESS ═══ -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <div class="eyebrow">Investment Process</div>
+      <h2 class="display process-title">
+        Eight steps from<br><em>deal to decision.</em>
+      </h2>
+      <p style="font-size:0.9rem;color:var(--muted);max-width:540px;margin-top:1rem;line-height:1.85;">
+        A consistent, repeatable eight-step process governs every venture 
+        investment we consider — from initial sourcing through to 
+        final Investment Committee approval.
+      </p>
+    </div>
+
+    <div class="process-timeline">
+      <div class="process-step reveal reveal-delay-1">
+        <div class="process-dot-wrap">
+          <div class="process-dot"><span class="process-dot-num">01</span></div>
+        </div>
+        <h3 class="process-step-title">Deal Sourcing</h3>
+        <p class="process-step-body">Opportunities generated through multiple targeted channels including startup hubs, university programs, developer communities, and our global investor network.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="process-dot-wrap">
+          <div class="process-dot"><span class="process-dot-num">02</span></div>
+        </div>
+        <h3 class="process-step-title">Application</h3>
+        <p class="process-step-body">All potential investee companies complete a structured application form covering business model, financials, technology, team, and growth strategy.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="process-dot-wrap">
+          <div class="process-dot"><span class="process-dot-num">03</span></div>
+        </div>
+        <h3 class="process-step-title">Automated Filtering</h3>
+        <p class="process-step-body">Applications are filtered and categorised by sector and investment phase. An initial VCLP eligibility check is performed at this stage to screen out non-compliant opportunities early.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="process-dot-wrap">
+          <div class="process-dot"><span class="process-dot-num">04</span></div>
+        </div>
+        <h3 class="process-step-title">Individual Assessment</h3>
+        <p class="process-step-body">Shortlisted applications are individually assessed by an investment team member. Sector-specific evaluation and domain expertise are applied. First formal compliance check performed.</p>
+      </div>
+    </div>
+
+    <div class="process-steps-bottom">
+      <div class="process-step-bottom reveal reveal-delay-1">
+        <span class="process-step-tag">Step 05</span>
+        <h4 class="process-step-bottom-title">Domain Assessment</h4>
+        <p class="process-step-bottom-body">Applications forwarded for deeper domain and sector-specific assessment. Subject matter experts evaluate technology credibility, market size, and competitive positioning.</p>
+      </div>
+      <div class="process-step-bottom reveal reveal-delay-2">
+        <span class="process-step-tag">Step 06</span>
+        <h4 class="process-step-bottom-title">Pitch &amp; Interview</h4>
+        <p class="process-step-bottom-body">Shortlisted companies are invited to pitch and interview sessions with the investment team. Founders and management are assessed on vision, execution capability, and cultural fit.</p>
+      </div>
+      <div class="process-step-bottom reveal reveal-delay-3">
+        <span class="process-step-tag">Step 07</span>
+        <h4 class="process-step-bottom-title">Due Diligence</h4>
+        <p class="process-step-bottom-body">Full due diligence performed against Threshold Criteria. Includes legal, financial, and technology review. Term Sheet negotiation conducted with standardised pre-money valuations.</p>
+      </div>
+      <div class="process-step-bottom reveal reveal-delay-4">
+        <span class="process-step-tag">Step 08</span>
+        <h4 class="process-step-bottom-title">IC Approval</h4>
+        <p class="process-step-bottom-body">Final compliance check completed. Investment decision made by the Investment Committee within 10 business days. All approved investments must meet every Threshold Criterion without exception.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ THRESHOLD CRITERIA ═══ -->
+<section class="section" id="threshold">
+  <div class="container">
+    <div class="threshold-layout">
+      <div class="threshold-left reveal">
+        <div class="eyebrow">Threshold Criteria</div>
+        <h2 class="display threshold-title">
+          The bar every<br><em>investment must clear.</em>
+        </h2>
+        <p class="threshold-body">
+          No investment is made unless it satisfies all six Threshold 
+          Criteria. These criteria exist to protect our investors, 
+          ensure regulatory compliance, and maintain the integrity 
+          of our investment process. They are not guidelines — 
+          they are requirements.
+        </p>
+        <p class="threshold-body">
+          The Investment Committee has the authority to reject any 
+          proposed investment that fails to meet these criteria, 
+          regardless of how compelling the opportunity may appear 
+          on other dimensions.
+        </p>
+      </div>
+
+      <div class="threshold-right reveal reveal-delay-2">
+        <div class="criteria-list">
+          <div class="criteria-item">
+            <div class="criteria-num">1</div>
+            <div>
+              <div class="criteria-title">VCLP Eligibility</div>
+              <p class="criteria-body">The investee company must qualify as an Eligible Venture Capital Investment under the Venture Capital Act 2002 and all applicable legislation.</p>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">2</div>
+            <div>
+              <div class="criteria-title">Investment Plan Consistency</div>
+              <p class="criteria-body">The investment must be consistent with the approved investment plan — sector, stage, structure, and size must all align with the fund's mandate.</p>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">3</div>
+            <div>
+              <div class="criteria-title">Approved Term Sheet</div>
+              <p class="criteria-body">Investment must be made on a Term Sheet that includes mandated minimum terms to protect the fund's interests, reviewed and approved by the Investment Committee.</p>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">4</div>
+            <div>
+              <div class="criteria-title">Appropriate Investment Size</div>
+              <p class="criteria-body">The size of the investment must be appropriate given the total investment opportunity, the fund's available capital, and the portfolio construction guidelines.</p>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">5</div>
+            <div>
+              <div class="criteria-title">Sufficient Due Diligence</div>
+              <p class="criteria-body">The Investment Committee must be satisfied that adequate due diligence has been conducted on the investee company, its team, technology, market, and financials.</p>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">6</div>
+            <div>
+              <div class="criteria-title">Capacity to Manage</div>
+              <p class="criteria-body">The Investment Committee must be confident the team has sufficient time and skill to actively manage the investment through to a successful exit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ DEAL SOURCING ═══ -->
+<section class="section" id="sourcing">
+  <div class="container">
+    <div class="sourcing-header reveal">
+      <div class="eyebrow">Deal Sourcing</div>
+      <h2 class="display sourcing-title">
+        How we find the<br><em>best opportunities.</em>
+      </h2>
+      <p style="font-size:0.9rem;color:var(--muted);max-width:540px;margin-top:1rem;line-height:1.85; margin-bottom:3.5rem;">
+        Quality deal flow is the foundation of great venture returns. 
+        We generate opportunities through five targeted channels, 
+        each giving us access to a different segment of the startup ecosystem.
+      </p>
+    </div>
+
+    <div class="sourcing-grid">
+      <div class="source-card reveal reveal-delay-1">
+        <span class="source-icon">◎</span>
+        <h3 class="source-title">Startup Ecosystem</h3>
+        <p class="source-body">Grassroots presence at startup hubs and co-working spaces across Asia Pacific — presenting at and sponsoring events to gain early access to high-potential founders before they are widely known.</p>
+      </div>
+      <div class="source-card reveal reveal-delay-2">
+        <span class="source-icon">◎</span>
+        <h3 class="source-title">Developer Communities</h3>
+        <p class="source-body">Strategic partnerships with major technology developer communities — particularly those focused on enterprise software — giving us access to technical founders with deep domain expertise before they seek formal VC backing.</p>
+      </div>
+      <div class="source-card reveal reveal-delay-3">
+        <span class="source-icon">◎</span>
+        <h3 class="source-title">Corporate Talent Pool</h3>
+        <p class="source-body">Unique access to corporate innovators with entrepreneurial ambitions through our global network. This includes investment in corporate spin-outs and ventures led by executives with proven operational track records.</p>
+      </div>
+      <div class="source-card reveal reveal-delay-1">
+        <span class="source-icon">◎</span>
+        <h3 class="source-title">Universities &amp; Research</h3>
+        <p class="source-body">Active involvement in student entrepreneurship initiatives at universities in Australia, Hong Kong, Singapore, Taiwan, and the US — including the University of Sydney, UNSW, Melbourne University, and others.</p>
+      </div>
+      <div class="source-card reveal reveal-delay-2">
+        <span class="source-icon">◎</span>
+        <h3 class="source-title">Investor Network</h3>
+        <p class="source-body">Through our global network of angel investors, angel syndicates, venture capital firms, and corporate venture units, we access a large pipeline of pre-vetted, co-investment opportunities that would not be available to a standalone fund.</p>
+      </div>
+      <div class="source-card reveal reveal-delay-3">
+        <span class="source-icon">◎</span>
+        <h3 class="source-title">Government &amp; Institutional</h3>
+        <p class="source-body">Working groups and co-research arrangements with the Department of Industry, Innovation and Science, CSIRO Innovation Fund, and leading Australian tertiary institutions — bringing deal flow from government-backed innovation programs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ INVESTMENT COMMITTEE ═══ -->
+<section class="section" id="committee">
+  <div class="container">
+    <div class="committee-layout">
+      <div class="committee-left reveal">
+        <div class="eyebrow">Investment Committee</div>
+        <h2 class="display committee-title">
+          Independent governance<br><em>at every decision.</em>
+        </h2>
+        <p class="committee-body">
+          The Investment Committee is the final authority on every 
+          investment decision made by the fund. It exists to ensure 
+          that all investments comply with the investment plan and VCLP 
+          requirements — and that investor interests are protected at 
+          every stage of the process.
+        </p>
+        <p class="committee-body">
+          The Committee operates independently of the deal team. 
+          It may only approve investments that satisfy all six 
+          Threshold Criteria without exception. If any criterion 
+          is not met, the Committee must reject the investment — 
+          regardless of any other considerations.
+        </p>
+
+        <div class="criteria-list" style="margin-top:2rem;">
+          <div class="committee-rules">
+            <div class="committee-rule">
+              <div class="rule-icon">✓</div>
+              <div>
+                <div class="rule-title">10-business-day decision window</div>
+                <p class="rule-body">The Committee must decide on any proposed investment within 10 business days of a formal submission for approval.</p>
+              </div>
+            </div>
+            <div class="committee-rule">
+              <div class="rule-icon">✓</div>
+              <div>
+                <div class="rule-title">Mandatory criteria compliance</div>
+                <p class="rule-body">Approval is only possible if all six Threshold Criteria are fully satisfied. No exceptions, no partial approvals.</p>
+              </div>
+            </div>
+            <div class="committee-rule">
+              <div class="rule-icon">✓</div>
+              <div>
+                <div class="rule-title">Investor best interests test</div>
+                <p class="rule-body">Even where criteria are met, the Committee may reject an investment if it has reasonable grounds to believe the investment would not be in the best interests of the fund.</p>
+              </div>
+            </div>
+            <div class="committee-rule">
+              <div class="rule-icon">✓</div>
+              <div>
+                <div class="rule-title">Standardised term sheets</div>
+                <p class="rule-body">All investments are made on standardised term sheets with mandated minimum terms. Term sheets are generally non-negotiable — protecting the fund from adverse deal structures.</p>
+              </div>
+            </div>
+            <div class="committee-rule">
+              <div class="rule-icon">✓</div>
+              <div>
+                <div class="rule-title">Follow-on investment rights</div>
+                <p class="rule-body">All term sheets include the right for the fund to participate in follow-on investment rounds at a pre-determined valuation range, based on key performance metrics.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="committee-right reveal reveal-delay-2">
+        <div class="committee-highlight">
+          <span class="committee-highlight-label">Committee Mandate at a Glance</span>
+          <div class="highlight-stats">
+            <div>
+              <div class="highlight-stat-val">10</div>
+              <div class="highlight-stat-label">Business days to decide</div>
+            </div>
+            <div>
+              <div class="highlight-stat-val">6</div>
+              <div class="highlight-stat-label">Threshold criteria required</div>
+            </div>
+            <div>
+              <div class="highlight-stat-val">100%</div>
+              <div class="highlight-stat-label">Criteria must be satisfied</div>
+            </div>
+            <div>
+              <div class="highlight-stat-val">0</div>
+              <div class="highlight-stat-label">Exceptions permitted</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ QUANTITATIVE STRATEGY ═══ -->
+<section class="section" id="quant-strategy">
+  <div class="container">
+    <div class="quant-header reveal">
+      <div class="eyebrow">Quantitative Strategy — China</div>
+      <h2 class="display quant-title">
+        AI-driven precision<br><em>across three strategies.</em>
+      </h2>
+      <p style="font-size:0.9rem;color:var(--muted);max-width:540px;margin-top:1rem;line-height:1.85; margin-bottom:4rem;">
+        Our Chinese quantitative platform deploys three distinct strategy lines, 
+        each powered by proprietary AI models and big-data analysis. 
+        All strategies are fully algorithmic — eliminating human execution error 
+        and ensuring consistent, process-driven outcomes across every trade.
+      </p>
+    </div>
+
+    <div class="quant-layout">
+      <div class="reveal">
+        <div class="quant-strategy-list">
+          <div class="quant-strat-item">
+            <span class="quant-strat-tag">Strategy Line 01</span>
+            <div class="quant-strat-name">Quantitative Stock Alpha</div>
+            <p class="quant-strat-body">
+              High-frequency stock selection strategies using AI-driven factor 
+              mining and alpha signal generation. Available in both low-volatility 
+              (capital preservation focus) and mid-volatility (growth focus) variants. 
+              Proprietary stock alpha factors are continuously researched, validated, 
+              and updated to adapt to changing market regimes. Positions are managed 
+              with strict single-stock weight limits and daily turnover controls.
+            </p>
+          </div>
+          <div class="quant-strat-item">
+            <span class="quant-strat-tag">Strategy Line 02</span>
+            <div class="quant-strat-name">Quantitative CTA Futures</div>
+            <p class="quant-strat-body">
+              Systematic trend-following and mean-reversion strategies deployed 
+              across Chinese futures markets. Medium-to-high frequency execution 
+              with dynamic position sizing based on volatility targets. Strategies 
+              are developed and maintained by our CTA research group, with 
+              continuous out-of-sample testing and real-time factor validation. 
+              Multi-broker execution infrastructure ensures uninterrupted trading 
+              even during single-broker system failures.
+            </p>
+          </div>
+          <div class="quant-strat-item">
+            <span class="quant-strat-tag">Strategy Line 03</span>
+            <div class="quant-strat-name">Stock T+0 Intraday</div>
+            <p class="quant-strat-body">
+              Intraday algorithmic trading strategies exploiting short-term 
+              price inefficiencies in Chinese equity markets. Fully algorithmic 
+              execution with no manual trading risk. Strategies combine 
+              algorithm-based trading with carefully managed programme 
+              (Pb) trading to optimise execution quality. Real-time 
+              rule-checker systems monitor all aspects of strategy performance 
+              and trigger immediate alerts on anomalous behaviour.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="eyebrow" style="margin-bottom:1.5rem;">Risk Management — Four Stages</div>
+        <div class="quant-risk-stages">
+          <div class="risk-stage">
+            <div class="risk-stage-num">01</div>
+            <div>
+              <div class="risk-stage-title">Strategy Development</div>
+              <p class="risk-stage-body">Data cleaning controls, parameter optimisation constraints, and anti-overfitting measures applied during factor research and model development.</p>
+            </div>
+          </div>
+          <div class="risk-stage">
+            <div class="risk-stage-num">02</div>
+            <div>
+              <div class="risk-stage-title">Strategy Testing</div>
+              <p class="risk-stage-body">Out-of-sample testing, volatility targeting, maximum drawdown tolerance limits, and pre-deployment simulation before any strategy goes live.</p>
+            </div>
+          </div>
+          <div class="risk-stage">
+            <div class="risk-stage-num">03</div>
+            <div>
+              <div class="risk-stage-title">Portfolio Configuration</div>
+              <p class="risk-stage-body">Strategy combination optimised for low cross-correlation. Correlation testing performed before adding any new strategy to the live portfolio.</p>
+            </div>
+          </div>
+          <div class="risk-stage">
+            <div class="risk-stage-num">04</div>
+            <div>
+              <div class="risk-stage-title">Ongoing Monitoring</div>
+              <p class="risk-stage-body">Continuous live tracking, factor effectiveness validation, minimum observation periods before model adjustments, and systematic post-close reconciliation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:2.5rem; padding:2rem; border:0.5px solid var(--gold-border); background:rgba(184,151,90,0.04);">
+          <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;">System Infrastructure</div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="font-size:0.8rem;color:var(--muted);display:flex;gap:0.75rem;align-items:flex-start;">
+              <span style="color:var(--gold);flex-shrink:0;">→</span>
+              Multi-site server deployment across different broker data centres with dual power configuration
+            </div>
+            <div style="font-size:0.8rem;color:var(--muted);display:flex;gap:0.75rem;align-items:flex-start;">
+              <span style="color:var(--gold);flex-shrink:0;">→</span>
+              Multi-broker execution — instant failover to backup broker on any system outage
+            </div>
+            <div style="font-size:0.8rem;color:var(--muted);display:flex;gap:0.75rem;align-items:flex-start;">
+              <span style="color:var(--gold);flex-shrink:0;">→</span>
+              Real-time rule-checker monitoring strategy health, market data quality, and position limits
+            </div>
+            <div style="font-size:0.8rem;color:var(--muted);display:flex;gap:0.75rem;align-items:flex-start;">
+              <span style="color:var(--gold);flex-shrink:0;">→</span>
+              Full disaster recovery plan with pressure-tested failover procedures
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta-banner">
+  <div class="cta-banner-inner reveal">
+    <div>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3.2rem);">
+        See our strategy<br><em>in the numbers.</em>
+      </h2>
+      <p>Explore our full performance data or speak with our team about how our strategy translates into returns.</p>
+    </div>
+    <div class="cta-banner-btns">
+      <a href="performance.html" class="btn btn-gold btn-arrow">View Performance</a>
+      <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-name">Black Chess Capital</div>
+      <p class="footer-brand-desc">A global investment management firm with a dual-market presence across Australian venture capital and Chinese quantitative strategies — built for sophisticated investors seeking superior returns.</p>
+      <div class="footer-tags">
+        <span>ABN 40 664 455 501</span>
+        <span>AFSL Representative</span>
+        <span>VCLP Registered</span>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="funds.html">Our Funds</a></li>
+        <li><a href="strategy.html">Strategy</a></li>
+        <li><a href="performance.html">Performance</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Our Offices</div>
+      <div class="footer-office">
+        <div class="footer-office-city">Sydney, Australia</div>
+        <p>Chris Li<br><a href="mailto:Chris.Li@softwatercap.com.au">Chris.Li@softwatercap.com.au</a><br>+61 430 988 999</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Perth, Australia</div>
+        <p>Jake Zhou<br><a href="mailto:jakezhou88@outlook.com">jakezhou88@outlook.com</a><br>+61 452 188 526</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Shanghai, China</div>
+        <p>Registration No. P1019979<br>Shanghai Hedge Fund Park</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Black Chess Capital. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Disclaimer</a>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    <p>This website is for informational purposes only and does not constitute financial advice or an offer to invest. Past performance is not indicative of future results. Black Chess Capital and its associated entities are not responsible for investment decisions made based on the content of this website. For qualified and sophisticated investors only. Always seek independent financial advice before investing.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('site-nav').style.background =
+      window.scrollY > 60 ? 'rgba(8,8,7,0.98)' : 'rgba(8,8,7,0.92)';
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('.page-hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 150 + i * 150);
+  });
+</script>
 </body>
 </html>
