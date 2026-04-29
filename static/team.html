@@ -3,25 +3,759 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Black Chess Capital</title>
-  <link rel="stylesheet" href="css/global.css">
+  <title>Team — Black Chess Capital</title>
+  <meta name="description" content="Meet the Black Chess Capital investment team — experienced professionals across venture capital, quantitative finance, and capital markets.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    .coming-soon { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:calc(var(--nav-h) + 2rem) 2rem 4rem; }
-    .coming-soon h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,6vw,5rem); font-weight:300; margin:1.5rem 0 1rem; }
-    .coming-soon h1 em { font-style:italic; color:var(--gold); }
-    .coming-soon p { color:var(--muted); font-size:0.9rem; margin-bottom:2.5rem; }
+    :root {
+      --black:#080807; --dark:#0f0e0d; --dark2:#161513; --dark3:#1e1c1a;
+      --gold:#b8975a; --gold-light:#d4b87a; --gold-dim:rgba(184,151,90,0.12);
+      --gold-border:rgba(184,151,90,0.22); --white:#f0ece4; --off-white:#d4cfc6;
+      --muted:#7a756d; --muted2:#524e48; --nav-h:72px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--dark);color:var(--white);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold-border);border-radius:2px}
+    ::selection{background:var(--gold);color:var(--black)}
+    a{color:inherit;text-decoration:none} p{color:var(--off-white)}
+    .section{padding:7rem 0;position:relative}
+    .container{max-width:1200px;margin:0 auto;padding:0 5rem}
+    .divider{height:0.5px;background:var(--gold-border)}
+    .display{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.05;letter-spacing:-0.02em}
+    .display em{font-style:italic;color:var(--gold)}
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-family:'Jost',sans-serif;font-weight:400}
+    .eyebrow::before{content:'';display:block;width:28px;height:0.5px;background:var(--gold);flex-shrink:0}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:0.8rem 2rem;font-family:'Jost',sans-serif;font-size:0.75rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:all 0.28s ease;border:none}
+    .btn-gold{background:var(--gold);color:var(--black)}.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:var(--white);border:0.5px solid rgba(240,236,228,0.3)}.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
+    .btn-arrow::after{content:'→';font-size:1rem;transition:transform 0.2s}.btn-arrow:hover::after{transform:translateX(4px)}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}
+    .reveal-delay-3{transition-delay:0.3s}.reveal-delay-4{transition-delay:0.4s}
+
+    /* NAV */
+    #site-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5rem;background:rgba(8,8,7,0.92);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--gold-border);transition:background 0.3s}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--gold);letter-spacing:0.06em}
+    .nav-logo span{color:var(--white);font-style:italic}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+    .nav-links a{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);transition:color 0.25s;position:relative;padding-bottom:2px}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:0.5px;background:var(--gold);transform:scaleX(0);transition:transform 0.25s}
+    .nav-links a:hover,.nav-links a.active{color:var(--white)}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:0.5rem 1.4rem}.nav-cta:hover{background:var(--gold-light)!important}.nav-cta::after{display:none!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:22px;height:0.5px;background:var(--white)}
+
+    /* PAGE HERO */
+    .page-hero{padding:calc(var(--nav-h) + 6rem) 5rem 6rem;background:var(--dark2);border-bottom:0.5px solid var(--gold-border);position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(184,151,90,0.06) 0%,transparent 70%);pointer-events:none}
+    .page-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end}
+    .page-hero-title{font-size:clamp(3rem,6vw,5.5rem);margin:1.25rem 0 0}
+    .page-hero-desc{font-size:1rem;color:var(--muted);line-height:1.9;margin-bottom:1.25rem}
+
+    /* ── LEADERSHIP ── */
+    #leadership{ background:var(--dark); }
+    .section-header{ margin-bottom:4.5rem; }
+    .section-header .eyebrow{ margin-bottom:1rem; }
+    .section-title{ font-size:clamp(2.2rem,4vw,3.5rem); }
+
+    /* Big featured profile card */
+    .profile-featured{
+      display:grid; grid-template-columns:1fr 1.4fr;
+      gap:0; border:0.5px solid var(--gold-border);
+      margin-bottom:2rem; overflow:hidden;
+      transition:border-color 0.3s;
+    }
+    .profile-featured:hover{ border-color:rgba(184,151,90,0.5); }
+    .profile-featured-left{
+      padding:3rem;
+      border-right:0.5px solid var(--gold-border);
+      display:flex; flex-direction:column; justify-content:space-between;
+      background:var(--dark2);
+    }
+    .profile-avatar{
+      width:72px; height:72px;
+      border:0.5px solid var(--gold);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.6rem; color:var(--gold);
+      margin-bottom:1.75rem;
+      background:rgba(184,151,90,0.08);
+    }
+    .profile-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2rem; font-weight:400; line-height:1.1;
+      margin-bottom:0.3rem;
+    }
+    .profile-role{
+      font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:0.5rem;
+    }
+    .profile-location{
+      font-size:0.75rem; color:var(--muted2);
+    }
+    .profile-tags{
+      display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:2rem;
+    }
+    .profile-tag{
+      font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase;
+      color:var(--muted); border:0.5px solid var(--gold-border);
+      padding:0.25rem 0.7rem;
+    }
+    .profile-featured-right{
+      padding:3rem;
+    }
+    .profile-bio{
+      font-size:0.88rem; color:var(--muted); line-height:1.9;
+      margin-bottom:1.25rem;
+    }
+    .profile-credentials{
+      display:flex; flex-direction:column; gap:0; margin-top:2rem;
+    }
+    .credential-item{
+      display:grid; grid-template-columns:auto 1fr;
+      gap:1rem; padding:0.9rem 0;
+      border-bottom:0.5px solid var(--gold-border);
+      align-items:start;
+    }
+    .credential-item:first-child{ border-top:0.5px solid var(--gold-border); }
+    .credential-dot{
+      width:6px; height:6px; border-radius:50%;
+      background:var(--gold); margin-top:0.5rem; flex-shrink:0;
+    }
+    .credential-text{ font-size:0.8rem; color:var(--off-white); line-height:1.6; }
+
+    /* 2-column grid for other team members */
+    .profiles-grid{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:1.5rem;
+    }
+    .profile-card{
+      border:0.5px solid var(--gold-border);
+      overflow:hidden; transition:border-color 0.3s;
+      position:relative;
+    }
+    .profile-card:hover{ border-color:rgba(184,151,90,0.5); }
+    .profile-card::before{
+      content:''; position:absolute; top:0; left:0; right:0;
+      height:1.5px; background:var(--gold);
+      transform:scaleX(0); transform-origin:left;
+      transition:transform 0.35s ease;
+    }
+    .profile-card:hover::before{ transform:scaleX(1); }
+    .profile-card-top{
+      padding:2rem 2rem 1.5rem;
+      background:var(--dark2);
+      border-bottom:0.5px solid var(--gold-border);
+      display:flex; gap:1.5rem; align-items:flex-start;
+    }
+    .profile-card-avatar{
+      width:52px; height:52px; flex-shrink:0;
+      border:0.5px solid var(--gold);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.2rem; color:var(--gold);
+      background:rgba(184,151,90,0.08);
+    }
+    .profile-card-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.5rem; font-weight:400; margin-bottom:0.25rem;
+    }
+    .profile-card-role{
+      font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:0.2rem;
+    }
+    .profile-card-location{ font-size:0.72rem; color:var(--muted2); }
+    .profile-card-body{ padding:1.75rem 2rem 2rem; }
+    .profile-card-bio{ font-size:0.82rem; color:var(--muted); line-height:1.85; margin-bottom:1.25rem; }
+    .profile-card-tags{ display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .profile-card-tag{
+      font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase;
+      color:var(--muted2); border:0.5px solid rgba(82,78,72,0.5);
+      padding:0.2rem 0.6rem;
+    }
+
+    /* ── QUANT TEAM ── */
+    #quant-team{ background:var(--dark2); }
+    .quant-team-grid{
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1.5rem; margin-top:0;
+    }
+    .quant-card{
+      border:0.5px solid var(--gold-border);
+      padding:2rem 1.75rem;
+      transition:border-color 0.3s, background 0.3s;
+    }
+    .quant-card:hover{ border-color:rgba(184,151,90,0.5); background:var(--gold-dim); }
+    .quant-card-initial{
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.5rem; font-weight:300; color:rgba(184,151,90,0.25);
+      line-height:1; margin-bottom:1rem;
+    }
+    .quant-card-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.3rem; font-weight:400; margin-bottom:0.3rem;
+    }
+    .quant-card-role{
+      font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:1rem;
+    }
+    .quant-card-bio{ font-size:0.78rem; color:var(--muted); line-height:1.8; }
+    .quant-card-tags{ display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1.25rem; }
+    .quant-card-tag{
+      font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase;
+      color:var(--muted2); border:0.5px solid rgba(82,78,72,0.5);
+      padding:0.2rem 0.55rem;
+    }
+
+    /* ── ACADEMIC BACKGROUND ── */
+    #academic{ background:var(--dark); }
+    .academic-layout{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:6rem; align-items:start;
+    }
+    .academic-title{ font-size:clamp(2rem,3.5vw,3rem); margin:1.25rem 0 2rem; }
+    .academic-body{ font-size:0.88rem; color:var(--muted); line-height:1.9; margin-bottom:1.25rem; }
+    .uni-grid{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:1px; background:var(--gold-border);
+    }
+    .uni-item{
+      background:var(--dark); padding:1.25rem 1.5rem;
+      font-size:0.8rem; color:var(--off-white); line-height:1.6;
+      transition:background 0.3s;
+    }
+    .uni-item:hover{ background:var(--gold-dim); }
+    .uni-item-type{
+      font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--muted2); margin-bottom:0.25rem;
+    }
+    .corp-list{
+      display:flex; flex-direction:column; gap:0;
+      margin-top:2rem;
+    }
+    .corp-item{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:0.9rem 0; border-bottom:0.5px solid var(--gold-border);
+      font-size:0.82rem;
+    }
+    .corp-item:first-child{ border-top:0.5px solid var(--gold-border); }
+    .corp-name{ color:var(--off-white); }
+    .corp-type{
+      font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    /* CTA BANNER */
+    #cta-banner{ background:var(--dark3); border-top:0.5px solid var(--gold-border); padding:6rem 5rem; }
+    .cta-banner-inner{ max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:3rem 5rem; align-items:center; }
+    .cta-banner-inner p{ font-size:0.9rem; color:var(--muted); max-width:420px; margin-top:0.75rem; }
+    .cta-banner-btns{ display:flex; flex-direction:column; gap:1rem; align-items:flex-end; }
+
+    /* FOOTER */
+    #site-footer{background:var(--black);border-top:0.5px solid var(--gold-border)}
+    .footer-main{display:grid;grid-template-columns:1.6fr 1fr 1.4fr;gap:4rem;padding:5rem;max-width:1200px;margin:0 auto}
+    .footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);margin-bottom:1rem}
+    .footer-brand-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
+    .footer-tags{display:flex;gap:0.6rem;flex-wrap:wrap}
+    .footer-tags span{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);border:0.5px solid var(--muted2);padding:0.2rem 0.6rem}
+    .footer-col-title{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+    .footer-links a{font-size:0.82rem;color:var(--muted);transition:color 0.2s}.footer-links a:hover{color:var(--gold)}
+    .footer-office{margin-bottom:1.5rem}
+    .footer-office-city{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+    .footer-office p{font-size:0.8rem;color:var(--muted);line-height:1.65}
+    .footer-office a{color:var(--gold-light);transition:color 0.2s}.footer-office a:hover{color:var(--gold)}
+    .footer-bottom{border-top:0.5px solid var(--gold-border);padding:1.5rem 5rem;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-copy{font-size:0.72rem;color:var(--muted2)}
+    .footer-legal{display:flex;gap:1.5rem}
+    .footer-legal a{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);transition:color 0.2s}.footer-legal a:hover{color:var(--muted)}
+    .footer-disclaimer{border-top:0.5px solid rgba(80,76,72,0.3);padding:1.5rem 5rem 2.5rem;max-width:1200px;margin:0 auto}
+    .footer-disclaimer p{font-size:0.66rem;color:var(--muted2);line-height:1.8}
+
+    /* RESPONSIVE */
+    @media(max-width:1100px){
+      .page-hero-inner,.profile-featured,.academic-layout{grid-template-columns:1fr;gap:3rem}
+      .profile-featured-left{border-right:none;border-bottom:0.5px solid var(--gold-border)}
+      .profiles-grid,.quant-team-grid{grid-template-columns:1fr}
+      .cta-banner-inner{grid-template-columns:1fr}
+      .cta-banner-btns{flex-direction:row;align-items:flex-start}
+      .footer-main{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.5rem}
+      .footer-bottom,.footer-disclaimer{padding-left:1.5rem;padding-right:1.5rem}
+    }
+    @media(max-width:768px){
+      #site-nav{padding:0 1.5rem}
+      .nav-links{display:none;position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;background:var(--black);padding:2rem 1.5rem;gap:1.5rem;border-bottom:0.5px solid var(--gold-border)}
+      .nav-links.open{display:flex}
+      .hamburger{display:flex}
+      .page-hero{padding:calc(var(--nav-h) + 4rem) 1.5rem 4rem}
+      .container{padding:0 1.5rem}
+      .section{padding:4rem 0}
+      .uni-grid{grid-template-columns:1fr}
+      #cta-banner{padding:4rem 1.5rem}
+    }
   </style>
 </head>
 <body>
-  <div class="coming-soon">
-    <div class="eyebrow" style="display:inline-flex; align-items:center; gap:12px; font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold);">
-      <span style="width:28px;height:0.5px;background:var(--gold);display:block;"></span>
-      Black Chess Capital
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a class="nav-logo" href="index.html">Black Chess <span>Capital</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="funds.html">Our Funds</a></li>
+    <li><a href="strategy.html">Strategy</a></li>
+    <li><a href="performance.html">Performance</a></li>
+    <li><a href="team.html" class="active">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="eyebrow reveal">Our Team</div>
+      <h1 class="display page-hero-title reveal reveal-delay-1">
+        The people<br>behind the <em>moves.</em>
+      </h1>
     </div>
-    <h1>Page <em>coming soon.</em></h1>
-    <p>This page is currently being built. More content coming shortly.</p>
-    <a href="index.html" class="btn btn-gold" style="display:inline-flex;align-items:center;gap:10px;padding:0.8rem 2rem;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--gold);color:var(--black);text-decoration:none;">← Back to Home</a>
+    <div class="reveal reveal-delay-2">
+      <p class="page-hero-desc">
+        Black Chess Capital is powered by a team of experienced investment 
+        professionals, quantitative researchers, and capital markets 
+        specialists spanning Australia and China.
+      </p>
+      <p class="page-hero-desc">
+        Our people bring together decades of combined experience across 
+        venture capital, algorithmic trading, financial engineering, 
+        IPO advisory, and portfolio management — united by a shared 
+        commitment to disciplined, process-driven investing.
+      </p>
+    </div>
   </div>
-  <script src="js/components.js"></script>
+</div>
+
+<!-- ═══ AUSTRALIAN LEADERSHIP ═══ -->
+<section class="section" id="leadership">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">Australian Team</div>
+      <h2 class="display section-title">
+        Leadership across<br><em>venture &amp; markets.</em>
+      </h2>
+    </div>
+
+    <!-- Jake Zhou — featured -->
+    <div class="profile-featured reveal">
+      <div class="profile-featured-left">
+        <div>
+          <div class="profile-avatar">JZ</div>
+          <div class="profile-name">Jake Zhou</div>
+          <div class="profile-role">Director · Venture Capital</div>
+          <div class="profile-location">Perth, Western Australia</div>
+        </div>
+        <div class="profile-tags">
+          <span class="profile-tag">B.Eng · Beijing UT</span>
+          <span class="profile-tag">M.Eng · UWA</span>
+          <span class="profile-tag">AFSL RG146</span>
+          <span class="profile-tag">Clean Energy</span>
+          <span class="profile-tag">Construction Tech</span>
+        </div>
+      </div>
+      <div class="profile-featured-right">
+        <p class="profile-bio">
+          Jake Zhou is a Director at Black Chess Capital with primary 
+          responsibility for the Australian venture capital platform. 
+          He brings 19 years of Chinese secondary market trading experience 
+          covering over 200 companies, and 15 years of Australian primary 
+          and secondary market experience including IPO and pre-IPO 
+          transactions across more than 100 ASX-listed companies.
+        </p>
+        <p class="profile-bio">
+          Jake holds a Bachelor of Engineering from Beijing University of 
+          Technology and a Master of Engineering from the University of 
+          Western Australia. He is a Responsible Manager under AFSL with 
+          RG146 accreditation, and holds a Certificate IV in Project Management.
+        </p>
+        <p class="profile-bio">
+          His investment track record includes engagements with Sycamore 
+          Civil Group (securing a $1.6M government grant in construction 
+          waste management), Gentle Monster sunglasses brand, and clean 
+          energy companies Pearmans Energy and H2X Global.
+        </p>
+        <div class="profile-credentials">
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">Director — Black Chess Capital (Dec 2022 – present)</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">Director — Sunprofit Capital Pty Ltd, AFSL 508985 (Dec 2019 – Mar 2025)</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">Project Director &amp; Funds Analyst — Ausglobal Finance Pty Ltd, Hong Kong &amp; Perth (Sep 2017 – Dec 2020)</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">Project Manager / CFO / Partner — Sycamore Civil Group Pty Ltd, Perth &amp; Kalgoorlie (Sep 2018 – present)</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">Project Manager — Sincerety Group Pty Ltd, Perth (Jan 2016 – Jun 2017)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chris Li — featured -->
+    <div class="profile-featured reveal">
+      <div class="profile-featured-left">
+        <div>
+          <div class="profile-avatar">CL</div>
+          <div class="profile-name">Chris Li</div>
+          <div class="profile-role">Portfolio Manager · Investment Trust</div>
+          <div class="profile-location">Sydney, New South Wales</div>
+        </div>
+        <div class="profile-tags">
+          <span class="profile-tag">CFA Charterholder</span>
+          <span class="profile-tag">ESG Investing</span>
+          <span class="profile-tag">MSc Financial Engineering</span>
+          <span class="profile-tag">IPO &amp; Placement</span>
+        </div>
+      </div>
+      <div class="profile-featured-right">
+        <p class="profile-bio">
+          Chris Li is the Portfolio Manager of the Black Chess Investment 
+          Trust, responsible for IPO and placement strategy and overall 
+          fund performance. A CFA charterholder with an ESG Investing 
+          Certification, Chris holds a Master's degree in Financial 
+          Engineering and brings deep expertise in equity markets, 
+          capital raising, and investment strategy.
+        </p>
+        <p class="profile-bio">
+          Chris has demonstrated exceptional proficiency in equity markets, 
+          delivering a 28% return on investments in 2023. His career spans 
+          pivotal roles at prominent financial institutions including 
+          Soochow Securities, Leadbank Capital, Tianneng Power, and 
+          Sunprofit Capital.
+        </p>
+        <p class="profile-bio">
+          Notable projects under his leadership include engagements with 
+          Dimand Development, Camplify Holdings, Tianneng Energy Technology, 
+          and Caitong Securities. He also serves as Director of Chronus 
+          Capital, where he has spearheaded numerous acquisition deals 
+          and investment ventures across Australian and Asian markets.
+        </p>
+        <div class="profile-credentials">
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">Investment Officer &amp; Portfolio Manager — Black Chess Capital, Sydney</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">Director — Chronus Capital</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">Prior roles at Soochow Securities, Leadbank Capital, Tianneng Power, Sunprofit Capital</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">28% equity market return delivered in 2023</div>
+          </div>
+          <div class="credential-item">
+            <div class="credential-dot"></div>
+            <div class="credential-text">CFA Institute Charterholder · ESG Investing Certification · MSc Financial Engineering</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ CHINESE QUANTITATIVE TEAM ═══ -->
+<section class="section" id="quant-team">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">China Quantitative Team</div>
+      <h2 class="display section-title">
+        The minds behind<br><em>the models.</em>
+      </h2>
+      <p style="font-size:0.9rem;color:var(--muted);max-width:560px;margin-top:1rem;line-height:1.85;">
+        Our Shanghai-based quantitative investment and research team brings 
+        together specialists from the world's top universities and 
+        financial institutions.
+      </p>
+    </div>
+
+    <div class="quant-team-grid">
+      <div class="quant-card reveal reveal-delay-1">
+        <div class="quant-card-initial">ZH</div>
+        <div class="quant-card-name">Zhang Hao</div>
+        <div class="quant-card-role">Founder &amp; Chief Executive Officer</div>
+        <p class="quant-card-bio">
+          Founded the quantitative investment platform in 2015 after years 
+          working at a prominent US private equity firm and the People's Bank 
+          of China clearinghouse. Holds a Bachelor of Arts from Fudan 
+          University and a Master of Financial Mathematics from Purdue 
+          University. Responsible for overall strategic direction, 
+          risk management frameworks, and company management. 
+          A recognised expert in quantitative risk control.
+        </p>
+        <div class="quant-card-tags">
+          <span class="quant-card-tag">Fudan University</span>
+          <span class="quant-card-tag">Purdue · Financial Mathematics</span>
+          <span class="quant-card-tag">Risk Management</span>
+          <span class="quant-card-tag">Strategy</span>
+        </div>
+      </div>
+
+      <div class="quant-card reveal reveal-delay-2">
+        <div class="quant-card-initial">WR</div>
+        <div class="quant-card-name">Wu Ruizhi</div>
+        <div class="quant-card-role">Co-Founder · Head of CTA &amp; Algorithmic Trading</div>
+        <p class="quant-card-bio">
+          Co-founder responsible for CTA strategy research and algorithmic 
+          trading execution. Prior to joining the platform in 2016, 
+          served as Chief CTA Strategy Researcher and Chief T+0 Strategy 
+          Researcher at a leading Chinese private fund. Holds a Bachelor's 
+          degree and Master's degree in Information Science from Tsinghua 
+          University — one of China's most prestigious institutions.
+        </p>
+        <div class="quant-card-tags">
+          <span class="quant-card-tag">Tsinghua University</span>
+          <span class="quant-card-tag">Information Science</span>
+          <span class="quant-card-tag">CTA Research</span>
+          <span class="quant-card-tag">Algo Trading</span>
+        </div>
+      </div>
+
+      <div class="quant-card reveal reveal-delay-3">
+        <div class="quant-card-initial">LT</div>
+        <div class="quant-card-name">Li Tianyang</div>
+        <div class="quant-card-role">Co-Founder · Head of Stock Quantitative Research</div>
+        <p class="quant-card-bio">
+          Co-founder leading the stock quantitative modelling team. 
+          Joined in 2016 with prior experience at a leading Chinese 
+          private fund. Led the development of multiple stable, 
+          market-tested quantitative strategy models that have delivered 
+          outstanding investment performance. Holds a Bachelor's degree 
+          from Peking University and a Master of Financial Mathematics 
+          from Purdue University.
+        </p>
+        <div class="quant-card-tags">
+          <span class="quant-card-tag">Peking University</span>
+          <span class="quant-card-tag">Purdue · Financial Mathematics</span>
+          <span class="quant-card-tag">Stock Alpha</span>
+          <span class="quant-card-tag">Quant Models</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ ACADEMIC & PROFESSIONAL BACKGROUND ═══ -->
+<section class="section" id="academic">
+  <div class="container">
+    <div class="academic-layout">
+      <div class="reveal">
+        <div class="eyebrow">Team Background</div>
+        <h2 class="display academic-title">
+          World-class<br><em>credentials.</em>
+        </h2>
+        <p class="academic-body">
+          Our quantitative research and investment team draws from some 
+          of the world's most competitive academic and professional 
+          environments. Team members hold degrees across information 
+          technology, statistics, financial engineering, mathematics, 
+          and chemistry — bringing diverse analytical approaches to 
+          every investment problem.
+        </p>
+        <p class="academic-body">
+          Prior professional experience spans global technology firms, 
+          major investment banks, and leading Chinese securities houses — 
+          giving the team practical insight into the markets in which 
+          they operate.
+        </p>
+
+        <div class="corp-list" style="margin-top:1rem;">
+          <div class="corp-item">
+            <span class="corp-name">Microsoft</span>
+            <span class="corp-type">Technology</span>
+          </div>
+          <div class="corp-item">
+            <span class="corp-name">Google</span>
+            <span class="corp-type">Technology</span>
+          </div>
+          <div class="corp-item">
+            <span class="corp-name">Bloomberg</span>
+            <span class="corp-type">Financial Data</span>
+          </div>
+          <div class="corp-item">
+            <span class="corp-name">Bank of America</span>
+            <span class="corp-type">Investment Banking</span>
+          </div>
+          <div class="corp-item">
+            <span class="corp-name">Equilibrium Capital</span>
+            <span class="corp-type">Asset Management</span>
+          </div>
+          <div class="corp-item">
+            <span class="corp-name">Leading Chinese Securities Firms</span>
+            <span class="corp-type">Securities &amp; Brokerage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="eyebrow" style="margin-bottom:1.5rem;">Universities Represented</div>
+        <div class="uni-grid">
+          <div class="uni-item">
+            <div class="uni-item-type">China</div>
+            Tsinghua University
+          </div>
+          <div class="uni-item">
+            <div class="uni-item-type">China</div>
+            Peking University
+          </div>
+          <div class="uni-item">
+            <div class="uni-item-type">China</div>
+            Fudan University
+          </div>
+          <div class="uni-item">
+            <div class="uni-item-type">China</div>
+            Beijing University of Technology
+          </div>
+          <div class="uni-item">
+            <div class="uni-item-type">United States</div>
+            Purdue University
+          </div>
+          <div class="uni-item">
+            <div class="uni-item-type">United States</div>
+            Carnegie Mellon University
+          </div>
+          <div class="uni-item">
+            <div class="uni-item-type">United Kingdom</div>
+            University of Cambridge
+          </div>
+          <div class="uni-item">
+            <div class="uni-item-type">Australia</div>
+            University of Western Australia
+          </div>
+        </div>
+
+        <div style="margin-top:2rem; padding:1.75rem; border:0.5px solid var(--gold-border);">
+          <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;">Academic Disciplines</div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">
+            <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:0.5px solid var(--gold-border);padding:0.3rem 0.75rem;">Information Technology</span>
+            <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:0.5px solid var(--gold-border);padding:0.3rem 0.75rem;">Financial Engineering</span>
+            <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:0.5px solid var(--gold-border);padding:0.3rem 0.75rem;">Statistics</span>
+            <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:0.5px solid var(--gold-border);padding:0.3rem 0.75rem;">Mathematics</span>
+            <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:0.5px solid var(--gold-border);padding:0.3rem 0.75rem;">Computer Science</span>
+            <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:0.5px solid var(--gold-border);padding:0.3rem 0.75rem;">Engineering</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta-banner">
+  <div class="cta-banner-inner reveal">
+    <div>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3.2rem);">
+        Want to work with<br><em>our team?</em>
+      </h2>
+      <p>Reach out to our Sydney or Shanghai offices to start a conversation about investing with Black Chess Capital.</p>
+    </div>
+    <div class="cta-banner-btns">
+      <a href="contact.html" class="btn btn-gold btn-arrow">Get In Touch</a>
+      <a href="funds.html" class="btn btn-outline">Our Funds</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-name">Black Chess Capital</div>
+      <p class="footer-brand-desc">A global investment management firm with a dual-market presence across Australian venture capital and Chinese quantitative strategies — built for sophisticated investors seeking superior returns.</p>
+      <div class="footer-tags">
+        <span>ABN 40 664 455 501</span>
+        <span>AFSL Representative</span>
+        <span>VCLP Registered</span>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="funds.html">Our Funds</a></li>
+        <li><a href="strategy.html">Strategy</a></li>
+        <li><a href="performance.html">Performance</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Our Offices</div>
+      <div class="footer-office">
+        <div class="footer-office-city">Sydney, Australia</div>
+        <p>Chris Li<br><a href="mailto:Chris.Li@softwatercap.com.au">Chris.Li@softwatercap.com.au</a><br>+61 430 988 999</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Perth, Australia</div>
+        <p>Jake Zhou<br><a href="mailto:jakezhou88@outlook.com">jakezhou88@outlook.com</a><br>+61 452 188 526</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Shanghai, China</div>
+        <p>Registration No. P1019979<br>Shanghai Hedge Fund Park</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Black Chess Capital. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Disclaimer</a>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    <p>This website is for informational purposes only and does not constitute financial advice or an offer to invest. Past performance is not indicative of future results. Black Chess Capital and its associated entities are not responsible for investment decisions made based on the content of this website. For qualified and sophisticated investors only. Always seek independent financial advice before investing.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('site-nav').style.background =
+      window.scrollY > 60 ? 'rgba(8,8,7,0.98)' : 'rgba(8,8,7,0.92)';
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('.page-hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 150 + i * 150);
+  });
+</script>
 </body>
 </html>

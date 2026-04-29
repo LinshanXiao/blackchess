@@ -3,25 +3,665 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Black Chess Capital</title>
-  <link rel="stylesheet" href="css/global.css">
+  <title>Contact — Black Chess Capital</title>
+  <meta name="description" content="Contact Black Chess Capital — offices in Perth, Sydney and Shanghai. Reach our investment team for fund enquiries.">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    .coming-soon { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:calc(var(--nav-h) + 2rem) 2rem 4rem; }
-    .coming-soon h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,6vw,5rem); font-weight:300; margin:1.5rem 0 1rem; }
-    .coming-soon h1 em { font-style:italic; color:var(--gold); }
-    .coming-soon p { color:var(--muted); font-size:0.9rem; margin-bottom:2.5rem; }
+    :root {
+      --black:#080807; --dark:#0f0e0d; --dark2:#161513; --dark3:#1e1c1a;
+      --gold:#b8975a; --gold-light:#d4b87a; --gold-dim:rgba(184,151,90,0.12);
+      --gold-border:rgba(184,151,90,0.22); --white:#f0ece4; --off-white:#d4cfc6;
+      --muted:#7a756d; --muted2:#524e48; --nav-h:72px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--dark);color:var(--white);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold-border);border-radius:2px}
+    ::selection{background:var(--gold);color:var(--black)}
+    a{color:inherit;text-decoration:none} p{color:var(--off-white)}
+    .section{padding:7rem 0;position:relative}
+    .container{max-width:1200px;margin:0 auto;padding:0 5rem}
+    .divider{height:0.5px;background:var(--gold-border)}
+    .display{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.05;letter-spacing:-0.02em}
+    .display em{font-style:italic;color:var(--gold)}
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-family:'Jost',sans-serif;font-weight:400}
+    .eyebrow::before{content:'';display:block;width:28px;height:0.5px;background:var(--gold);flex-shrink:0}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}
+    .reveal-delay-3{transition-delay:0.3s}.reveal-delay-4{transition-delay:0.4s}
+
+    /* NAV */
+    #site-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5rem;background:rgba(8,8,7,0.92);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--gold-border);transition:background 0.3s}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--gold);letter-spacing:0.06em}
+    .nav-logo span{color:var(--white);font-style:italic}
+    .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+    .nav-links a{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);transition:color 0.25s;position:relative;padding-bottom:2px}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:0.5px;background:var(--gold);transform:scaleX(0);transition:transform 0.25s}
+    .nav-links a:hover,.nav-links a.active{color:var(--white)}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:0.5rem 1.4rem}.nav-cta:hover{background:var(--gold-light)!important}.nav-cta::after{display:none!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:22px;height:0.5px;background:var(--white)}
+
+    /* PAGE HERO */
+    .page-hero{padding:calc(var(--nav-h) + 6rem) 5rem 6rem;background:var(--dark2);border-bottom:0.5px solid var(--gold-border);position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(184,151,90,0.06) 0%,transparent 70%);pointer-events:none}
+    .page-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end}
+    .page-hero-title{font-size:clamp(3rem,6vw,5.5rem);margin:1.25rem 0 0}
+    .page-hero-desc{font-size:1rem;color:var(--muted);line-height:1.9;margin-bottom:1.25rem}
+
+    /* ── CONTACT MAIN ── */
+    #contact-main{ background:var(--dark); }
+    .contact-layout{
+      display:grid; grid-template-columns:1fr 1.1fr;
+      gap:7rem; align-items:start;
+    }
+
+    /* OFFICES */
+    .offices-title{ font-size:clamp(1.8rem,3vw,2.5rem); margin:1.25rem 0 2.5rem; }
+    .office-card{
+      border:0.5px solid var(--gold-border);
+      margin-bottom:1.5rem;
+      overflow:hidden; transition:border-color 0.3s;
+      position:relative;
+    }
+    .office-card:hover{ border-color:rgba(184,151,90,0.5); }
+    .office-card::before{
+      content:''; position:absolute; top:0; left:0; bottom:0;
+      width:2px; background:var(--gold);
+      transform:scaleY(0); transform-origin:top;
+      transition:transform 0.35s ease;
+    }
+    .office-card:hover::before{ transform:scaleY(1); }
+    .office-card-header{
+      padding:1.5rem 1.75rem;
+      background:var(--dark2);
+      border-bottom:0.5px solid var(--gold-border);
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .office-city{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.3rem; font-weight:400;
+    }
+    .office-country{
+      font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase;
+      color:var(--gold);
+    }
+    .office-card-body{ padding:1.5rem 1.75rem; }
+    .office-contact-name{
+      font-size:0.85rem; font-weight:400;
+      color:var(--white); margin-bottom:0.75rem;
+    }
+    .office-detail{
+      display:flex; align-items:flex-start; gap:0.75rem;
+      font-size:0.8rem; color:var(--muted);
+      margin-bottom:0.5rem; line-height:1.6;
+    }
+    .office-detail-icon{ color:var(--gold); flex-shrink:0; font-size:0.75rem; margin-top:0.1rem; }
+    .office-detail a{ color:var(--gold-light); transition:color 0.2s; }
+    .office-detail a:hover{ color:var(--gold); }
+
+    /* Coming soon badge */
+    .coming-soon-badge{
+      display:inline-flex; align-items:center; gap:6px;
+      font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--muted2); border:0.5px solid var(--muted2);
+      padding:0.2rem 0.6rem;
+    }
+    .coming-soon-badge::before{
+      content:''; width:5px; height:5px; border-radius:50%;
+      background:var(--gold); display:block; flex-shrink:0;
+      animation:pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse{ 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+    /* ── ENQUIRY FORM ── */
+    .form-title{ font-size:clamp(1.8rem,3vw,2.5rem); margin:1.25rem 0 0.75rem; }
+    .form-subtitle{ font-size:0.88rem; color:var(--muted); line-height:1.8; margin-bottom:2.5rem; }
+
+    .form-group{ margin-bottom:1.5rem; }
+    .form-label{
+      display:block; font-size:0.68rem; letter-spacing:0.18em;
+      text-transform:uppercase; color:var(--muted);
+      margin-bottom:0.6rem;
+    }
+    .form-input,
+    .form-select,
+    .form-textarea{
+      width:100%;
+      background:var(--dark2);
+      border:0.5px solid var(--gold-border);
+      color:var(--white);
+      font-family:'Jost',sans-serif;
+      font-size:0.88rem;
+      font-weight:300;
+      padding:0.9rem 1.1rem;
+      outline:none;
+      transition:border-color 0.25s;
+      appearance:none;
+      -webkit-appearance:none;
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus{
+      border-color:var(--gold);
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder{ color:var(--muted2); }
+    .form-textarea{ resize:vertical; min-height:130px; }
+    .form-select{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8975a' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;
+      background-position:right 1rem center;
+      padding-right:2.5rem;
+      cursor:pointer;
+    }
+    .form-select option{ background:var(--dark2); color:var(--white); }
+    .form-row{
+      display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;
+    }
+    .form-submit{
+      width:100%;
+      background:var(--gold); color:var(--black);
+      border:none; cursor:pointer;
+      font-family:'Jost',sans-serif;
+      font-size:0.78rem; font-weight:400;
+      letter-spacing:0.16em; text-transform:uppercase;
+      padding:1rem 2rem;
+      transition:background 0.28s, transform 0.28s;
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      margin-top:0.5rem;
+    }
+    .form-submit:hover{ background:var(--gold-light); transform:translateY(-1px); }
+    .form-submit::after{ content:'→'; font-size:1rem; transition:transform 0.2s; }
+    .form-submit:hover::after{ transform:translateX(4px); }
+    .form-note{
+      font-size:0.68rem; color:var(--muted2); line-height:1.7;
+      margin-top:1rem; text-align:center;
+    }
+
+    /* Success message */
+    .form-success{
+      display:none; padding:1.5rem 2rem;
+      border:0.5px solid var(--gold-border);
+      background:var(--gold-dim);
+      text-align:center; margin-top:1rem;
+    }
+    .form-success p{ font-size:0.85rem; color:var(--off-white); }
+    .form-success.visible{ display:block; }
+
+    /* ── SHANGHAI NOTE ── */
+    #shanghai-note{ background:var(--dark2); }
+    .shanghai-layout{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:6rem; align-items:center;
+    }
+    .shanghai-title{ font-size:clamp(1.8rem,3vw,2.8rem); margin:1.25rem 0 1.75rem; }
+    .shanghai-body{ font-size:0.88rem; color:var(--muted); line-height:1.9; margin-bottom:1.25rem; }
+    .shanghai-detail{
+      display:flex; align-items:flex-start; gap:0.85rem;
+      font-size:0.82rem; color:var(--muted); margin-bottom:0.85rem;
+    }
+    .shanghai-detail-icon{ color:var(--gold); flex-shrink:0; margin-top:0.15rem; }
+    .shanghai-box{
+      border:0.5px solid var(--gold-border); padding:2.5rem;
+      position:relative; overflow:hidden;
+    }
+    .shanghai-box-bg{
+      position:absolute; bottom:-1rem; right:1rem;
+      font-family:'Cormorant Garamond',serif;
+      font-size:8rem; font-weight:300;
+      color:rgba(184,151,90,0.05); line-height:1;
+      pointer-events:none; user-select:none;
+    }
+    .shanghai-box-label{
+      font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:1.25rem; display:block;
+    }
+    .shanghai-box-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.6rem; font-weight:400; margin-bottom:0.25rem;
+    }
+    .shanghai-box-sub{
+      font-size:0.75rem; color:var(--muted); margin-bottom:1.5rem;
+    }
+    .shanghai-box-items{
+      display:flex; flex-direction:column; gap:0.75rem;
+    }
+    .shanghai-box-item{
+      display:flex; justify-content:space-between;
+      padding:0.75rem 0; border-top:0.5px solid var(--gold-border);
+      font-size:0.8rem;
+    }
+    .shanghai-box-item-label{ color:var(--muted); }
+    .shanghai-box-item-val{
+      font-family:'Cormorant Garamond',serif;
+      font-size:0.95rem; color:var(--gold);
+    }
+
+    /* FOOTER */
+    #site-footer{background:var(--black);border-top:0.5px solid var(--gold-border)}
+    .footer-main{display:grid;grid-template-columns:1.6fr 1fr 1.4fr;gap:4rem;padding:5rem;max-width:1200px;margin:0 auto}
+    .footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);margin-bottom:1rem}
+    .footer-brand-desc{font-size:0.82rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
+    .footer-tags{display:flex;gap:0.6rem;flex-wrap:wrap}
+    .footer-tags span{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);border:0.5px solid var(--muted2);padding:0.2rem 0.6rem}
+    .footer-col-title{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+    .footer-links a{font-size:0.82rem;color:var(--muted);transition:color 0.2s}.footer-links a:hover{color:var(--gold)}
+    .footer-office{margin-bottom:1.5rem}
+    .footer-office-city{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+    .footer-office p{font-size:0.8rem;color:var(--muted);line-height:1.65}
+    .footer-office a{color:var(--gold-light);transition:color 0.2s}.footer-office a:hover{color:var(--gold)}
+    .footer-bottom{border-top:0.5px solid var(--gold-border);padding:1.5rem 5rem;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-copy{font-size:0.72rem;color:var(--muted2)}
+    .footer-legal{display:flex;gap:1.5rem}
+    .footer-legal a{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);transition:color 0.2s}.footer-legal a:hover{color:var(--muted)}
+    .footer-disclaimer{border-top:0.5px solid rgba(80,76,72,0.3);padding:1.5rem 5rem 2.5rem;max-width:1200px;margin:0 auto}
+    .footer-disclaimer p{font-size:0.66rem;color:var(--muted2);line-height:1.8}
+
+    /* RESPONSIVE */
+    @media(max-width:1100px){
+      .page-hero-inner,.contact-layout,.shanghai-layout{grid-template-columns:1fr;gap:3rem}
+      .footer-main{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.5rem}
+      .footer-bottom,.footer-disclaimer{padding-left:1.5rem;padding-right:1.5rem}
+    }
+    @media(max-width:768px){
+      #site-nav{padding:0 1.5rem}
+      .nav-links{display:none;position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;background:var(--black);padding:2rem 1.5rem;gap:1.5rem;border-bottom:0.5px solid var(--gold-border)}
+      .nav-links.open{display:flex}
+      .hamburger{display:flex}
+      .page-hero{padding:calc(var(--nav-h) + 4rem) 1.5rem 4rem}
+      .container{padding:0 1.5rem}
+      .section{padding:4rem 0}
+      .form-row{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
-  <div class="coming-soon">
-    <div class="eyebrow" style="display:inline-flex; align-items:center; gap:12px; font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold);">
-      <span style="width:28px;height:0.5px;background:var(--gold);display:block;"></span>
-      Black Chess Capital
+
+<!-- NAV -->
+<nav id="site-nav">
+  <a class="nav-logo" href="index.html">Black Chess <span>Capital</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="funds.html">Our Funds</a></li>
+    <li><a href="strategy.html">Strategy</a></li>
+    <li><a href="performance.html">Performance</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta active">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="eyebrow reveal">Contact Us</div>
+      <h1 class="display page-hero-title reveal reveal-delay-1">
+        Let's start<br>a <em>conversation.</em>
+      </h1>
     </div>
-    <h1>Page <em>coming soon.</em></h1>
-    <p>This page is currently being built. More content coming shortly.</p>
-    <a href="index.html" class="btn btn-gold" style="display:inline-flex;align-items:center;gap:10px;padding:0.8rem 2rem;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--gold);color:var(--black);text-decoration:none;">← Back to Home</a>
+    <div class="reveal reveal-delay-2">
+      <p class="page-hero-desc">
+        Whether you are a prospective investor, a founder seeking capital, 
+        or an institution exploring partnership — our team across 
+        Perth, Sydney, and Shanghai is ready to talk.
+      </p>
+      <p class="page-hero-desc">
+        We respond to all enquiries within two business days. 
+        For urgent matters, please call us directly.
+      </p>
+    </div>
   </div>
-  <script src="js/components.js"></script>
+</div>
+
+<!-- CONTACT MAIN -->
+<section class="section" id="contact-main">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- LEFT — OFFICES -->
+      <div>
+        <div class="eyebrow reveal">Our Offices</div>
+        <h2 class="display offices-title reveal reveal-delay-1">
+          Find us<br><em>here.</em>
+        </h2>
+
+        <!-- Perth -->
+        <div class="office-card reveal reveal-delay-1">
+          <div class="office-card-header">
+            <div class="office-city">Perth</div>
+            <div class="office-country">Western Australia · Australia</div>
+          </div>
+          <div class="office-card-body">
+            <div class="office-contact-name">Jake Zhou — Director</div>
+            <div class="office-detail">
+              <span class="office-detail-icon">✉</span>
+              <a href="mailto:jakezhou88@outlook.com">jakezhou88@outlook.com</a>
+            </div>
+            <div class="office-detail">
+              <span class="office-detail-icon">✆</span>
+              <span>+61 452 188 526</span>
+            </div>
+            <div class="office-detail">
+              <span class="office-detail-icon">◎</span>
+              <span>UNIT 1 , 174 HAMPDEN ROAD, <br>NEDLANDS WA 6009</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sydney — Coming Soon -->
+        <div class="office-card reveal reveal-delay-2">
+          <div class="office-card-header">
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <div class="office-city">Sydney</div>
+              <span class="coming-soon-badge">Coming Soon</span>
+            </div>
+            <div class="office-country">New South Wales · Australia</div>
+          </div>
+          <div class="office-card-body">
+            <div class="office-contact-name">Chris Li — Portfolio Manager</div>
+            <div class="office-detail">
+              <span class="office-detail-icon">✉</span>
+              <a href="mailto:Chris.Li@softwatercap.com.au">Chris.Li@softwatercap.com.au</a>
+            </div>
+            <div class="office-detail">
+              <span class="office-detail-icon">✆</span>
+              <span>+61 430 988 999</span>
+            </div>
+            <div class="office-detail">
+              <span class="office-detail-icon">◎</span>
+              <span style="color:var(--muted2);font-style:italic;">Physical office address coming soon</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shanghai -->
+        <div class="office-card reveal reveal-delay-3">
+          <div class="office-card-header">
+            <div class="office-city">Shanghai</div>
+            <div class="office-country">China</div>
+          </div>
+          <div class="office-card-body">
+            <div class="office-contact-name">China Quantitative Team</div>
+            <div class="office-detail">
+              <span class="office-detail-icon">◎</span>
+              <span>Shanghai Hedge Fund Park<br>Shanghai, China</span>
+            </div>
+            <div class="office-detail">
+              <span class="office-detail-icon">✦</span>
+              <span>Registration No. P1019979</span>
+            </div>
+            <div class="office-detail">
+              <span class="office-detail-icon">ⓘ</span>
+              <span style="color:var(--muted2);">For China fund enquiries, please use the contact form and select "China Quantitative Funds" as your area of interest.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — FORM -->
+      <div class="reveal reveal-delay-2">
+        <div class="eyebrow" style="margin-bottom:1.25rem;">Send an Enquiry</div>
+        <h2 class="display form-title">Get in <em>touch.</em></h2>
+        <p class="form-subtitle">
+          Fill in the form below and one of our team members will 
+          be in touch within two business days.
+        </p>
+
+        <!--
+          FORMSPREE INTEGRATION — when ready:
+          1. Go to https://formspree.io and create a free account
+          2. Create a new form and copy your form endpoint e.g. https://formspree.io/f/yourcode
+          3. Replace action="#" below with your Formspree endpoint
+          4. Remove the id="contact-form" JS handling and let Formspree handle submission
+        -->
+        <form id="contact-form" action="#" method="POST">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="first-name">First Name *</label>
+              <input class="form-input" type="text" id="first-name" name="first_name" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="last-name">Last Name *</label>
+              <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Smith" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address *</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="john@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="+61 4xx xxx xxx">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="company">Company / Organisation</label>
+            <input class="form-input" type="text" id="company" name="company" placeholder="Your company name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="interest">Area of Interest *</label>
+            <select class="form-select" id="interest" name="interest" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="vc-fund">Venture Capital Fund — Australia</option>
+              <option value="investment-trust">Investment Trust — Australia</option>
+              <option value="quant-funds">China Quantitative Funds</option>
+              <option value="all-funds">General Fund Enquiry</option>
+              <option value="portfolio-company">Portfolio Company / Funding</option>
+              <option value="partnership">Partnership or Referral</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="investor-type">Investor Type</label>
+            <select class="form-select" id="investor-type" name="investor_type">
+              <option value="" disabled selected>Select an option</option>
+              <option value="individual">Individual / High Net Worth</option>
+              <option value="smsf">Self-Managed Super Fund (SMSF)</option>
+              <option value="family-office">Family Office</option>
+              <option value="institutional">Institutional Investor</option>
+              <option value="corporate">Corporate</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Message *</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell us a bit about your investment objectives or what you'd like to discuss..." required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Send Enquiry</button>
+
+          <p class="form-note">
+            By submitting this form you confirm you have read our 
+            <a href="#" style="color:var(--gold);text-decoration:underline;">Privacy Policy</a>. 
+            We will never share your information with third parties. 
+            This form does not constitute a commitment to invest.
+          </p>
+        </form>
+
+        <div class="form-success" id="form-success">
+          <p>✓ &nbsp; Thank you for your enquiry. A member of our team will be in touch within two business days.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SHANGHAI SECTION -->
+<section class="section" id="shanghai-note">
+  <div class="container">
+    <div class="shanghai-layout">
+      <div class="reveal">
+        <div class="eyebrow">China Qualified Investors</div>
+        <h2 class="display shanghai-title">
+          Enquiring about<br>our <em>China funds?</em>
+        </h2>
+        <p class="shanghai-body">
+          Access to our Chinese quantitative fund series is restricted 
+          to qualified investors under China's private fund regulations — 
+          including individuals and institutions meeting the relevant 
+          net asset or income thresholds.
+        </p>
+        <p class="shanghai-body">
+          If you are a qualified investor interested in our quantitative 
+          fund products, please submit an enquiry using the form above 
+          and select "China Quantitative Funds" as your area of interest. 
+          Our Shanghai team will be in touch with detailed product 
+          information and onboarding documentation.
+        </p>
+        <div style="margin-top:2rem;">
+          <div class="shanghai-detail">
+            <span class="shanghai-detail-icon">✦</span>
+            <span>Individual minimum investment: RMB 1,000,000 per product</span>
+          </div>
+          <div class="shanghai-detail">
+            <span class="shanghai-detail-icon">✦</span>
+            <span>Individual financial assets must exceed RMB 3,000,000, or average annual income must exceed RMB 500,000 over the last three years</span>
+          </div>
+          <div class="shanghai-detail">
+            <span class="shanghai-detail-icon">✦</span>
+            <span>Institutional investors with net assets of at least RMB 10,000,000 qualify automatically</span>
+          </div>
+          <div class="shanghai-detail">
+            <span class="shanghai-detail-icon">✦</span>
+            <span>Social security funds, enterprise annuity funds, charitable funds, and AMAC-supervised investment plans are automatically qualified</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="shanghai-box">
+          <div class="shanghai-box-bg">CN</div>
+          <span class="shanghai-box-label">Shanghai Office</span>
+          <div class="shanghai-box-name">China Quantitative Division</div>
+          <div class="shanghai-box-sub">Shanghai Hedge Fund Park · Registration P1019979</div>
+          <div class="shanghai-box-items">
+            <div class="shanghai-box-item">
+              <span class="shanghai-box-item-label">Operating since</span>
+              <span class="shanghai-box-item-val">2015</span>
+            </div>
+            <div class="shanghai-box-item">
+              <span class="shanghai-box-item-label">AUM</span>
+              <span class="shanghai-box-item-val">3B+ RMB</span>
+            </div>
+            <div class="shanghai-box-item">
+              <span class="shanghai-box-item-label">Fund products</span>
+              <span class="shanghai-box-item-val">40+</span>
+            </div>
+            <div class="shanghai-box-item">
+              <span class="shanghai-box-item-label">Best cumulative return</span>
+              <span class="shanghai-box-item-val">147.22%</span>
+            </div>
+            <div class="shanghai-box-item">
+              <span class="shanghai-box-item-label">Best Sharpe ratio</span>
+              <span class="shanghai-box-item-val">2.55</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-name">Black Chess Capital</div>
+      <p class="footer-brand-desc">A global investment management firm with a dual-market presence across Australian venture capital and Chinese quantitative strategies — built for sophisticated investors seeking superior returns.</p>
+      <div class="footer-tags">
+        <span>ABN 40 664 455 501</span>
+        <span>AFSL Representative</span>
+        <span>VCLP Registered</span>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="funds.html">Our Funds</a></li>
+        <li><a href="strategy.html">Strategy</a></li>
+        <li><a href="performance.html">Performance</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Our Offices</div>
+      <div class="footer-office">
+        <div class="footer-office-city">Perth, Australia</div>
+        <p>Jake Zhou<br><a href="mailto:jakezhou88@outlook.com">jakezhou88@outlook.com</a><br>+61 452 188 526<br>28A Dyson Street, South Perth WA 6151</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Sydney, Australia <span style="font-size:0.6rem;color:var(--muted2);letter-spacing:0.1em;"></span></div>
+        <p>Chris Li<br><a href="mailto:Chris.Li@softwatercap.com.au">Chris.Li@softwatercap.com.au</a><br>+61 430 988 999</p>
+      </div>
+      <div class="footer-office">
+        <div class="footer-office-city">Shanghai, China</div>
+        <p>Registration No. P1019979<br>Shanghai Hedge Fund Park</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Black Chess Capital. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Disclaimer</a>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    <p>This website is for informational purposes only and does not constitute financial advice or an offer to invest. Past performance is not indicative of future results. Black Chess Capital and its associated entities are not responsible for investment decisions made based on the content of this website. For qualified and sophisticated investors only. Always seek independent financial advice before investing.</p>
+  </div>
+</footer>
+
+<script>
+  /* NAV */
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('site-nav').style.background =
+      window.scrollY > 60 ? 'rgba(8,8,7,0.98)' : 'rgba(8,8,7,0.92)';
+  });
+
+  /* REVEAL */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('.page-hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 150 + i * 150);
+  });
+
+  /* FORM — placeholder handler (replace with Formspree later) */
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    /* Once Formspree is connected, remove the e.preventDefault() above
+       and the lines below — Formspree will handle everything automatically */
+    this.style.opacity = '0.5';
+    this.style.pointerEvents = 'none';
+    document.getElementById('form-success').classList.add('visible');
+    window.scrollTo({ top: document.getElementById('form-success').offsetTop - 100, behavior: 'smooth' });
+  });
+</script>
 </body>
 </html>
